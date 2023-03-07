@@ -1,5 +1,4 @@
 import React from 'react';
-import AppCodeHighlight from '../AppCodeHighlight';
 
 const Documentation = () => {
     return (
@@ -14,32 +13,38 @@ const Documentation = () => {
                         Babylon is an application template for React, based on the popular <a href="https://github.com/facebookincubator/create-react-app">create-react-app</a> that allows creating React apps with no configuration. To get started
                         extract the contents of the zip bundle and install the dependencies with npm or yarn.
                     </p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm install" or "yarn"
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>
                         Next step is running the application using the start script and navigate to <b>http://localhost:3000/</b> to view the application.
                     </p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm start" or "yarn start"
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
                     <p>That is it, you may now start with the development of your application using the Babylon template.</p>
 
                     <h4>React Scripts</h4>
                     <p>Following commands are derived from create-app-app.</p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "npm start" or "yarn start": Starts the development server
 "npm test" or "yarn test": Runs the tests.
 "npm run build" or "yarn run build": Creates a production build.
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Structure</h4>
                     <p>
@@ -53,8 +58,9 @@ const Documentation = () => {
                         <i>App.js</i> component that implements the logic such as menu state, layout modes and other configurable options.
                     </p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 <div className={containerClassName} onClick={onDocumentClick}>
     <AppTopbar topbarMenuActive={topbarMenuActive} activeTopbarItem={activeTopbarItem} onMenuButtonClick={onMenuButtonClick} onTopbarMenuButtonClick={onTopbarMenuButtonClick} onTopbarItemClick={onTopbarItemClick}
         isHorizontal={isHorizontal()} profileMode={profileMode} isMobile={isMobile} />
@@ -91,7 +97,8 @@ const Documentation = () => {
     { staticMenuMobileActive && <div className="layout-mask"></div> }
 </div>
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Menu</h4>
                     <p>
@@ -99,8 +106,9 @@ const Documentation = () => {
                         using the menu property. Here is the menu component from the demo application. Notice that menu object is bound to the model property of AppMenu component as shown above.
                     </p>
 
-                    <AppCodeHighlight lang="js">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 const menu = [
     {
         label: 'Home Page', icon: 'pi pi-fw pi-home',
@@ -218,17 +226,20 @@ const menu = [
     }
 ];
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>Dependencies of Layout are listed below and needs to be added to package.json. Only required dependency is PrimeReact where optional dependencies exist to enable certain components in PrimeReact.</p>
 
-                    <AppCodeHighlight lang="js">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 "primereact": "...",                //required: PrimeReact components
 "primeicons": "...",                //required: Icons
 "primeflex": "..."                  //required: Grid system
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Theme</h4>
                     <p>Babylon provides 30 PrimeReact themes out of the box. Setup of a theme is simple by including the css of theme to your bundle that are located inside assets/theme folder such as assets/theme/theme-amber-teal.css.</p>
@@ -271,8 +282,9 @@ const menu = [
 
                     <p>Here are the variables required to create a sample theme.</p>
 
-                    <AppCodeHighlight lang="scss">
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 $primaryColor: #2196F3 !default;
 $primaryLightColor: scale-color($primaryColor, $lightness: 60%) !default;
 $primaryDarkColor: scale-color($primaryColor, $lightness: -10%) !default;
@@ -284,25 +296,30 @@ $highlightTextColor: $primaryTextColor;
 
 @import '../sass/theme/_theme';
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>An example sass command to compile the css would be;</p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 sass public/assets/theme/mytheme/theme.scss:public/assets/theme/mytheme/theme.css
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>
                         Watch mode is handy to avoid compiling everytime when a change is made, instead use the following command so that sass generates the file whenever you make a customization. This builds all css files whenever a change is made
                         to any scss file.
                     </p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 sass --watch public/assets:public/assets
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>Same can also be applied to layout itself;</p>
                     <ul>
@@ -319,11 +336,13 @@ sass --watch public/assets:public/assets
 
                     <p>Here are the variables required to create a layout.</p>
 
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 @import '../../sass/layout/_layout';
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>SASS Variables</h4>
                     <p>Both the theme and layout provides various variables to customize the design.</p>
@@ -331,8 +350,9 @@ sass --watch public/assets:public/assets
                     <h5>sass/layout/_variables.scss</h5>
 
                     <div style={{ height: '400px', overflow: 'auto' }}>
-                        <AppCodeHighlight lang="scss">
-                            {`
+                        <pre className="app-code">
+                            <code>
+                                {`
 $colors: (
     "blue": #2196F3,
     "green": #4caf50,
@@ -1209,7 +1229,8 @@ $imagePreviewActionIconBorderRadius:50% !default;
     --maskbg: #{$maskBg};
 }
 `}
-                        </AppCodeHighlight>
+                            </code>
+                        </pre>
                     </div>
 
                     <h4>Menu Modes</h4>
@@ -1231,11 +1252,13 @@ $imagePreviewActionIconBorderRadius:50% !default;
                     </ul>
 
                     <p>For example to create a horizontal menu, the div element should be in following form;</p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 <div className="layout-wrapper layout-horizontal">
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <p>
                         It is also possible to leave the choice to the user by keeping the preference at a component and using an expression to bind it so that user can switch between modes. Sample application has an example implementation of such
@@ -1244,11 +1267,13 @@ $imagePreviewActionIconBorderRadius:50% !default;
 
                     <h4>Dark Menu</h4>
                     <p>Default color scheme of menu is light and alternative dark mode can be activated by adding layout-menu-dark style class to the main container.</p>
-                    <AppCodeHighlight>
-                        {`
+                    <pre className="app-code">
+                        <code>
+                            {`
 <div className="layout-wrapper layout-menu-dark">
 `}
-                    </AppCodeHighlight>
+                        </code>
+                    </pre>
 
                     <h4>Profile Modes</h4>
                     <p>
