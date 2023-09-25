@@ -8,7 +8,7 @@ const AppConfig = (props) => {
 
     const componentThemes = [
         { name: 'Amber Accent', file: 'amber', color: '#FFC107' },
-        { name: 'Blue Accent', file: 'blue', color: '#2196F3' },
+        { name: 'Blue Accent', file: 'blue', color: '#c9b4a0' },
         { name: 'Blue Gray Accent', file: 'bluegray', color: '#607D8B' },
         { name: 'Brown Accent', file: 'brown', color: '#795548' },
         { name: 'Cyan Accent', file: 'cyan', color: '#00BCD4' },
@@ -51,8 +51,8 @@ const AppConfig = (props) => {
             topbarLogo.src = 'assets/layout/images/logo-black.png';
             menuLogo.src = 'assets/layout/images/logo-black.png';
         } else {
-            topbarLogo.src = 'assets/layout/images/logo-white.png';
-            menuLogo.src = 'assets/layout/images/logo-white.png';
+            topbarLogo.src = 'assets/layout/images/teste.png';
+            menuLogo.src = 'assets/layout/images/teste.png';
         }
     };
 

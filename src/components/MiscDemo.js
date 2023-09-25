@@ -98,7 +98,7 @@ const MiscDemo = () => {
 
                     <h5>Label - Circle</h5>
                     <Avatar label="P" className="mr-2" size="xlarge" shape="circle"></Avatar>
-                    <Avatar label="V" className="mr-2" size="large" style={{ backgroundColor: '#2196F3', color: '#ffffff' }} shape="circle"></Avatar>
+                    <Avatar label="V" className="mr-2" size="large" style={{ backgroundColor: '#c9b4a0', color: '#ffffff' }} shape="circle"></Avatar>
                     <Avatar label="U" className="mr-2" style={{ backgroundColor: '#9c27b0', color: '#ffffff' }} shape="circle"></Avatar>
 
                     <h5>Icon - Badge</h5>

@@ -3,7 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import App from './App';
 import { Access } from './pages/Access';
 import { Error } from './pages/Error';
-import { Login } from './pages/Login';
+import { Login } from './pages/Login/Login';
 import { NotFound } from './pages/NotFound';
 import { Wizard } from './pages/Wizard';
 

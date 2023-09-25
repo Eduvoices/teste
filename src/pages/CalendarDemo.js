@@ -7,7 +7,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
-import { Calendar as PRCalendar } from 'primereact/calendar';
+import { Calendar as PRCalendar } from 'primereact/calendar'
 import EventService from '../service/EventService';
 
 const CalendarDemo = () => {
@@ -56,9 +56,9 @@ const CalendarDemo = () => {
             <div className="col-12">
                 <div className="card calendar-demo">
                     <FullCalendar
+                        locale='pt-BR'
                         events={events}
                         eventClick={eventClick}
-                        initialDate="2023-01-01"
                         initialView="dayGridMonth"
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                         headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
@@ -68,23 +68,23 @@ const CalendarDemo = () => {
                         dayMaxEvents
                     />
 
-                    <Dialog visible={eventDialog && !!clickedEvent} style={{ width: '450px' }} header="Event Details" footer={footer} modal closable onHide={() => setEventDialog(false)}>
+                    <Dialog visible={eventDialog && !!clickedEvent} style={{ width: '450px' }} header="Detalhes do evento" footer={footer} modal closable onHide={() => setEventDialog(false)}>
                         <div className="p-fluid">
                             <div className="field">
-                                <label htmlFor="title">Title</label>
+                                <label htmlFor="title">Título</label>
                                 <InputText id="title" value={changedEvent.title} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ title: e.target.value } })} required autoFocus />
                             </div>
                             <div className="field">
-                                <label htmlFor="start">From</label>
-                                <PRCalendar id="start" value={changedEvent.start} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ start: e.value } })} showTime appendTo={document.body} />
+                                <label htmlFor="start">De</label>
+                                <PRCalendar id="start" value={changedEvent.start} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ start: e.value } })} showTime appendTo={document.body} locale='pt-BR'/>
                             </div>
                             <div className="field">
-                                <label htmlFor="end">To</label>
-                                <PRCalendar id="end" value={changedEvent.end} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ end: e.value } })} showTime appendTo={document.body} />
+                                <label htmlFor="end">Até</label>
+                                <PRCalendar id="end" value={changedEvent.end} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ end: e.value } })} showTime appendTo={document.body} locale='pt-BR'/>
                             </div>
                             <div className="field-checkbox">
                                 <Checkbox inputId="allday" name="allday" value="All Day" checked={!!changedEvent.allDay} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ allDay: e.value } })} />
-                                <label htmlFor="allday">All Day</label>
+                                <label htmlFor="allday">Dia todo</label>
                             </div>
                         </div>
                     </Dialog>

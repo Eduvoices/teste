@@ -1,0 +1,83 @@
+.dados {
+    padding: 20px;
+}
+
+@media print {
+    .dados {
+        display: none;
+    }
+}
+
+.print {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 960px;
+    display: none;
+}
+
+@media print {
+    .print {
+        display: block;
+    }
+}
+
+.print div {
+    display: flex;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+}
+
+.print div h1 {
+    padding: 24px;
+}
+
+.print div p {
+    padding: 24px;
+    margin: 64px 0;
+    text-align: justify;
+    line-height: 200%;
+}
+
+.print div #data {
+    margin-bottom: 96px;
+}
+
+.print div #assinatura {
+    padding: 12px;
+            border-top: 1px solid black;
+            text-transform: uppercase;
+}
+
+.print div #controle {
+    position: relative;
+}
+
+.print div #controle span {
+    position: absolute;
+                top: 0;
+                right: 0;
+                padding: 24px;
+}
+
+.print div .canhoto {
+    margin-top: 96px;
+        padding: 8px 8px 0 8px;
+        border-top: 2px dotted black;
+}
+
+.print div .canhoto span {
+    margin: 8px 0;
+}
+
+.print div img {
+    width: 360px;
+}
+
+.print div #recibo_nome {
+    text-transform: uppercase;
+}

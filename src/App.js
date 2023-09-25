@@ -34,7 +34,7 @@ import CalendarDemo from './pages/CalendarDemo';
 import TimelineDemo from './pages/TimelineDemo';
 import Invoice from './pages/Invoice';
 import Help from './pages/Help';
-import EmptyPage from './pages/EmptyPage';
+import EmptyPage from './pages/EmptyPage/EmptyPage';
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 
@@ -42,6 +42,7 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.scss';
+import logo from './assets/flags/teste.png'
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -95,7 +96,7 @@ const App = () => {
         { path: '/timeline', parent: 'Pages', label: 'Timeline' },
         { path: '/invoice', parent: 'Pages', label: 'Invoice' },
         { path: '/help', parent: 'Pages', label: 'Help' },
-        { path: '/empty', parent: 'Pages', label: 'Empty Page' },
+        { path: '/recibos', parent: 'Pages', label: 'Recibos' },
         { path: '/documentation', parent: 'Pages', label: 'Documentation' }
     ];
 
@@ -158,7 +159,7 @@ const App = () => {
                 { label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error' },
                 { label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound' },
                 { label: 'Access Denied', icon: 'pi pi-fw pi-lock', to: '/access' },
-                { label: 'Empty', icon: 'pi pi-fw pi-circle-off', to: '/empty' }
+                { label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/recibos' }
             ]
         },
         {
@@ -446,7 +447,7 @@ const App = () => {
             <div className={menuContainerClassName} onClick={onMenuClick}>
                 <div className="layout-menu-logo">
                     <button className="p-link" onClick={() => navigate('/')}>
-                        <img id="layout-menu-logo" src="assets/layout/images/logo-white.png" library="babylon-layout" alt="babylon-logo" />
+                        <img id="layout-menu-logo" src={logo} library="babylon-layout" alt="babylon-logo" />
                     </button>
                 </div>
                 <div className="layout-menu-wrapper">
@@ -486,7 +487,7 @@ const App = () => {
                         <Route path="/timeline" element={<TimelineDemo />} />
                         <Route path="/invoice" element={<Invoice />} />
                         <Route path="/help" element={<Help />} />
-                        <Route path="/empty" element={<EmptyPage />} />
+                        <Route path="/recibos" element={<EmptyPage />} />
                         <Route path="/documentation" element={<Documentation />} />
                     </Routes>
                 </div>
