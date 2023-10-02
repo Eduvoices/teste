@@ -29,20 +29,21 @@ import MiscDemo from './components/MiscDemo';
 import Documentation from './components/Documentation';
 import IconsDemo from './utilities/IconsDemo';
 import BlocksDemo from './components/BlocksDemo';
-import CrudDemo from './pages/CrudDemo';
 import CalendarDemo from './pages/CalendarDemo';
-import TimelineDemo from './pages/TimelineDemo';
+import Consulta from './pages/TimelineDemo';
 import Invoice from './pages/Invoice';
+import UserCadastro from './pages/CrudDemo';
 import Help from './pages/Help';
-import EmptyPage from './pages/EmptyPage/EmptyPage';
+import AlteraSenha from './pages/AlteraSenha';
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
+
+import logo from '../src/assets/logo-white.png'
 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.scss';
-import logo from './assets/flags/teste.png'
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -69,7 +70,7 @@ const App = () => {
     let inlineMenuClick = false;
 
     const breadcrumb = [
-        { path: '/', parent: 'Dashboard', label: 'Dashboard' },
+        { path: '/dashboard', parent: 'Dashboard', label: 'Painel' },
         { path: '/formlayout', parent: 'UI Kit', label: 'Form Layout' },
         { path: '/input', parent: 'UI Kit', label: 'Input' },
         { path: '/floatlabel', parent: 'UI Kit', label: 'Float Label' },
@@ -91,12 +92,12 @@ const App = () => {
         { path: '/misc', parent: 'UI Kit', label: 'Misc' },
         { path: '/icons', parent: 'Utilities', label: 'Icons' },
         { path: '/blocks', parent: 'PrimeBlocks', label: 'Blocks' },
-        { path: '/crud', parent: 'Utilities', label: 'Crud' },
+        { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
         { path: '/calendar', parent: 'PrimeBlocks', label: 'Calendar' },
-        { path: '/timeline', parent: 'Pages', label: 'Timeline' },
-        { path: '/invoice', parent: 'Pages', label: 'Invoice' },
+        { path: '/consulta', parent: 'Pages', label: 'Consulta' },
+        { path: '/invoice', parent: 'Pages', label: 'invoice' },
         { path: '/help', parent: 'Pages', label: 'Help' },
-        { path: '/recibos', parent: 'Pages', label: 'Recibos' },
+        { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/documentation', parent: 'Pages', label: 'Documentation' }
     ];
 
@@ -104,130 +105,24 @@ const App = () => {
         {
             label: 'Home Page',
             icon: 'pi pi-fw pi-home',
-            items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
-        },
-        {
-            label: 'UI Kit',
-            icon: 'pi pi-fw pi-sitemap',
-            items: [
-                { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/formlayout' },
-                { label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/input' },
-                { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', to: '/floatlabel' },
-                { label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', to: '/invalidstate' },
-                { label: 'Button', icon: 'pi pi-fw pi-mobile', to: '/button', class: 'rotated-icon' },
-                { label: 'Table', icon: 'pi pi-fw pi-table', to: '/table' },
-                { label: 'List', icon: 'pi pi-fw pi-list', to: '/list' },
-                { label: 'Tree', icon: 'pi pi-fw pi-share-alt', to: '/tree' },
-                { label: 'Panel', icon: 'pi pi-fw pi-tablet', to: '/panel' },
-                { label: 'Overlay', icon: 'pi pi-fw pi-clone', to: '/overlay' },
-                { label: 'Media', icon: 'pi pi-fw pi-image', to: '/media' },
-                { label: 'Menu', icon: 'pi pi-fw pi-bars', to: '/menu' },
-                { label: 'Message', icon: 'pi pi-fw pi-comment', to: '/messages' },
-                { label: 'File', icon: 'pi pi-fw pi-file', to: '/file' },
-                { label: 'Chart', icon: 'pi pi-fw pi-chart-bar', to: '/chart' },
-                { label: 'Misc', icon: 'pi pi-fw pi-circle-off', to: '/misc' }
-            ]
-        },
-        {
-            label: 'PrimeBlocks',
-            icon: 'pi pi-prime',
-            items: [
-                { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', to: '/blocks', badge: 'NEW' },
-                { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: 'https://www.primefaces.org/primeblocks-react', target: '_blank' }
-            ]
-        },
-        {
-            label: 'Utilities',
-            icon: 'pi pi-fw pi-compass',
-            items: [
-                { label: 'Icons', icon: 'pi pi-fw pi-prime', to: '/icons' },
-                { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: 'https://www.primefaces.org/primeflex', target: '_blank' }
-            ]
+            items: [{ label: 'Painel', icon: 'pi pi-fw pi-home', to: '/dashboard' }]
         },
         {
             label: 'Pages',
             icon: 'pi pi-fw pi-clone',
             items: [
-                { label: 'Crud', icon: 'pi pi-fw pi-pencil', to: '/crud' },
+                { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-pencil', to: '/userCadastro' },
                 { label: 'Calendar', icon: 'pi pi-fw pi-calendar-plus', to: '/calendar' },
-                { label: 'Timeline', icon: 'pi pi-fw pi-calendar', to: '/timeline' },
+                { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 { label: 'Landing', icon: 'pi pi-fw pi-user-plus', url: 'assets/pages/landing.html', target: '_blank' },
-                { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/login' },
-                { label: 'Invoice', icon: 'pi pi-fw pi-dollar', to: '/invoice' },
+                { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
+                { label: 'Invoice', icon: 'pi pi-fw pi-lock', to: '/invoice' },
                 { label: 'Help', icon: 'pi pi-fw pi-question-circle', to: '/help' },
                 { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
                 { label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error' },
                 { label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound' },
                 { label: 'Access Denied', icon: 'pi pi-fw pi-lock', to: '/access' },
-                { label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/recibos' }
-            ]
-        },
-        {
-            label: 'Hierarchy',
-            icon: 'pi pi-fw pi-align-left',
-            items: [
-                {
-                    label: 'Submenu 1',
-                    icon: 'pi pi-fw pi-align-left',
-                    items: [
-                        {
-                            label: 'Submenu 1.1',
-                            icon: 'pi pi-fw pi-align-left',
-                            items: [
-                                { label: 'Submenu 1.1.1', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 1.1.2', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 1.1.3', icon: 'pi pi-fw pi-align-left' }
-                            ]
-                        },
-                        {
-                            label: 'Submenu 1.2',
-                            icon: 'pi pi-fw pi-align-left',
-                            items: [
-                                { label: 'Submenu 1.2.1', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 1.2.2', icon: 'pi pi-fw pi-align-left' }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    label: 'Submenu 2',
-                    icon: 'pi pi-fw pi-align-left',
-                    items: [
-                        {
-                            label: 'Submenu 2.1',
-                            icon: 'pi pi-fw pi-align-left',
-                            items: [
-                                { label: 'Submenu 2.1.1', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 2.1.2', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 2.1.3', icon: 'pi pi-fw pi-align-left' }
-                            ]
-                        },
-                        {
-                            label: 'Submenu 2.2',
-                            icon: 'pi pi-fw pi-align-left',
-                            items: [
-                                { label: 'Submenu 2.2.1', icon: 'pi pi-fw pi-align-left' },
-                                { label: 'Submenu 2.2.2', icon: 'pi pi-fw pi-align-left' }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            label: 'Get Started',
-            icon: 'pi pi-fw pi-download',
-            items: [
-                {
-                    label: 'Documentation',
-                    icon: 'pi pi-fw pi-file',
-                    to: '/documentation'
-                },
-                {
-                    label: 'Buy Now',
-                    icon: 'pi pi-fw pi-money-bill',
-                    url: ['https://www.primefaces.org/store']
-                }
+                { label: 'Alterar Senha', icon: 'pi pi-fw pi-lock', to: '/alteraSenha' }
             ]
         }
     ];
@@ -463,7 +358,7 @@ const App = () => {
 
                 <div className="layout-content">
                     <Routes>
-                        <Route path="/" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/formlayout" element={<FormLayoutDemo />} />
                         <Route path="/input" element={<InputDemo />} />
                         <Route path="/floatlabel" element={<FloatLabelDemo />} />
@@ -482,12 +377,12 @@ const App = () => {
                         <Route path="/misc" element={<MiscDemo />} />
                         <Route path="/icons" element={<IconsDemo />} />
                         <Route path="/blocks" element={<BlocksDemo />} />
-                        <Route path="/crud" element={<CrudDemo />} />
+                        <Route path="/userCadastro" element={<UserCadastro />} />
                         <Route path="/calendar" element={<CalendarDemo />} />
-                        <Route path="/timeline" element={<TimelineDemo />} />
+                        <Route path="/consulta" element={<Consulta />} />
                         <Route path="/invoice" element={<Invoice />} />
                         <Route path="/help" element={<Help />} />
-                        <Route path="/recibos" element={<EmptyPage />} />
+                        <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/documentation" element={<Documentation />} />
                     </Routes>
                 </div>

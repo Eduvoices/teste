@@ -38,13 +38,13 @@ const AppTopbar = (props) => {
                             <li role="menuitem">
                                 <button className="p-link">
                                     <i className="pi pi-user"></i>
-                                    <span>Profile</span>
+                                    <span>Perfil</span>
                                 </button>
                             </li>
                             <li role="menuitem">
-                                <button className="p-link">
-                                    <i className="pi pi-cog"></i>
-                                    <span>Settings</span>
+                                <button className="p-link" onClick={(e)=> navigate('/alteraSenha')}>
+                                    <i className="pi pi-lock"></i>
+                                    <span>Alterar Senha</span>
                                 </button>
                             </li>
                             <li role="menuitem">

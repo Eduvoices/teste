@@ -1,61 +1,176 @@
 import React from 'react';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
-import { Timeline } from 'primereact/timeline';
-import { classNames } from 'primereact/utils';
+import { InputMask } from 'primereact/inputmask';
+import { useState } from 'react';
+import { InputText } from 'primereact/inputtext';
+import { Dropdown } from 'primereact/dropdown';
 
-const TimelineDemo = () => {
-    const customEvents = [
-        {
-            status: 'Ordered',
-            date: '15/10/2020 10:30',
-            icon: 'pi pi-shopping-cart',
-            color: '#9C27B0',
-            image: 'game-controller.jpg'
-        },
-        { status: 'Processing', date: '15/10/2020 14:00', icon: 'pi pi-cog', color: '#673AB7' },
-        { status: 'Shipped', date: '15/10/2020 16:15', icon: 'pi pi-envelope', color: '#FF9800' },
-        { status: 'Delivered', date: '16/10/2020 10:00', icon: 'pi pi-check', color: '#607D8B' }
-    ];
+const Consulta = () => {
+    const [formValue, setFormValue] = useState('')
 
-    const horizontalEvents = ['2020', '2021', '2022', '2023'];
+    function Input() {
+        if (formValue.name === 'CPF') {
+            return (
+                <InputMask mask='999.999.999-99' placeholder='CPF' id='info' className='input' style={{width:'360px'}}/>
+            )
+        } else if (formValue.name === 'Data') {
+            return (
+                <InputMask mask='99/99/9999' id='info' placeholder='Data' className='input' style={{width:'360px'}}/>
+            )
+        } else {
+            return (
+                <InputText className='input' id='info' placeholder='Nome' style={{width:'360px'}}/>
+            )
+        }
+    }
 
-    const customizedContent = (item) => {
-        return (
-            <Card title={item.status} subTitle={item.date}>
-                {item.image && <img src={`assets/demo/images/product/${item.image}`} onError={(e) => (e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png')} alt={item.name} width={200} className="shadow-2 mb-3" />}
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-                    quas!
-                </p>
-                <Button label="Read more" className="p-button-text"></Button>
-            </Card>
-        );
-    };
+    const handleInputChange = (e) => {
+        e.preventDefault()
+        const {value} = e.target
+        setFormValue(value)
+    }
+    const dropdownValues = [
+        { name: 'CPF' },
+        { name: 'Data' },
+        { name: 'Nome' }
+    ]
 
-    const customizedMarker = (item) => {
-        return (
-            <span className="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-2" style={{ backgroundColor: item.color }}>
-                <i className={classNames('marker-icon', item.icon)}></i>
-            </span>
-        );
-    };
+    console.log(formValue)
 
     return (
         <div className="grid timeline-demo">
             <div className="col-12">
                 <div className="card">
-                    <h4>Timeline</h4>
+                    <h3>Consulta</h3>
+                    <div className="formgroup-inline" style={{display:'flex', justifyContent:'center'}}>
+                        <div className="field">
+                            <label htmlFor="info" className="p-sr-only">
+                                Informação de busca
+                            </label>
+                            <Input />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="lastname1" className="p-sr-only">
+                                Tipo de busca
+                            </label>
+                            <Dropdown style={{width:'160px', textAlign:'center'}} value={formValue} onChange={handleInputChange} options={dropdownValues} optionLabel="name" placeholder="Tipo" />
+                        </div>
+                        <Button style={{width:'48px'}}><i className="pi pi-search"/></Button>
+                    </div>
 
-                    <h5>Custom Timeline</h5>
-                    <Timeline value={customEvents} align="alternate" className="customized-timeline" marker={customizedMarker} content={customizedContent} />
+                    <div className='tableOverflow' style={{overflowX:'scroll'}}>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Nome</th>
+                                                <th>CPF</th>
+                                                <th>Endereço</th>
+                                                <th>Nº</th>
+                                                <th>Bairro</th>
+                                                <th>Complemento</th>
+                                                <th>CEP</th>
+                                                <th>Cidade</th>
+                                                <th>Data de nascimento</th>
+                                                <th>Telefone 1</th>
+                                                <th>Telefone 2</th>
+                                                <th>Telefone 3</th>
+                                                <th>E-mail</th>
+                                                <th>Responsável</th>
+                                                <th>Rede social</th>
+                                                <th>Como?</th>
+                                                <th>Obs</th>
+                                                <th>Data de cadastro</th>
+                                            </tr>
 
-                    <h5 style={{ marginTop: '5em' }}>Horizontal - Alternate Align</h5>
-                    <Timeline value={horizontalEvents} layout="horizontal" align="alternate" content={(item) => item} opposite={<span>&nbsp;</span>} />
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        1072
+                                                        <div className='dropdown'>
+                                                            <i className='pi pi-ellipsis-h'  alt="Mais opções" />
+                                                            <div className='dropdownContent'>
+                                                                <div>
+                                                                <i className='pi pi-plus'  alt="" />
+                                                                    <p style={{marginLeft:'8px'}}>Inserir</p>
+                                                                </div>
+
+                                                                <div>
+                                                                <i className='pi pi-pencil'  alt="" />
+                                                                    <p style={{marginLeft:'8px'}}>Alterar</p>
+                                                                </div>
+
+                                                                <div>
+                                                                <i className='pi pi-trash'  alt="" />
+                                                                <p style={{marginLeft:'8px'}}>Excluir</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                        Priscila Paiva Blasechi
+                                                </td>
+                                                <td>
+                                                        000.000.000-00
+                                                </td>
+                                                <td>
+                                                        Rua Teste do Teste Teste
+                                                </td>
+                                                <td>
+                                                        000
+                                                </td>
+                                                <td>
+                                                        Bairro
+                                                </td>
+                                                <td>
+                                                        Complemento
+                                                </td>
+                                                <td>
+                                                        00000-000
+                                                </td>
+                                                <td>
+                                                        Arapongas
+                                                </td>
+                                                <td>
+                                                        01/01/1010
+                                                </td>
+                                                <td>
+                                                        (99)99999-9999
+                                                </td>
+                                                <td>
+                                                        (99)99999-9999
+                                                </td>
+                                                <td>
+                                                        (99)99999-9999
+                                                </td>
+                                                <td>
+                                                        exemplo@exemplo.com
+                                                </td>
+                                                <td>
+                                                        Nome do Responsável
+                                                </td>
+                                                <td>
+                                                        @exemplo
+                                                </td>
+                                                <td>
+                                                        Complemento
+                                                </td>
+                                                <td>
+                                                        Exemplo
+                                                </td>
+                                                <td>
+                                                        01/01/1010
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                    </div>
+
                 </div>
             </div>
         </div>
     );
 };
 
-export default TimelineDemo;
+export default Consulta;
