@@ -35,8 +35,6 @@ const Consulta = () => {
         { name: 'Nome' }
     ]
 
-    console.log(formValue)
-
     return (
         <div className="grid timeline-demo">
             <div className="col-12">

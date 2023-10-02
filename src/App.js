@@ -30,10 +30,10 @@ import Documentation from './components/Documentation';
 import IconsDemo from './utilities/IconsDemo';
 import BlocksDemo from './components/BlocksDemo';
 import CalendarDemo from './pages/CalendarDemo';
-import Consulta from './pages/TimelineDemo';
+import Consulta from './pages/Consulta';
 import Invoice from './pages/Invoice';
-import UserCadastro from './pages/CrudDemo';
-import Help from './pages/Help';
+import UserCadastro from './pages/UserCadastro';
+import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
 import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
@@ -381,7 +381,7 @@ const App = () => {
                         <Route path="/calendar" element={<CalendarDemo />} />
                         <Route path="/consulta" element={<Consulta />} />
                         <Route path="/invoice" element={<Invoice />} />
-                        <Route path="/help" element={<Help />} />
+                        <Route path="/help" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/documentation" element={<Documentation />} />
                     </Routes>
