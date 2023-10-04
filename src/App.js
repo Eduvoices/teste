@@ -44,6 +44,8 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import './App.scss';
+import './layout-blue.css'
+import './theme-blue.css'
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
