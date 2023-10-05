@@ -1,12 +1,5 @@
 /* Add your variable customizations of layout here */ /* cabin-300 - latin-ext_latin */
-@font-face {
-  font-family: "cabin";
-  font-style: normal;
-  font-weight: 400;
-  src: url("../public//assets/layout/fonts/cabin-v12-latin-500.eot"); /* IE9 Compat Modes */
-  /* src: local("cabin Light"), local("cabin-Light"), url("../fonts/cabin-v12-latin-regular.eot#iefix") format("embedded-opentype"), url("../fonts/cabin-v12-latin-regular.woff2") format("woff2"), url("../fonts/cabin-v12-latin-regular.woff") format("woff"), url("../fonts/cabin-v12-latin-regular.ttf") format("truetype"), url("../fonts/cabin-v12-latin-regular.svg#cabin") format("svg"); Legacy iOS */
-}
-/* cabin-regular - latin-ext_latin */
+
 
 h1, h2, h3, h4, h5, h6 {
   margin: 1.5rem 0 1rem 0;
@@ -2366,7 +2359,7 @@ a {
 
 @media screen and (min-width: 768px) {
   .login-body {
-    /* background: url("../images/pages/bg-login2.jpg"); */
+    /* background: url("../src/assets/FundoLogin.jpg"); */
     background-size: cover;
   }
   .login-body .login-panel {

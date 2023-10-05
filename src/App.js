@@ -98,7 +98,7 @@ const App = () => {
         { path: '/calendar', parent: 'PrimeBlocks', label: 'Calendar' },
         { path: '/consulta', parent: 'Pages', label: 'Consulta' },
         { path: '/invoice', parent: 'Pages', label: 'invoice' },
-        { path: '/help', parent: 'Pages', label: 'Help' },
+        { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/documentation', parent: 'Pages', label: 'Documentation' }
     ];
@@ -119,7 +119,7 @@ const App = () => {
                 { label: 'Landing', icon: 'pi pi-fw pi-user-plus', url: 'assets/pages/landing.html', target: '_blank' },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
                 { label: 'Invoice', icon: 'pi pi-fw pi-lock', to: '/invoice' },
-                { label: 'Help', icon: 'pi pi-fw pi-question-circle', to: '/help' },
+                { label: 'Cadastro', icon: 'pi pi-fw pi-question-circle', to: '/cadastro' },
                 { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
                 { label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error' },
                 { label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound' },
@@ -383,7 +383,7 @@ const App = () => {
                         <Route path="/calendar" element={<CalendarDemo />} />
                         <Route path="/consulta" element={<Consulta />} />
                         <Route path="/invoice" element={<Invoice />} />
-                        <Route path="/help" element={<Cadastro />} />
+                        <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/documentation" element={<Documentation />} />
                     </Routes>
