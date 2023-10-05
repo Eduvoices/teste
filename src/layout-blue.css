@@ -4070,3 +4070,17 @@ a {
     margin-top: 4px;
 }
 
+.layout-content select {
+    background: #ffffff;
+    font-family: 'cabin', sans-serif;
+    font-size: 1rem;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid #ced4da;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.layout-content select:hover {
+    border-color: #4b453d;
+}
