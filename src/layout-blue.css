@@ -3461,7 +3461,7 @@ a {
     padding: 6rem 2rem;
   }
 }
-.invoice-wrapper {
+/* .invoice-wrapper {
   background-color: #f8f8fc;
 }
 .invoice-wrapper .invoice-content {
@@ -3575,7 +3575,73 @@ a {
   .invoice-wrapper .invoice-content .invoice-footer .invoice-table-2.summary .invoice-table-col.header-col {
     margin-left: 0;
   }
+} */
+
+#invoice-content {
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    width: 960px;
 }
+
+#invoice-content div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+#invoice-content div h1 {
+    padding: 24px;
+}
+
+#invoice-content div p {
+    padding: 24px;
+    margin: 64px 0;
+    text-align: justify;
+    line-height: 200%;
+}
+#invoice-content div #data {
+    margin-bottom: 96px;
+}
+
+#invoice-content div #assinatura {
+    padding: 12px;
+    border-top: 1px solid black;
+    text-transform: uppercase;
+}
+
+#invoice-content div #controle {
+    position: relative;
+}
+
+#invoice-content div #controle span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 24px;
+}
+
+#invoice-content div .canhoto {
+    margin-top: 96px;
+    padding: 8px 8px 0 8px;
+    border-top: 2px dotted black;
+}
+
+#invoice-content div .canhoto span {
+    margin: 8px 0;
+}
+
+#invoice-content div img {
+    width: 360px;
+}
+
+#invoice-content div #recibo_nome {
+    text-transform: uppercase;
+}
+
 @media print {
   body * {
     visibility: hidden;

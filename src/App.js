@@ -31,7 +31,7 @@ import Dashboard from './components/Dashboard';
 // import BlocksDemo from './components/BlocksDemo';
 import CalendarDemo from './pages/CalendarDemo';
 import Consulta from './pages/Consulta';
-// import Invoice from './pages/Invoice';
+import Invoice from './pages/Invoice';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
@@ -97,7 +97,7 @@ const App = () => {
         { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
         { path: '/calendar', parent: 'PrimeBlocks', label: 'Agenda' },
         { path: '/consulta', parent: 'Pages', label: 'Consulta' },
-        // { path: '/invoice', parent: 'Pages', label: 'invoice' },
+        { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         // { path: '/documentation', parent: 'Pages', label: 'Documentation' }
@@ -113,21 +113,22 @@ const App = () => {
             label: 'Pages',
             icon: 'pi pi-fw pi-clone',
             items: [
-                { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-pencil', to: '/userCadastro' },
+                // { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-pencil', to: '/userCadastro' },
                 { label: 'Agenda', icon: 'pi pi-fw pi-calendar-plus', to: '/calendar' },
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 // { label: 'Landing', icon: 'pi pi-fw pi-user-plus', url: 'assets/pages/landing.html', target: '_blank' },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
                 // { label: 'Invoice', icon: 'pi pi-fw pi-lock', to: '/invoice' },
-                { label: 'Cadastro', icon: 'pi pi-fw pi-user-plus', to: '/cadastro' },
+                // { label: 'Cadastro', icon: 'pi pi-fw pi-user-plus', to: '/cadastro' },
                 // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
                 // { label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error' },
                 // { label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound' },
                 // { label: 'Access Denied', icon: 'pi pi-fw pi-lock', to: '/access' },
                 { label: 'Alterar Senha', icon: 'pi pi-fw pi-lock', to: '/alteraSenha' },
+                {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 {
                     label: 'Cadastro',
-                    icon: 'pi pi-fw pi-align-left',
+                    icon: 'pi pi-fw pi-folder',
                     items: [
                         { label: 'Cadastro de Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
                         { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-user-plus', to: '/userCadastro' },
@@ -388,9 +389,9 @@ const App = () => {
                         {/* <Route path="/icons" element={<IconsDemo />} /> */}
                         {/* <Route path="/blocks" element={<BlocksDemo />} /> */}
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        <Route path="/Agenda" element={<CalendarDemo />} />
+                        <Route path="/calendar" element={<CalendarDemo />} />
                         <Route path="/consulta" element={<Consulta />} />
-                        {/* <Route path="/invoice" element={<Invoice />} /> */}
+                        <Route path="/invoice" element={<Invoice />} />
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         {/* <Route path="/documentation" element={<Documentation />} /> */}
