@@ -11,7 +11,7 @@ import AppInlineProfile from './AppInlineProfile';
 
 import Dashboard from './components/Dashboard';
 // import FormLayoutDemo from './components/FormLayoutDemo';
-// import InputDemo from './components/InputDemo';
+import InputDemo from './components/InputDemo';
 // import FloatLabelDemo from './components/FloatLabelDemo';
 // import InvalidStateDemo from './components/InvalidStateDemo';
 // import ButtonDemo from './components/ButtonDemo';
@@ -29,7 +29,7 @@ import Dashboard from './components/Dashboard';
 // import Documentation from './components/Documentation';
 // import IconsDemo from './utilities/IconsDemo';
 // import BlocksDemo from './components/BlocksDemo';
-import CalendarDemo from './pages/CalendarDemo';
+// import CalendarDemo from './pages/CalendarDemo';
 import Consulta from './pages/Consulta';
 import Invoice from './pages/Invoice';
 import UserCadastro from './pages/UserCadastro';
@@ -95,12 +95,12 @@ const App = () => {
         // { path: '/icons', parent: 'Utilities', label: 'Icons' },
         // { path: '/blocks', parent: 'PrimeBlocks', label: 'Blocks' },
         { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
-        { path: '/calendar', parent: 'PrimeBlocks', label: 'Agenda' },
+        // { path: '/calendar', parent: 'PrimeBlocks', label: 'Agenda' },
         { path: '/consulta', parent: 'Pages', label: 'Consulta' },
         { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
-        // { path: '/documentation', parent: 'Pages', label: 'Documentation' }
+        { path: '/agenda', parent: 'Pages', label: 'Agenda' }
     ];
 
     const menu = [
@@ -114,7 +114,7 @@ const App = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 // { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-pencil', to: '/userCadastro' },
-                { label: 'Agenda', icon: 'pi pi-fw pi-calendar-plus', to: '/calendar' },
+                // { label: 'Agenda', icon: 'pi pi-fw pi-calendar-plus', to: '/calendar' },
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 // { label: 'Landing', icon: 'pi pi-fw pi-user-plus', url: 'assets/pages/landing.html', target: '_blank' },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
@@ -133,7 +133,8 @@ const App = () => {
                         { label: 'Cadastro de Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
                         { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-user-plus', to: '/userCadastro' },
                     ]
-                }
+                },
+                {label: 'Agenda', icon: 'pi pi-fw pi-calendar', to: '/agenda'}
             ]
         }
     ];
@@ -371,7 +372,6 @@ const App = () => {
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
                         {/* <Route path="/formlayout" element={<FormLayoutDemo />} />
-                        <Route path="/input" element={<InputDemo />} />
                         <Route path="/floatlabel" element={<FloatLabelDemo />} />
                         <Route path="/invalidstate" element={<InvalidStateDemo />} />
                         <Route path="/button" element={<ButtonDemo />} />
@@ -384,17 +384,19 @@ const App = () => {
                         <Route path="/menu/*" element={<MenuDemo />} />
                         <Route path="/messages" element={<MessagesDemo />} />
                         <Route path="/file" element={<FileDemo />} />
-                        <Route path="/chart" element={<ChartDemo />} /> */}
+                    <Route path="/chart" element={<ChartDemo />} /> */}
                         {/* <Route path="/misc" element={<MiscDemo />} /> */}
                         {/* <Route path="/icons" element={<IconsDemo />} /> */}
                         {/* <Route path="/blocks" element={<BlocksDemo />} /> */}
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        <Route path="/calendar" element={<CalendarDemo />} />
+                        {/* <Route path="/calendar" element={<CalendarDemo />} /> */}
                         <Route path="/consulta" element={<Consulta />} />
                         <Route path="/invoice" element={<Invoice />} />
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
+                        <Route path="/agenda" element={<InputDemo />} />
                         {/* <Route path="/documentation" element={<Documentation />} /> */}
+                        {/* <Route path='userCadastro' element={<Cadastro />} */}
                     </Routes>
                 </div>
 

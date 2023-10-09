@@ -9,6 +9,7 @@ import { InputText } from 'primereact/inputtext';
 import { Checkbox } from 'primereact/checkbox';
 import { Calendar as PRCalendar } from 'primereact/calendar'
 import EventService from '../service/EventService';
+import ptLocale from '@fullcalendar/core/locales/pt'
 
 const CalendarDemo = () => {
     const [eventDialog, setEventDialog] = useState(false);
@@ -22,6 +23,10 @@ const CalendarDemo = () => {
         setClickedEvent(e.event);
         setChangedEvent({ title, start, end, allDay: null });
     };
+
+    const dateClick = () => {
+        setEventDialog(true)
+    }
 
     useEffect(() => {
         const eventService = new EventService();
@@ -46,7 +51,7 @@ const CalendarDemo = () => {
 
     const footer = (
         <>
-            <Button type="button" label="Save" icon="pi pi-check" className="p-button-text" onClick={save} />
+            <Button type="button" label="Salvar" icon="pi pi-check" className="p-button-text" onClick={save} />
             <Button type="button" label="Reset" icon="pi pi-refresh" className="p-button-text" onClick={reset} />
         </>
     );
@@ -56,9 +61,10 @@ const CalendarDemo = () => {
             <div className="col-12">
                 <div className="card calendar-demo">
                     <FullCalendar
-                        locale='pt-BR'
+                        locale={ptLocale}
                         events={events}
                         eventClick={eventClick}
+                        dateClick={dateClick}
                         initialView="dayGridMonth"
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                         headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
@@ -68,7 +74,7 @@ const CalendarDemo = () => {
                         dayMaxEvents
                     />
 
-                    <Dialog visible={eventDialog && !!clickedEvent} style={{ width: '450px' }} header="Detalhes do evento" footer={footer} modal closable onHide={() => setEventDialog(false)}>
+                    <Dialog visible={eventDialog} style={{ width: '450px' }} header="Detalhes do evento" footer={footer} modal closable onHide={() => setEventDialog(false)}>
                         <div className="p-fluid">
                             <div className="field">
                                 <label htmlFor="title">Título</label>
@@ -76,11 +82,11 @@ const CalendarDemo = () => {
                             </div>
                             <div className="field">
                                 <label htmlFor="start">De</label>
-                                <PRCalendar id="start" value={changedEvent.start} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ start: e.value } })} showTime appendTo={document.body} locale='pt-BR'/>
+                                <PRCalendar id="start" value={changedEvent.start} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ start: e.value } })} showTime appendTo={document.body} />
                             </div>
                             <div className="field">
                                 <label htmlFor="end">Até</label>
-                                <PRCalendar id="end" value={changedEvent.end} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ end: e.value } })} showTime appendTo={document.body} locale='pt-BR'/>
+                                <PRCalendar id="end" value={changedEvent.end} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ end: e.value } })} showTime appendTo={document.body} />
                             </div>
                             <div className="field-checkbox">
                                 <Checkbox inputId="allday" name="allday" value="All Day" checked={!!changedEvent.allDay} onChange={(e) => setChangedEvent({ ...changedEvent, ...{ allDay: e.value } })} />
