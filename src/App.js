@@ -10,28 +10,9 @@ import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
 
 import Dashboard from './components/Dashboard';
-// import FormLayoutDemo from './components/FormLayoutDemo';
-import InputDemo from './components/InputDemo';
-// import FloatLabelDemo from './components/FloatLabelDemo';
-// import InvalidStateDemo from './components/InvalidStateDemo';
-// import ButtonDemo from './components/ButtonDemo';
-// import TableDemo from './components/TableDemo';
-// import ListDemo from './components/ListDemo';
-// import TreeDemo from './components/TreeDemo';
-// import PanelDemo from './components/PanelDemo';
-// import OverlayDemo from './components/OverlayDemo';
-// import MediaDemo from './components/MediaDemo';
-// import MenuDemo from './components/MenuDemo';
-// import MessagesDemo from './components/MessagesDemo';
-// import FileDemo from './components/FileDemo';
-// import ChartDemo from './components/ChartDemo';
-// import MiscDemo from './components/MiscDemo';
-// import Documentation from './components/Documentation';
-// import IconsDemo from './utilities/IconsDemo';
-// import BlocksDemo from './components/BlocksDemo';
-// import CalendarDemo from './pages/CalendarDemo';
+import Agenda from './pages/Agenda'
 import Consulta from './pages/Consulta';
-import Invoice from './pages/Invoice';
+import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
@@ -73,29 +54,7 @@ const App = () => {
 
     const breadcrumb = [
         { path: '/dashboard', parent: 'Dashboard', label: 'Painel' },
-        // { path: '/formlayout', parent: 'UI Kit', label: 'Form Layout' },
-        // { path: '/input', parent: 'UI Kit', label: 'Input' },
-        // { path: '/floatlabel', parent: 'UI Kit', label: 'Float Label' },
-        // { path: '/invalidstate', parent: 'UI Kit', label: 'Invalid State' },
-        // { path: '/button', parent: 'UI Kit', label: 'Button' },
-        // { path: '/table', parent: 'UI Kit', label: 'Table' },
-        // { path: '/list', parent: 'UI Kit', label: 'List' },
-        // { path: '/tree', parent: 'UI Kit', label: 'Tree' },
-        // { path: '/panel', parent: 'UI Kit', label: 'Panel' },
-        // { path: '/overlay', parent: 'UI Kit', label: 'Overlay' },
-        // { path: '/media', parent: 'UI Kit', label: 'Media' },
-        // { path: '/menu', parent: 'UI Kit', label: 'Menu' },
-        // { path: '/menu/seat', parent: 'UI Kit', label: 'Menu' },
-        // { path: '/menu/payment', parent: 'UI Kit', label: 'Menu' },
-        // { path: '/menu/confirmation', parent: 'UI Kit', label: 'Menu' },
-        // { path: '/messages', parent: 'UI Kit', label: 'Messages' },
-        // { path: '/file', parent: 'UI Kit', label: 'File' },
-        // { path: '/chart', parent: 'UI Kit', label: 'Charts' },
-        // { path: '/misc', parent: 'UI Kit', label: 'Misc' },
-        // { path: '/icons', parent: 'Utilities', label: 'Icons' },
-        // { path: '/blocks', parent: 'PrimeBlocks', label: 'Blocks' },
         { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
-        // { path: '/calendar', parent: 'PrimeBlocks', label: 'Agenda' },
         { path: '/consulta', parent: 'Pages', label: 'Consulta' },
         { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
@@ -113,17 +72,8 @@ const App = () => {
             label: 'Pages',
             icon: 'pi pi-fw pi-clone',
             items: [
-                // { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-pencil', to: '/userCadastro' },
-                // { label: 'Agenda', icon: 'pi pi-fw pi-calendar-plus', to: '/calendar' },
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
-                // { label: 'Landing', icon: 'pi pi-fw pi-user-plus', url: 'assets/pages/landing.html', target: '_blank' },
                 { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
-                // { label: 'Invoice', icon: 'pi pi-fw pi-lock', to: '/invoice' },
-                // { label: 'Cadastro', icon: 'pi pi-fw pi-user-plus', to: '/cadastro' },
-                // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
-                // { label: 'Error', icon: 'pi pi-fw pi-times-circle', to: '/error' },
-                // { label: 'Not Found', icon: 'pi pi-fw pi-exclamation-circle', to: '/notfound' },
-                // { label: 'Access Denied', icon: 'pi pi-fw pi-lock', to: '/access' },
                 { label: 'Alterar Senha', icon: 'pi pi-fw pi-lock', to: '/alteraSenha' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 {
@@ -371,32 +321,12 @@ const App = () => {
                 <div className="layout-content">
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
-                        {/* <Route path="/formlayout" element={<FormLayoutDemo />} />
-                        <Route path="/floatlabel" element={<FloatLabelDemo />} />
-                        <Route path="/invalidstate" element={<InvalidStateDemo />} />
-                        <Route path="/button" element={<ButtonDemo />} />
-                        <Route path="/table" element={<TableDemo />} />
-                        <Route path="/list" element={<ListDemo />} />
-                        <Route path="/tree" element={<TreeDemo />} />
-                        <Route path="/panel" element={<PanelDemo />} />
-                        <Route path="/overlay" element={<OverlayDemo />} />
-                        <Route path="/media" element={<MediaDemo />} />
-                        <Route path="/menu/*" element={<MenuDemo />} />
-                        <Route path="/messages" element={<MessagesDemo />} />
-                        <Route path="/file" element={<FileDemo />} />
-                    <Route path="/chart" element={<ChartDemo />} /> */}
-                        {/* <Route path="/misc" element={<MiscDemo />} /> */}
-                        {/* <Route path="/icons" element={<IconsDemo />} /> */}
-                        {/* <Route path="/blocks" element={<BlocksDemo />} /> */}
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        {/* <Route path="/calendar" element={<CalendarDemo />} /> */}
                         <Route path="/consulta" element={<Consulta />} />
-                        <Route path="/invoice" element={<Invoice />} />
+                        <Route path="/invoice" element={<Recibos />} />
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
-                        <Route path="/agenda" element={<InputDemo />} />
-                        {/* <Route path="/documentation" element={<Documentation />} /> */}
-                        {/* <Route path='userCadastro' element={<Cadastro />} */}
+                        <Route path="/agenda" element={<Agenda />} />
                     </Routes>
                 </div>
 

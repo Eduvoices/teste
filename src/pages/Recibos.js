@@ -3,7 +3,7 @@ import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import logo from '../assets/logo.png'
 
-const Invoice = () => {
+const Recibos = () => {
     const [nome, setNome] = useState('')
     const [emitente, setEmitente] = useState('')
     const [valor, setValor] = useState('')
@@ -92,4 +92,4 @@ const Invoice = () => {
     );
 };
 
-export default Invoice;
+export default Recibos;
