@@ -3,9 +3,24 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import { useEffect } from 'react';
+import api from '../service/api';
 
 export const Login = () => {
     const navigate = useNavigate();
+
+    useEffect(() => {
+        api
+            .post("https://tecjusbackend.vercel.app/login",{
+                email: '',
+                senha: '',
+                domínio: ''
+        })
+            .then((response) => console.log(response))
+            .catch((err) => {
+            console.error("ops! ocorreu um erro" + err);
+            });
+        }, []);
 
     return (
         <div className="login-body">
