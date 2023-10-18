@@ -189,15 +189,6 @@ const Cadastro = () => {
 
                             <div className="formgrid grid">
                                     <div className="field col">
-                                        <label htmlFor="code">Código</label>
-                                        <InputText
-                                        id="code"
-                                        type="number"
-                                        onKeyUp={handleEnter}
-                                        value={code}
-                                        onChange={(e) => setCode(e.target.value)}/>
-                                    </div>
-                                    <div className="field col">
                                         <label htmlFor="nome">Nome completo*</label>
                                         <InputText
                                         id="nome"

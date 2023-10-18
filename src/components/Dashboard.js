@@ -13,6 +13,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import ProductService from '../service/ProductService';
 import EventService from '../service/EventService';
+import logo from '../assets/logo-white.png'
 
 const chartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -177,15 +178,15 @@ const Dashboard = () => {
                 <div className="col-12 lg:col-4">
                     <div className="user-card card">
                         <div className="user-card-header">
-                            <img src="assets/layout/images/dashboard/bg-header.png" alt="babylon-layout" className="profile-image" />
+                            {/* <img src="assets/layout/images/dashboard/bg-header.png" alt="babylon-layout" className="profile-image" /> */}
                         </div>
                         <div className="user-card-content">
-                            <img src="assets/layout/images/avatar.png" alt="babylon-layout" />
+                            <img src={logo} alt="babylon-layout" />
                             <Menu ref={menuRef} popup model={items} appendTo={document.body} />
                             <Button id="user-button" type="button" icon="pi pi-bars" className="secondary-btn" onClick={menuToggle} />
 
                             <div className="user-card-name">
-                                <span>Arlene Welch</span>
+                                <span></span>
                             </div>
 
                             <div className="user-detail">

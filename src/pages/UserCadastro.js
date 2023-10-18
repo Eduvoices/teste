@@ -69,7 +69,7 @@ const UserCadastro = () => {
 
                     <form>
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="email" data-placeholder='Senha Atual*'>Senha atual</label>
+                            <label htmlFor="email" data-placeholder='Senha Atual*'>Email</label>
                             <InputText
                             id='email'
                             className="input"

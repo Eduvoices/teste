@@ -9,56 +9,65 @@ import api from '../service/api';
 export const Login = () => {
     const navigate = useNavigate();
     const [deny, setDeny] = useState(false)
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    // useEffect(() => {
-    //     api
-    //         .post("https://tecjusbackend.vercel.app/login",{
+    // function performSignIn() {
+
+    //     let headers = new Headers();
+
+    //     headers.append('Content-Type', 'application/json');
+    //     headers.append('Accept', 'application/json');
+
+    //     headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+    //     headers.append('Access-Control-Allow-Credentials', 'true');
+
+    //     headers.append('GET', 'POST', 'OPTIONS');
+
+    //     // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password));
+
+    //     fetch('https://tecjusbackend.vercel.app/login', {
+    //         mode: 'no-cors',
+    //         credentials: 'include',
+    //         method: 'POST',
+    //         headers: headers,
+    //         body: {
     //             email: '',
     //             senha: '',
-    //             domínio: '',
-    //     })
-    //         .then((response) => console.log(response))
-    //         .catch((err) => {
-    //         console.error("ops! ocorreu um erro" + err);
+    //             domínio: ''
+    //         },
+    //         })
+    //         .then(response => response.json())
+    //         .then(json => {
+    //             console.log(json)
+    //         })
+    //         .catch(error => {
+    //             console.log('Authorization failed : ' + error.message)
+    //             setDeny(true)
     //         });
-    //     }, []);
+    //     }
 
-    function performSignIn() {
+    //     performSignIn()
 
-        let headers = new Headers();
+    // async function login() {
+    //     console.log(email, password)
+    //     let item = {email, password}
 
-        headers.append('Content-Type', 'application/json');
-        headers.append('Accept', 'application/json');
-
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-        headers.append('Access-Control-Allow-Credentials', 'true');
-
-        headers.append('GET', 'POST', 'OPTIONS');
-
-        // headers.append('Authorization', 'Basic ' + base64.encode(username + ":" + password));
-
-        fetch('https://tecjusbackend.vercel.app/login', {
-            mode: 'no-cors',
-            credentials: 'include',
-            method: 'POST',
-            headers: headers,
-            body: {
-                email: '',
-                senha: '',
-                domínio: ''
-            },
-            })
-            .then(response => response.json())
-            .then(json => {
-                console.log(json)
-            })
-            .catch(error => {
-                console.log('Authorization failed : ' + error.message)
-                setDeny(true)
-            });
-        }
-
-        performSignIn()
+    //     let result = await fetch('https://tecjusbackend.vercel.app/login', {
+    //         method: 'POST',
+    //         mode: 'no-cors',
+    //         credentials: 'include',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Accept': 'application/json',
+    //             'Access-Control-Allow-Origin': 'http://localhost:3000',
+    //             'Access-Control-Allow-Credentials': 'true'
+    //         },
+    //         body: JSON.stringify(item)
+    //     })
+    //     result = result.json()
+    //     console.log(result)
+    // }
 
     function handleEnter(event) {
         if (event.keyCode === 13) {
@@ -83,20 +92,21 @@ export const Login = () => {
 
                 <form>
                     <div className="login-input-wrapper">
-                        <InputText placeholder="Usuário" onKeyDown={handleEnter}/>
+                        <InputText placeholder="Usuário" onKeyDown={handleEnter} onChange={(e)=> setEmail(e.target.value)}/>
                         <i className="pi pi-user"></i>
                     </div>
 
                     <div className="login-input-wrapper">
-                        <InputText placeholder="Senha" onKeyDown={handleEnter} type='password'/>
+                        <InputText placeholder="Senha" onKeyDown={handleEnter} type='password' onChange={(e)=> setPassword(e.target.value)}/>
                         <i className="pi pi-lock"></i>
                     </div>
                 <Button
                     label="Entrar"
                     type='submit'
-                    onClick={() => {
-                        !deny ? navigate('/dashboard') : navigate('/denied');
-                    }}
+                    // onClick={() => {
+                    //     deny ? navigate('/dashboard') : navigate('/denied');
+                    // }}
+                    onClick={()=> navigate('/dashboard')}
                 />
                 </form>
             </div>

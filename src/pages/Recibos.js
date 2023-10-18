@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import logo from '../assets/logo.png'
+import Recibo1 from '../components/documentos/_recibo1';
 
 const Recibos = () => {
     const [nome, setNome] = useState('')
@@ -67,7 +67,8 @@ const Recibos = () => {
             <div className='col-12'>
                 <div className='card'>
                     <div id="invoice-content">
-                        <div>
+                        <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+                        {/* <div>
                             <img src={logo} alt=""/>
                             <h1>RECIBO</h1>
                             <div id="controle">
@@ -83,7 +84,7 @@ const Recibos = () => {
                                 <span>R$ {cash}</span>
                                 <span>{numeroCtrl}</span>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

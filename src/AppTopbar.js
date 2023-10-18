@@ -1,6 +1,7 @@
 import React from 'react';
 import { classNames } from 'primereact/utils';
 import { useNavigate } from 'react-router-dom';
+import logo from '../src/assets/logo-white.png'
 
 const AppTopbar = (props) => {
     const navigate = useNavigate();
@@ -30,33 +31,15 @@ const AppTopbar = (props) => {
                 {isProfilePopup && (
                     <li className={profileItemClassName}>
                         <button className="p-link" onClick={(e) => props.onTopbarItemClick(e, 'profile')}>
-                            <img alt="babylon-layout" src="assets/layout/images/avatar.png" />
+                            <img alt="babylon-layout" src={logo} />
                             <span className="topbar-item-name">Arlene Welch</span>
                         </button>
 
                         <ul className={classNames({ fadeInDown: !props.isMobile() })}>
                             <li role="menuitem">
-                                <button className="p-link">
-                                    <i className="pi pi-user"></i>
-                                    <span>Perfil</span>
-                                </button>
-                            </li>
-                            <li role="menuitem">
                                 <button className="p-link" onClick={(e)=> navigate('/alteraSenha')}>
                                     <i className="pi pi-lock"></i>
                                     <span>Alterar Senha</span>
-                                </button>
-                            </li>
-                            <li role="menuitem">
-                                <button className="p-link">
-                                    <i className="pi pi-envelope"></i>
-                                    <span>Message</span>
-                                </button>
-                            </li>
-                            <li role="menuitem">
-                                <button className="p-link">
-                                    <i className="pi pi-bell"></i>
-                                    <span>Notifications</span>
                                 </button>
                             </li>
                         </ul>
@@ -142,28 +125,8 @@ const AppTopbar = (props) => {
                     <ul className={classNames({ fadeInDown: !props.isMobile() })}>
                         <li role="menuitem">
                             <button className="p-link">
-                                <i className="pi pi-pencil"></i>
-                                <span>Change Theme</span>
-                                <span className="topbar-submenuitem-badge">4</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
                                 <i className="pi pi-user-plus"></i>
                                 <span onClick={(e)=> navigate('/userCadastro')}>Cadastro de Usuário</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-lock"></i>
-                                <span>Lock Screen</span>
-                                <span className="topbar-submenuitem-badge">2</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-image"></i>
-                                <span>Wallpaper</span>
                             </button>
                         </li>
                     </ul>

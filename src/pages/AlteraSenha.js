@@ -56,7 +56,7 @@ const AlteraSenha = () => {
 
                     <form>
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="senha-atual" data-placeholder='Senha Atual*'>Login</label>
+                            <label htmlFor="senha-atual" data-placeholder='Senha Atual*'>Senha atual</label>
                             <InputText
                             type="password"
                             id='senha-atual'
