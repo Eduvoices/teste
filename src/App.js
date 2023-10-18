@@ -73,15 +73,14 @@ const App = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
-                { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
+                // { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
                 { label: 'Alterar Senha', icon: 'pi pi-fw pi-lock', to: '/alteraSenha' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 {
                     label: 'Cadastro',
                     icon: 'pi pi-fw pi-folder',
                     items: [
-                        { label: 'Cadastro de Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
-                        { label: 'Cadastro de Usuário', icon: 'pi pi-fw pi-user-plus', to: '/userCadastro' },
+                        { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
                     ]
                 },
                 {label: 'Agenda', icon: 'pi pi-fw pi-calendar', to: '/agenda'}

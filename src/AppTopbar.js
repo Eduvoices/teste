@@ -149,8 +149,8 @@ const AppTopbar = (props) => {
                         </li>
                         <li role="menuitem">
                             <button className="p-link">
-                                <i className="pi pi-star"></i>
-                                <span>Favorites</span>
+                                <i className="pi pi-user-plus"></i>
+                                <span onClick={(e)=> navigate('/userCadastro')}>Cadastro de Usuário</span>
                             </button>
                         </li>
                         <li role="menuitem">

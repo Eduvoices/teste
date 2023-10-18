@@ -31,7 +31,6 @@ const Cadastro = () => {
     refCep = useRef(null),
     refBtn = useRef(null)
 
-
     const nome = name
     const numero = number
 
@@ -194,7 +193,7 @@ const Cadastro = () => {
                                         <InputText
                                         id="code"
                                         type="number"
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                         value={code}
                                         onChange={(e) => setCode(e.target.value)}/>
                                     </div>
@@ -206,7 +205,7 @@ const Cadastro = () => {
                                         title='nome'
                                         placeholder=''
                                         onBlur={(e) => setName(e.target.value)}
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                         />
                                     </div>
                             </div>
@@ -222,7 +221,7 @@ const Cadastro = () => {
                                         name='rg'
                                         onChange={(e) => setRg(e.target.value)}
                                         value={rg}
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                         />
                                     </div>
                                     <div className="field col">
@@ -235,7 +234,7 @@ const Cadastro = () => {
                                         placeholder=''
                                         onBlur={handleChange}
                                         ref={ref}
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                         />
                                         {cpfValido === true || cpf.length < 11 ? (
                                     <span id='valid'></span>
@@ -249,7 +248,7 @@ const Cadastro = () => {
                                     <div className="field col">
                                         <label htmlFor="nascimento">Data de nascimento</label>
                                         <InputMask
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                         mask="99/99/9999"
                                         className='input'
                                         id='nascimento'
@@ -269,7 +268,7 @@ const Cadastro = () => {
                                         placeholder=''
                                         ref={refCep}
                                         // value={cepState}
-                                        onKeyDown={handleEnter}
+                                        onKeyUp={handleEnter}
                                     />
                                     </div>
                             </div>
@@ -354,7 +353,7 @@ const Cadastro = () => {
                                         ref={refTel}
                                         placeholder=''
                                         name='tel1'
-                                        onKeyDown={handleEnter}/>
+                                        onKeyUp={handleEnter}/>
                                     </div>
                                     <div className="field col">
                                         <label htmlFor="telefone2">Telefone2</label>
@@ -367,7 +366,7 @@ const Cadastro = () => {
                                         onChange={(e) => setTel2(e.target.value)}
                                         value={tel2}
                                         name='tel2'
-                                        onKeyDown={handleEnter}/>
+                                        onKeyUp={handleEnter}/>
                                     </div>
                             </div>
 
@@ -382,7 +381,7 @@ const Cadastro = () => {
                                         value={tel3}
                                         title='telefone3'
                                         name='tel3'
-                                        onKeyDown={handleEnter}/>
+                                        onKeyUp={handleEnter}/>
                                     </div>
                                     <div className="field col">
                                         <label htmlFor="email">Email</label>

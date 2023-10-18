@@ -2250,7 +2250,7 @@ a {
 .exception-body .exception-content img {
   display: inline-block;
   margin-bottom: 160px;
-  width: 200px;
+  width: 360px;
 }
 .exception-body .exception-content h1 {
   font-size: 28px;
@@ -2292,11 +2292,11 @@ a {
   .exception-body.notfound {
     background: url("../images/pages/bg-notfound.jpg");
     background-size: cover;
-  }
-  .exception-body.access-denied {
-    background: url("../images/pages/bg-access.jpg");
-    background-size: cover;
   } */
+  .exception-body.access-denied {
+    background: url("../src/assets/FundoLogin.jpg");
+    background-size: cover;
+  }
 }
 .login-body {
   padding: 0;
