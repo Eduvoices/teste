@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import Recibo1 from '../components/documentos/_recibo1';
+import { Dropdown } from 'primereact/dropdown';
+import Recibo2 from '../components/documentos/_recibo2';
+import Procuração from '../components/documentos/_documento1';
 
 const Recibos = () => {
     const [nome, setNome] = useState('')
@@ -9,12 +12,39 @@ const Recibos = () => {
     const [valor, setValor] = useState('')
     const [extenso, setExtenso] = useState('')
     const [numeroCtrl, setNumeroCtrl] = useState('')
+    const [doc, setDoc] = useState('')
 
     function dataAtual() {
         let data = new Date()
         let day = data.getDate().toString().padStart(2, '0')
         let month = String(data.getMonth() + 1).padStart(2, '0')
         return `${day}/${month}/${data.getFullYear()}`
+    }
+
+    const dropdownValues = [
+        {name: 'recibo-standard'},
+        {name: 'recibo-alt'},
+        {name: 'procuração'},
+        {name: 'nota-promissória'}
+    ]
+
+    function handleInputChange(e) {
+        e.preventDefault()
+        const {value} = e.target
+        setDoc(value)
+        console.log(doc)
+    }
+
+    function returnDoc() {
+        if (doc.name === 'recibo-standard') {
+            return <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+        } else if (doc.name === 'recibo-alt') {
+            return <Recibo2 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+        } else if (doc.name === 'procuração') {
+            return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
+        } else {
+            return <h4>Nota promissória</h4>
+        }
     }
 
     const cash = parseFloat(valor).toLocaleString('pt-br', {minimumFractionDigits: 2})
@@ -59,6 +89,12 @@ const Recibos = () => {
                                 </label>
                                 <InputText type='text' id='extenso' onChange={(e)=>setExtenso(e.target.value)}/>
                             </div>
+                            <div className="field col">
+                                <label htmlFor="extenso" >
+                                    Tipo de documento
+                                </label>
+                                <Dropdown value={doc} onChange={handleInputChange} options={dropdownValues} optionLabel="name" placeholder="Tipo"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -67,7 +103,8 @@ const Recibos = () => {
             <div className='col-12'>
                 <div className='card'>
                     <div id="invoice-content">
-                        <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+                        {returnDoc()}
+                        {/* <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/> */}
                         {/* <div>
                             <img src={logo} alt=""/>
                             <h1>RECIBO</h1>

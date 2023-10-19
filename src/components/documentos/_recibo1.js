@@ -4,7 +4,7 @@ import logo from '../../assets/logo.png'
 const Recibo1 = ({numeroCtrl, nome, cash, extenso, emitente, dataAtual}) => {
     return (
         <div>
-        <img src={logo} alt=""/>
+        <img src={logo} alt="logo"/>
         <h1>RECIBO</h1>
         <div id="controle">
             <span>{numeroCtrl}</span>
