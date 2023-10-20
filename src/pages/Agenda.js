@@ -68,7 +68,7 @@ const Agenda = () => {
                     <h2>Instruções</h2>
 
                     <ul>
-                        <li>Selecione a data e você será levado a criar um novo entento</li>
+                        <li>Selecione a data e você será levado a criar um novo evento</li>
                         <li>Arraste, solte e mude a extensão dos eventos</li>
                         <li>Clique em um evento deletá-lo</li>
                     </ul>

@@ -42,8 +42,10 @@ const Recibos = () => {
             return <Recibo2 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
         } else if (doc.name === 'procuração') {
             return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
-        } else {
+        } else if (doc.name === 'nota-promissória') {
             return <h4>Nota promissória</h4>
+        } else {
+            return <span></span>
         }
     }
 
