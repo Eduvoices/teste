@@ -90,25 +90,20 @@ const Agenda = () => {
                     <div className='demo-app'>
                     {renderSidebar()}
                         <div className='demo-app-main'>
-                            <FullCalendar
-                            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-                            headerToolbar={{
-                                left: 'prev, next, today',
-                                center: 'title',
-                                right: 'dayGridMonth,timeGridWeek,timeGridDay'
-                            }}
-                            initialView='dayGridMonth'
-                            locale={localeBr}
-                            editable={true}
-                            selectable={true}
-                            selectMirror={true}
-                            dayMaxEvents={true}
-                            weekends={true}
-                            select={handleDateSelect}
-                            eventContent={renderEventContent}
-                            eventClick={handleEventClick}
-                            eventsSet={handleEvents}
-                            />
+                        <FullCalendar
+                        eventClick={handleEventClick}
+                        eventContent={renderEventContent}
+                        eventsSet={handleEvents}
+                        initialView="dayGridMonth"
+                        plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                        headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
+                        editable
+                        selectable
+                        selectMirror
+                        dayMaxEvents
+                        locale={localeBr}
+                        select={handleDateSelect}
+                    />
                         </div>
                     </div>
                 </div>
