@@ -4,7 +4,7 @@ import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
-import AppConfig from './AppConfig';
+// import AppConfig from './AppConfig';
 import AppMenu from './AppMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
@@ -16,7 +16,7 @@ import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
-import PrimeReact from 'primereact/api';
+// import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 
 import logo from '../src/assets/logo-white.png'
@@ -30,18 +30,18 @@ import './theme-blue.css'
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
-    const [menuMode, setMenuMode] = useState('static');
-    const [darkMenu, setDarkMenu] = useState(true);
+    const [menuMode] = useState('static');
+    const [darkMenu] = useState(true);
     const [overlayMenuActive, setOverlayMenuActive] = useState(false);
     const [topbarMenuActive, setTopbarMenuActive] = useState(false);
     const [staticMenuDesktopInactive, setStaticMenuDesktopInactive] = useState(false);
     const [staticMenuMobileActive, setStaticMenuMobileActive] = useState(false);
     const [activeTopbarItem, setActiveTopbarItem] = useState(null);
     const [inlineMenuActive, setInlineMenuActive] = useState(false);
-    const [profileMode, setProfileMode] = useState('popup');
+    const [profileMode] = useState('popup');
     const [configActive, setConfigActive] = useState(false);
-    const [inputStyle, setInputStyle] = useState('outlined');
-    const [ripple, setRipple] = useState(false);
+    // const [inputStyle, setInputStyle] = useState('outlined');
+    // const [ripple, setRipple] = useState(false);
     const copyTooltipRef = useRef();
     const location = useLocation();
 
@@ -73,8 +73,6 @@ const App = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
-                // { label: 'Login', icon: 'pi pi-fw pi-sign-in', to: '/' },
-                { label: 'Alterar Senha', icon: 'pi pi-fw pi-lock', to: '/alteraSenha' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 {
                     label: 'Cadastro',
@@ -96,32 +94,32 @@ const App = () => {
         return obj.path === location.pathname;
     });
 
-    const onInputStyleChange = (inputStyle) => {
-        setInputStyle(inputStyle);
-    };
+    // const onInputStyleChange = (inputStyle) => {
+    //     setInputStyle(inputStyle);
+    // };
 
-    const onRippleChange = (e) => {
-        PrimeReact.ripple = e.value;
-        setRipple(e.value);
-    };
+    // const onRippleChange = (e) => {
+    //     PrimeReact.ripple = e.value;
+    //     setRipple(e.value);
+    // };
 
-    const onMenuModeChange = (e) => {
-        setMenuMode(e.value);
-        setStaticMenuDesktopInactive(false);
-        setOverlayMenuActive(false);
+    // const onMenuModeChange = (e) => {
+    //     setMenuMode(e.value);
+    //     setStaticMenuDesktopInactive(false);
+    //     setOverlayMenuActive(false);
 
-        if (e.value === 'horizontal') {
-            setProfileMode('popup');
-        }
-    };
+    //     if (e.value === 'horizontal') {
+    //         setProfileMode('popup');
+    //     }
+    // };
 
-    const onMenuColorChange = (e) => {
-        setDarkMenu(e.value);
-    };
+    // const onMenuColorChange = (e) => {
+    //     setDarkMenu(e.value);
+    // };
 
-    const onProfileChange = (e) => {
-        setProfileMode(e.value);
-    };
+    // const onProfileChange = (e) => {
+    //     setProfileMode(e.value);
+    // };
 
     const onDocumentClick = () => {
         if (!topbarItemClick) {
@@ -229,14 +227,14 @@ const App = () => {
         event.preventDefault();
     };
 
-    const onConfigClick = () => {
-        configClick = true;
-    };
+    // const onConfigClick = () => {
+    //     configClick = true;
+    // };
 
-    const onConfigButtonClick = () => {
-        setConfigActive((prevConfigActive) => !prevConfigActive);
-        configClick = true;
-    };
+    // const onConfigButtonClick = () => {
+    //     setConfigActive((prevConfigActive) => !prevConfigActive);
+    //     configClick = true;
+    // };
 
     const hideOverlayMenu = () => {
         setOverlayMenuActive(false);
@@ -279,8 +277,8 @@ const App = () => {
         'layout-mobile-active': staticMenuMobileActive,
         'layout-menu-dark': darkMenu,
         'layout-menu-light': !darkMenu,
-        'p-input-filled': inputStyle === 'filled',
-        'p-ripple-disabled': !ripple
+        // 'p-input-filled': inputStyle === 'filled',
+        // 'p-ripple-disabled': !ripple
     });
 
     const menuContainerClassName = classNames('layout-menu-container', { 'layout-menu-container-inactive': !isMenuVisible() });
@@ -332,7 +330,7 @@ const App = () => {
                 <AppFooter />
             </div>
 
-            <AppConfig
+            {/* <AppConfig
                 configActive={configActive}
                 menuMode={menuMode}
                 onMenuModeChange={onMenuModeChange}
@@ -346,7 +344,7 @@ const App = () => {
                 onRippleChange={onRippleChange}
                 inputStyle={inputStyle}
                 onInputStyleChange={onInputStyleChange}
-            ></AppConfig>
+            ></AppConfig> */}
 
             {staticMenuMobileActive && <div className="layout-mask"></div>}
         </div>

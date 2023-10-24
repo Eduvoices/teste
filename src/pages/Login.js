@@ -3,12 +3,12 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import api from '../service/api';
 
 export const Login = () => {
     const navigate = useNavigate();
-    const [deny, setDeny] = useState(false)
+    // const [deny, setDeny] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 

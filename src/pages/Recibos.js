@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import Recibo1 from '../components/documentos/_recibo1';
+import Recibo1 from '../components/documentos/_testeDocs/_testeRecibo';
 import { Dropdown } from 'primereact/dropdown';
-import Recibo2 from '../components/documentos/_recibo2';
-import Procuração from '../components/documentos/_documento1';
+import Recibo2 from '../components/documentos/_teste2Docs/_teste2Recibo';
+import Procuração from '../components/documentos/_testeDocs/_testeProcuração';
+import Procuração2 from '../components/documentos/_teste2Docs/_teste2Procuração';
 
 const Recibos = () => {
     const [nome, setNome] = useState('')
@@ -13,6 +14,7 @@ const Recibos = () => {
     const [extenso, setExtenso] = useState('')
     const [numeroCtrl, setNumeroCtrl] = useState('')
     const [doc, setDoc] = useState('')
+    const [param] = useState('teste2')
 
     function dataAtual() {
         let data = new Date()
@@ -22,28 +24,25 @@ const Recibos = () => {
     }
 
     const dropdownValues = [
-        {name: 'recibo-standard'},
-        {name: 'recibo-alt'},
+        {name: 'recibo'},
         {name: 'procuração'},
-        {name: 'nota-promissória'}
     ]
 
     function handleInputChange(e) {
         e.preventDefault()
         const {value} = e.target
         setDoc(value)
-        console.log(doc)
     }
 
     function returnDoc() {
-        if (doc.name === 'recibo-standard') {
+        if (doc.name === 'recibo' && param === 'teste') {
             return <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
-        } else if (doc.name === 'recibo-alt') {
+        } else if (doc.name === 'recibo' && param === 'teste2') {
             return <Recibo2 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
-        } else if (doc.name === 'procuração') {
+        } else if (doc.name === 'procuração' && param === 'teste') {
             return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
-        } else if (doc.name === 'nota-promissória') {
-            return <h4>Nota promissória</h4>
+        } else if (doc.name === 'procuração' && param === 'teste2') {
+            return <Procuração2 dataAtual={dataAtual()} outorgante={emitente}/>
         } else {
             return <span></span>
         }
@@ -106,24 +105,6 @@ const Recibos = () => {
                 <div className='card'>
                     <div id="invoice-content">
                         {returnDoc()}
-                        {/* <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/> */}
-                        {/* <div>
-                            <img src={logo} alt=""/>
-                            <h1>RECIBO</h1>
-                            <div id="controle">
-                                <span>{numeroCtrl}</span>
-                            </div>
-                            <p>Recebemos de <span id="recibo_nome">{nome}</span> a importância de <span id="recibo_valor">R$ {cash}</span> ({extenso}), referente ao pagamento de honorários advocatícios.</p>
-                            <span id="data">{dataAtual()}</span>
-                            <span id="assinatura">{emitente}</span>
-
-                            <div className="canhoto">
-                                <span>{dataAtual()}</span>
-                                <span id="recibo_nome">{nome}</span>
-                                <span>R$ {cash}</span>
-                                <span>{numeroCtrl}</span>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

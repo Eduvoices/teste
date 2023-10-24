@@ -1,6 +1,6 @@
-import logo from '../../assets/logo.png'
+import logo from '../../../assets/logo-black-alt.png'
 
-const Procuração = ({dataAtual, outorgante}) => {
+const Procuração2 = ({dataAtual, outorgante}) => {
     return (
         <div>
             <img src={logo} alt="logo"/>
@@ -15,4 +15,4 @@ const Procuração = ({dataAtual, outorgante}) => {
     )
 }
 
-export default Procuração
+export default Procuração2

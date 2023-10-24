@@ -42,6 +42,9 @@ const AlteraSenha = () => {
             refBtn.current.focus()
         }
     }
+
+    console.log(enableBtn(confirmaSenha, novaSenha, senhaAtual))
+
     return (
         <div className='flex'>
             <div className='col-12 md:col-4'>

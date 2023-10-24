@@ -1,4 +1,4 @@
-import logo from '../../assets/logo-black-alt.png'
+import logo from '../../../assets/logo-black-alt.png'
 
 const Recibo2 = ({numeroCtrl, nome, dataAtual, emitente, cash, extenso}) => {
     return (
