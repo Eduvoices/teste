@@ -25,6 +25,7 @@ import 'primeflex/primeflex.css';
 import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
+import CrudDemo from './pages/Crud';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -38,8 +39,6 @@ const App = () => {
     const [inlineMenuActive, setInlineMenuActive] = useState(false);
     const [profileMode] = useState('popup');
     const [configActive, setConfigActive] = useState(false);
-    // const [inputStyle, setInputStyle] = useState('outlined');
-    // const [ripple, setRipple] = useState(false);
     const copyTooltipRef = useRef();
     const location = useLocation();
 
@@ -57,7 +56,8 @@ const App = () => {
         { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
-        { path: '/agenda', parent: 'Pages', label: 'Agenda' }
+        { path: '/agenda', parent: 'Pages', label: 'Agenda' },
+        {path: '/crud', parent: 'Pages', label: 'Crud'}
     ];
 
     const menu = [
@@ -72,6 +72,7 @@ const App = () => {
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
+                {label: 'Crud', icon: 'pi pi-fw pi-file', to:'/crud'},
                 {
                     label: 'Cadastro',
                     icon: 'pi pi-fw pi-folder',
@@ -92,32 +93,6 @@ const App = () => {
         return obj.path === location.pathname;
     });
 
-    // const onInputStyleChange = (inputStyle) => {
-    //     setInputStyle(inputStyle);
-    // };
-
-    // const onRippleChange = (e) => {
-    //     PrimeReact.ripple = e.value;
-    //     setRipple(e.value);
-    // };
-
-    // const onMenuModeChange = (e) => {
-    //     setMenuMode(e.value);
-    //     setStaticMenuDesktopInactive(false);
-    //     setOverlayMenuActive(false);
-
-    //     if (e.value === 'horizontal') {
-    //         setProfileMode('popup');
-    //     }
-    // };
-
-    // const onMenuColorChange = (e) => {
-    //     setDarkMenu(e.value);
-    // };
-
-    // const onProfileChange = (e) => {
-    //     setProfileMode(e.value);
-    // };
 
     const onDocumentClick = () => {
         if (!topbarItemClick) {
@@ -225,15 +200,6 @@ const App = () => {
         event.preventDefault();
     };
 
-    // const onConfigClick = () => {
-    //     configClick = true;
-    // };
-
-    // const onConfigButtonClick = () => {
-    //     setConfigActive((prevConfigActive) => !prevConfigActive);
-    //     configClick = true;
-    // };
-
     const hideOverlayMenu = () => {
         setOverlayMenuActive(false);
         setStaticMenuMobileActive(false);
@@ -322,27 +288,12 @@ const App = () => {
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/agenda" element={<Agenda />} />
+                        <Route path="/crud" element={<CrudDemo />}/>
                     </Routes>
                 </div>
 
                 <AppFooter />
             </div>
-
-            {/* <AppConfig
-                configActive={configActive}
-                menuMode={menuMode}
-                onMenuModeChange={onMenuModeChange}
-                isDarkMenu={darkMenu}
-                onMenuColorChange={onMenuColorChange}
-                profileMode={profileMode}
-                onProfileChange={onProfileChange}
-                onConfigClick={onConfigClick}
-                onConfigButtonClick={onConfigButtonClick}
-                rippleActive={ripple}
-                onRippleChange={onRippleChange}
-                inputStyle={inputStyle}
-                onInputStyleChange={onInputStyleChange}
-            ></AppConfig> */}
 
             {staticMenuMobileActive && <div className="layout-mask"></div>}
         </div>
