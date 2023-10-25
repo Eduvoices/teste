@@ -109,24 +109,24 @@ const Dashboard = () => {
         menuRef.current.toggle(event);
     };
 
-    const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD'
-        });
-    };
+    // const formatCurrency = (value) => {
+    //     return value.toLocaleString('en-US', {
+    //         style: 'currency',
+    //         currency: 'USD'
+    //     });
+    // };
 
-    const priceBodyTemplate = (data) => {
-        return formatCurrency(data.price);
-    };
+    // const priceBodyTemplate = (data) => {
+    //     return formatCurrency(data.price);
+    // };
 
     const bodyTemplate = (data, props) => {
         return data[props.field];
     };
 
-    const statusBodyTemplate = (data) => {
-        return <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>;
-    };
+    // const statusBodyTemplate = (data) => {
+    //     return <span className={`product-badge status-${data.inventoryStatus.toLowerCase()}`}>{data.inventoryStatus}</span>;
+    // };
 
     return (
         <div className="layout-dashboard">
@@ -437,8 +437,8 @@ const Dashboard = () => {
                         <DataTable value={products} paginator rows={5} className="p-datatable-products">
                             <Column field="id" header="ID" sortable body={bodyTemplate}></Column>
                             <Column field="category" header="Category" sortable body={bodyTemplate}></Column>
-                            <Column field="price" header="Price" sortable body={priceBodyTemplate}></Column>
-                            <Column field="inventoryStatus" header="Status" sortable body={statusBodyTemplate}></Column>
+                            <Column field="price" header="Price" sortable ></Column>
+                            <Column field="inventoryStatus" header="Status" sortable ></Column>
                             <Column bodyStyle={{ textAlign: 'center' }} body={() => <Button type="button" icon="pi pi-search"></Button>}></Column>
                         </DataTable>
                     </div>

@@ -30,7 +30,7 @@ export const Login = () => {
         body: JSON.stringify({
             email: 'title',
             senha: 'body',
-            domínio: ''
+            subdomínio: 'TECJUS'
         }),
         headers: {
         'Content-Type': 'application/json',
@@ -39,9 +39,6 @@ export const Login = () => {
 }
 })
 .then((response) => response.json())
-.then((data) => {
-    console.log(data)
-})
 .catch((err) => {
     console.log(err.message);
 })

@@ -79,7 +79,7 @@ const CrudDemo = () => {
                 toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
             } else {
                 _product.id = createId();
-                _product.image = 'product-placeholder.svg';
+                _product.cpf = '000.000.000-00';
                 _products.push(_product);
                 toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
             }
@@ -209,7 +209,7 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Image</span>
-                <img src={`assets/demo/images/product/${rowData.image}`} alt={rowData.image} className="shadow-2" width="100" />
+                <span width="100" >{rowData.cpf}</span>
             </>
         );
     };
@@ -218,7 +218,7 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Price</span>
-                {formatCurrency(rowData.price)}
+                {formatCurrency(rowData.endereço)}
             </>
         );
     };
@@ -227,7 +227,7 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Category</span>
-                {rowData.category}
+                {rowData.número}
             </>
         );
     };
@@ -236,7 +236,7 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Reviews</span>
-                <Rating value={rowData.rating} readOnly cancel={false} />
+                <span>{rowData.bairro}</span>
             </>
         );
     };
@@ -245,10 +245,118 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Status</span>
-                <span className={`product-badge status-${rowData.inventoryStatus.toLowerCase()}`}>{rowData.inventoryStatus}</span>
+                <span>{rowData.complemento}</span>
             </>
         );
     };
+
+    const cepBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">CEP</span>
+                <span>{rowData.cep}</span>
+            </>
+        )
+    }
+
+    const cidadeBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Cidade</span>
+                <span>{rowData.cidade}</span>
+            </>
+        )
+    }
+
+    const nascimentoBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Cidade</span>
+                <span>{rowData.nascimento}</span>
+            </>
+        )
+    }
+
+    const tel1BodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 1</span>
+                <span>{rowData.tel1}</span>
+            </>
+        )
+    }
+
+    const tel2BodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 2</span>
+                <span>{rowData.tel2}</span>
+            </>
+        )
+    }
+
+    const tel3BodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 3</span>
+                <span>{rowData.tel3}</span>
+            </>
+        )
+    }
+
+    const emailBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Email</span>
+                <span>{rowData.email}</span>
+            </>
+        )
+    }
+
+    const responsávelBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Responsável</span>
+                <span>{rowData.responsável}</span>
+            </>
+        )
+    }
+
+    const socialBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 1</span>
+                <span>{rowData.social}</span>
+            </>
+        )
+    }
+
+    const comoBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 1</span>
+                <span>{rowData.como}</span>
+            </>
+        )
+    }
+
+    const obsBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 1</span>
+                <span>{rowData.obs}</span>
+            </>
+        )
+    }
+
+    const dataCadastroBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className="p-column-title">Tel 1</span>
+                <span>{rowData.dataCadastro}</span>
+            </>
+        )
+    }
 
     const actionBodyTemplate = (rowData) => {
         return (
@@ -306,32 +414,32 @@ const CrudDemo = () => {
                         rowsPerPageOptions={[5, 10, 25]}
                         className="datatable-responsive"
                         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} cadastros"
                         globalFilter={globalFilter}
                         emptyMessage="No products found."
                         header={header}
                         responsiveLayout="scroll"
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-                        <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="código" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="nome" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="price" header="Endereço" body={priceBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
-                        <Column field="category" header="Nº" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="rating" header="Bairro" body={ratingBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="CEP" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Cidade" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Data de nascimento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Telefone 1" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Telefone 2" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Telefone 3" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="E-mail" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Responsável" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Rede Social" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Como?" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Obs." body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="inventoryStatus" header="Data de Cadastro" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="endereço" header="Endereço" body={priceBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
+                        <Column field="número" header="Nº" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="bairro" header="Bairro" body={ratingBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="CEP" header="CEP" body={cepBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="nascimento" header="Data de nascimento" body={nascimentoBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="tel1" header="Telefone 1" body={tel1BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="tel2" header="Telefone 2" body={tel2BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="tel3" header="Telefone 3" body={tel3BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="email" header="E-mail" body={emailBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="social" header="Rede Social" body={socialBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="como" header="Como?" body={comoBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="obs" header="Obs." body={obsBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="dataCadastro" header="Data de Cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
 
                         <Column body={actionBodyTemplate}></Column>
                     </DataTable>
@@ -352,19 +460,19 @@ const CrudDemo = () => {
                             <label className="mb-3">Category</label>
                             <div className="formgrid grid">
                                 <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.category === 'Accessories'} />
+                                    <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.número === 'Accessories'} />
                                     <label htmlFor="category1">Accessories</label>
                                 </div>
                                 <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.category === 'Clothing'} />
+                                    <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.número === 'Clothing'} />
                                     <label htmlFor="category2">Clothing</label>
                                 </div>
                                 <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.category === 'Electronics'} />
+                                    <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.número === 'Electronics'} />
                                     <label htmlFor="category3">Electronics</label>
                                 </div>
                                 <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.category === 'Fitness'} />
+                                    <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.número === 'Fitness'} />
                                     <label htmlFor="category4">Fitness</label>
                                 </div>
                             </div>
@@ -373,7 +481,7 @@ const CrudDemo = () => {
                         <div className="formgrid grid">
                             <div className="field col">
                                 <label htmlFor="price">Price</label>
-                                <InputNumber id="price" value={product.price} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
+                                <InputNumber id="price" value={product.endereço} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
                             </div>
                             <div className="field col">
                                 <label htmlFor="quantity">Quantity</label>

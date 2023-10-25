@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { classNames } from 'primereact/utils';
 import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import AppTopbar from './AppTopbar';
@@ -8,16 +7,20 @@ import AppMenu from './AppMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
 
-import Dashboard from './components/Dashboard';
 import Agenda from './pages/Agenda'
 import Consulta from './pages/Consulta';
 import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
-import { Tooltip } from 'primereact/tooltip';
+import CrudDemo from './pages/Crud';
 
+import Dashboard from './components/Dashboard';
+
+import { Tooltip } from 'primereact/tooltip';
 import logo from '../src/assets/logo-white.png'
+
+import { classNames } from 'primereact/utils';
 
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -25,7 +28,6 @@ import 'primeflex/primeflex.css';
 import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
-import CrudDemo from './pages/Crud';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);

@@ -1,16 +1,26 @@
 {
 	"data": [
 		{
-			"id": "1000",
-			"code": "f230fh0g3",
-			"name": "Bamboo Watch",
-			"description": "Product Description",
-			"image": "bamboo-watch.jpg",
-			"price": 65,
-			"category": "Accessories",
-			"quantity": 24,
-			"inventoryStatus": "INSTOCK",
-			"rating": 5
+			"id": "1",
+			"code": "1072",
+			"name": "Priscila Paiva Blasechi",
+			"cpf": "000.000.000-00",
+			"endereço": "Rua teste do teste teste",
+			"número": "000",
+			"complemento": "Complemento",
+			"bairro": "Bairro",
+            "cep": "00.000-000",
+            "cidade": "Cidade",
+            "nascimento": "01/01/2003",
+            "tel1": "(99)9999-9999",
+            "tel2": "(99)99999-9999",
+            "tel3": "(99)99999-9999",
+            "email": "teste@teste.com",
+            "responsável": "Nome do responsável",
+            "social": "@redesocial",
+            "como": "Exemplo",
+            "obs": "Observação",
+            "dataCadastro": "22/06/2009"
 		}
     ]
 }
