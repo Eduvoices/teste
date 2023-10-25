@@ -14,12 +14,12 @@ const SelectCity = ({id, name, city, state, uf, onChange=()=>{}}) => {
         <div>
             <select id={id || name} name={name || id} onChange={onChange} title="select de cidades" required>
                 {city ? (
-                    <option value={city}>{city.label}</option>
+                    <option value={city}>{city}</option>
                 ) : (<option value=''>Cidades</option>)}
 
                 {cities.map((city)=>{
                     const {value, label} = city
-                    return <option key={value} value={value}>{label}</option>
+                    return <option key={value} value={city}>{label}</option>
                 })}
             </select>
         </div>

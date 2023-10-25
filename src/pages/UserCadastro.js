@@ -36,16 +36,6 @@ const UserCadastro = () => {
         setRadioValue('')
     }
 
-    function confereSenha(e) {
-        const senha = RefPassword.current.value
-        const confirma = RefConfirm.current.value
-        setConfirmPassword(e.target.value)
-
-        if (senha !== confirma) {
-            RefConfirm.current.value = ''
-        }
-    }
-
     function enable() {
         let teste = confirmPassword === password
         if (email && teste && password && radioValue) {
@@ -69,7 +59,7 @@ const UserCadastro = () => {
 
                     <form>
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="email" data-placeholder='Senha Atual*'>Email</label>
+                            <label htmlFor="email" data-placeholder='Emaill*'>Email</label>
                             <InputText
                             id='email'
                             className="input"
@@ -83,7 +73,7 @@ const UserCadastro = () => {
                         </div>
 
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="password" data-placeholder='Nova Senha*'>Nova Senha*</label>
+                            <label htmlFor="password" data-placeholder='Nova Senha*'>Senha*</label>
                             <InputText
                             id='password'
                             required
@@ -98,19 +88,19 @@ const UserCadastro = () => {
                         </div>
 
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="confirm-password" data-placeholder='Confirmar Senha*'>Confirma Senha*</label>
+                            <label htmlFor="confirm-password" data-placeholder='Confirmar Senha*'>Confirmar Senha*</label>
                             <InputText
                             id='confirmPassword'
                             required
-                            className="input"
+                            className={confirmPassword === password || !confirmPassword ? 'input' : 'input p-invalid'}
                             type="password"
                             title='confirmPassword'
                             placeholder=''
                             onKeyDown={handleEnter}
-                            onBlur={confereSenha}
+                            onBlur={(e)=>setConfirmPassword(e.target.value)}
                             ref={RefConfirm}
                             />
-                            {confirmPassword === password ? (<span />) : (<p>Digite uma senha igual</p>)}
+                            {confirmPassword === password || !confirmPassword ? (<span />) : (<p style={{color:'red'}}>Digite uma senha igual</p>)}
                         </div>
 
                         <div className="field col-12 md:col-12">

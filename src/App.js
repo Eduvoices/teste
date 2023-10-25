@@ -4,7 +4,6 @@ import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 
 import AppTopbar from './AppTopbar';
 import AppFooter from './AppFooter';
-// import AppConfig from './AppConfig';
 import AppMenu from './AppMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
@@ -16,7 +15,6 @@ import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
-// import PrimeReact from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 
 import logo from '../src/assets/logo-white.png'

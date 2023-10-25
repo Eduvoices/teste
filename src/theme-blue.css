@@ -1058,9 +1058,7 @@
   appearance: none;
   border-radius: 4px;
 }
-.p-inputtext:enabled:hover {
-  border-color: #4b453d;
-}
+
 .p-inputtext:enabled:focus {
   outline: 0 none;
   outline-offset: 0;

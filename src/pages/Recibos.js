@@ -14,7 +14,7 @@ const Recibos = () => {
     const [extenso, setExtenso] = useState('')
     const [numeroCtrl, setNumeroCtrl] = useState('')
     const [doc, setDoc] = useState('')
-    const [param] = useState('teste2')
+    const [param, setParam] = useState('Escritório 1')
 
     function dataAtual() {
         let data = new Date()
@@ -24,8 +24,13 @@ const Recibos = () => {
     }
 
     const dropdownValues = [
-        {name: 'recibo'},
-        {name: 'procuração'},
+        {name: 'Recibo'},
+        {name: 'Procuração'},
+    ]
+
+    const dropdownEscritorios = [
+        {name: 'Escritório 1'},
+        {name: 'Escritório 2'}
     ]
 
     function handleInputChange(e) {
@@ -34,14 +39,20 @@ const Recibos = () => {
         setDoc(value)
     }
 
+    function handleOfficeChange(e) {
+        e.preventDefault()
+        const {value} = e.target
+        setParam(value)
+    }
+
     function returnDoc() {
-        if (doc.name === 'recibo' && param === 'teste') {
+        if (doc.name === 'recibo' && param.name === 'Escritório 1') {
             return <Recibo1 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
-        } else if (doc.name === 'recibo' && param === 'teste2') {
+        } else if (doc.name === 'recibo' && param.name === 'Escritório 2') {
             return <Recibo2 numeroCtrl={numeroCtrl} nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
-        } else if (doc.name === 'procuração' && param === 'teste') {
+        } else if (doc.name === 'procuração' && param.name === 'Escritório 1') {
             return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
-        } else if (doc.name === 'procuração' && param === 'teste2') {
+        } else if (doc.name === 'procuração' && param.name === 'Escritório 2') {
             return <Procuração2 dataAtual={dataAtual()} outorgante={emitente}/>
         } else {
             return <span></span>
@@ -84,17 +95,23 @@ const Recibos = () => {
                                 </label>
                                 <InputText type='number' id='valor'step='0.01' onChange={(e)=>setValor(e.target.value)}/>
                             </div>
-                            <div className="field col">
+                            {/* <div className="field col">
                                 <label htmlFor="extenso" >
                                     Valor por extenso (opcional)
                                 </label>
                                 <InputText type='text' id='extenso' onChange={(e)=>setExtenso(e.target.value)}/>
+                            </div> */}
+                            <div className="field col">
+                                <label htmlFor="extenso" >
+                                    Escritório
+                                </label>
+                                <Dropdown value={doc} onChange={handleOfficeChange} options={dropdownEscritorios} optionLabel="name" placeholder="Escritório"/>
                             </div>
                             <div className="field col">
                                 <label htmlFor="extenso" >
                                     Tipo de documento
                                 </label>
-                                <Dropdown value={doc} onChange={handleInputChange} options={dropdownValues} optionLabel="name" placeholder="Tipo"/>
+                                <Dropdown value={doc} onChange={handleInputChange} options={dropdownValues} optionLabel="name" placeholder="Tipo de documento"/>
                             </div>
                         </div>
                     </div>

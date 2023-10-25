@@ -43,10 +43,8 @@ const AlteraSenha = () => {
         }
     }
 
-    console.log(enableBtn(confirmaSenha, novaSenha, senhaAtual))
-
     return (
-        <div className='flex'>
+        <div className='flex teste'>
             <div className='col-12 md:col-4'>
                 <div className='card p-fluid' style={{alignItems:'center', justifyContent:'center', display:'flex', flexDirection:'column'}}>
                     <div>
@@ -63,14 +61,14 @@ const AlteraSenha = () => {
                             <InputText
                             type="password"
                             id='senha-atual'
-                            className='input'
+                            className={senhaAtual !== novaSenha || !senhaAtual ? 'input' : 'input p-invalid'}
                             title='senha-atual'
                             placeholder=''
                             ref={refSenhaAtual}
                             onBlur={(e) => setSenhaAtual(e.target.value)}
                             onKeyDown={handleEnter}
                             />
-                            {senhaAtual !== novaSenha || !senhaAtual ? (<span />) : (<p>A nova senha não pode ser igual à anterior.</p>)}
+                            {senhaAtual !== novaSenha || !senhaAtual ? (<span />) : (<p style={{color: 'red'}}>A nova senha não pode ser igual à anterior.</p>)}
                         </div>
 
                         <div className="field col-12 md:col-12">
@@ -78,7 +76,7 @@ const AlteraSenha = () => {
                             <InputText
                             type="password"
                             id='nova-senha'
-                            className='input'
+                            className={senhaAtual !== novaSenha || !senhaAtual ? 'input' : 'input p-invalid'}
                             title='nova-senha'
                             placeholder=''
                             onKeyDown={handleEnter}
@@ -92,14 +90,14 @@ const AlteraSenha = () => {
                             <InputText
                             type="password"
                             id='confirma-senha'
-                            className='input'
+                            className={confirmaSenha === novaSenha || !confirmaSenha ? 'input' : 'input p-invalid'}
                             title='confirma-senha'
                             placeholder=''
                             onKeyDown={enterAsTab}
                             ref={refConfirmaSenha}
                             onChange={(e) => setConfirmaSenha(e.target.value)}
                             />
-                            {confirmaSenha === novaSenha || !confirmaSenha ? (<span />) : (<p>Digite uma senha igual</p>)}
+                            {confirmaSenha === novaSenha || !confirmaSenha ? (<span />) : (<p style={{color: 'red'}}>Digite uma senha igual</p>)}
                         </div>
 
                         <div className='flex'>

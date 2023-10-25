@@ -2577,3 +2577,7 @@ a {
     max-width: 1100px;
     margin: 0 auto;
   }
+
+  .teste .is-invalid {
+    border: 1px solid red;
+  }

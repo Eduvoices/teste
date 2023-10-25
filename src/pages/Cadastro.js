@@ -51,7 +51,7 @@ const Cadastro = () => {
             setBlock(data.bairro)
             setUf(data.uf)
             setCity(data.localidade)
-        }).catch((err) => console.log(''))
+        }).catch((err) => console.log(err))
     }
 
     function limpaCampo(e) {
@@ -175,7 +175,6 @@ const Cadastro = () => {
         }
     }
 
-
     return (
         <form>
             <div className='grid'>
@@ -219,7 +218,7 @@ const Cadastro = () => {
                                         <label htmlFor="cpf">CPF*</label>
                                         <InputText
                                         maxLength={14}
-                                        className='input'
+                                        className={cpfValido === true || cpf.length < 11 ? 'input' : 'p-invalid'}
                                         id='cpf'
                                         title='cpf'
                                         placeholder=''
@@ -230,7 +229,7 @@ const Cadastro = () => {
                                         {cpfValido === true || cpf.length < 11 ? (
                                     <span id='valid'></span>
                                 ) : (
-                                    <span id='invalid'>CPF inválido</span>
+                                    <span id='invalid' style={{color: 'red'}}>CPF inválido</span>
                                 )}
                                     </div>
                             </div>
@@ -334,7 +333,7 @@ const Cadastro = () => {
                     <div className="card p-fluid">
                             <div className="formgrid grid">
                                     <div className="field col">
-                                        <label htmlFor="telefone1">Telfone1*</label>
+                                        <label htmlFor="telefone1">Telefone1*</label>
                                         <InputMask
                                         mask="(99) 99999-9999"
                                         className='input'
