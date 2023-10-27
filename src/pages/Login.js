@@ -8,11 +8,11 @@ import { useEffect } from 'react';
 
 export const Login = () => {
     const navigate = useNavigate();
-    // const [deny, setDeny] = useState(false)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [response, setResponse] = useState('')
 
-    useEffect(()=>{
+useEffect(()=>{
         let headers = new Headers();
 
         headers.append('Content-Type', 'application/json');
@@ -36,73 +36,18 @@ export const Login = () => {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Access-Control-Allow-Origin': 'http://localhost:3000',
-}
-})
-.then((response) => response.json())
-.catch((err) => {
+    }
+    })
+    .then((data) => {
+    console.log(data.status)
+    setResponse(data.status)
+    console.log(response)
+    })
+    .catch((err) => {
     console.log(err.message);
-})
-    },[])
+    })
 
-    function performSignIn() {
-
-//         let headers = new Headers();
-
-//         headers.append('Content-Type', 'application/json');
-//         headers.append('Accept', 'application/json');
-
-//         headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-//         headers.append('Access-Control-Allow-Credentials', 'true');
-
-//         headers.append('GET', 'POST', 'OPTIONS');
-
-
-//          fetch('https://tecjusbackend.vercel.app/login', {
-// method: 'POST',
-// mode: 'no-cors',
-// body: JSON.stringify({
-//    email: 'title',
-//    senha: 'body',
-//    domínio: ''
-// }),
-// headers: {
-//     'Content-Type': 'application/json',
-//     'Accept': 'application/json',
-//     'Access-Control-Allow-Origin': 'http://localhost:3000',
-//     'Access-Control-Allow-Credentials': 'true'
-// }
-// })
-// .then((response) => response.json())
-// .then((data) => {
-//    console.log(data)
-// })
-// .catch((err) => {
-//    console.log(err.message);
-// })
-        }
-
-        performSignIn()
-
-    // async function login() {
-    //     console.log(email, password)
-    //     let item = {email, password}
-
-    //     let result = await fetch('https://tecjusbackend.vercel.app/login', {
-    //         method: 'POST',
-    //         mode: 'no-cors',
-    //         credentials: 'include',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             'Accept': 'application/json',
-    //             'Access-Control-Allow-Origin': 'http://localhost:3000',
-    //             'Access-Control-Allow-Credentials': 'true'
-    //         },
-    //         body: JSON.stringify(item)
-    //     })
-    //     result = result.json()
-    //     console.log(result)
-    // }
-
+},[response])
 
     function handleEnter(event) {
         if (event.keyCode === 13) {
@@ -139,7 +84,7 @@ export const Login = () => {
                     label="Entrar"
                     type='submit'
                     // onClick={() => {
-                    //     deny ? navigate('/dashboard') : navigate('/denied');
+                    //     err === 'Unexpected end of input' ? navigate('/denied') : navigate('/dashboard') ;
                     // }}
                     onClick={()=> navigate('/dashboard')}
                 />

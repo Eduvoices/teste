@@ -5,7 +5,6 @@ import { Column } from 'primereact/column';
 import { Toast } from 'primereact/toast';
 import { Button } from 'primereact/button';
 import { FileUpload } from 'primereact/fileupload';
-import { Rating } from 'primereact/rating';
 import { Toolbar } from 'primereact/toolbar';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { RadioButton } from 'primereact/radiobutton';
@@ -17,14 +16,25 @@ import ProductService from '../service/ProductService';
 const CrudDemo = () => {
     let emptyProduct = {
         id: null,
+        code: '',
         name: '',
-        image: null,
-        description: '',
-        category: null,
-        price: 0,
-        quantity: 0,
-        rating: 0,
-        inventoryStatus: 'INSTOCK'
+        cpf: null,
+        endereço: '',
+        número: '',
+        complemento: '',
+        bairro: '',
+        cep: '',
+        cidade: '',
+        nascimento: '',
+        tel1: '',
+        tel2: '',
+        tel3: '',
+        email: '',
+        responsável: '',
+        social: '',
+        como: '',
+        obs: '',
+        dataCadastro: ''
     };
 
     const [products, setProducts] = useState(null);
@@ -43,9 +53,6 @@ const CrudDemo = () => {
         productService.getProducts().then((data) => setProducts(data));
     }, []);
 
-    const formatCurrency = (value) => {
-        return value.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-    };
 
     const openNew = () => {
         setProduct(emptyProduct);
@@ -76,12 +83,12 @@ const CrudDemo = () => {
                 const index = findIndexById(product.id);
 
                 _products[index] = _product;
-                toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Updated', life: 3000 });
+                toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
             } else {
                 _product.id = createId();
                 _product.cpf = '000.000.000-00';
                 _products.push(_product);
-                toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Created', life: 3000 });
+                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
             }
 
             setProducts(_products);
@@ -218,7 +225,7 @@ const CrudDemo = () => {
         return (
             <>
                 <span className="p-column-title">Price</span>
-                {formatCurrency(rowData.endereço)}
+                {rowData.endereço}
             </>
         );
     };
@@ -271,7 +278,7 @@ const CrudDemo = () => {
     const nascimentoBodyTemplate = (rowData) => {
         return (
             <>
-                <span className="p-column-title">Cidade</span>
+                <span className="p-column-title">Nascimento</span>
                 <span>{rowData.nascimento}</span>
             </>
         )
@@ -379,20 +386,20 @@ const CrudDemo = () => {
 
     const productDialogFooter = (
         <>
-            <Button label="Cancel" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Save" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+            <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
+            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
         </>
     );
     const deleteProductDialogFooter = (
         <>
-            <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
-            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteProduct} />
+            <Button label="Não" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductDialog} />
+            <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteProduct} />
         </>
     );
     const deleteProductsDialogFooter = (
         <>
-            <Button label="No" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductsDialog} />
-            <Button label="Yes" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedProducts} />
+            <Button label="Não" icon="pi pi-times" className="p-button-text" onClick={hideDeleteProductsDialog} />
+            <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedProducts} />
         </>
     );
 
@@ -404,6 +411,7 @@ const CrudDemo = () => {
                     <Toolbar className="mb-4" left={leftToolbarTemplate} right={rightToolbarTemplate}></Toolbar>
 
                     <DataTable
+                        style={{whiteSpace:'nowrap'}}
                         ref={dt}
                         value={products}
                         selection={selectedProducts}
@@ -416,69 +424,144 @@ const CrudDemo = () => {
                         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} cadastros"
                         globalFilter={globalFilter}
-                        emptyMessage="No products found."
+                        emptyMessage="Nenhum resultado encontrado."
                         header={header}
                         responsiveLayout="scroll"
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-                        <Column field="código" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="nome" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='cpf' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="endereço" header="Endereço" body={priceBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
-                        <Column field="número" header="Nº" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="número" header="Número" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="bairro" header="Bairro" body={ratingBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="CEP" header="CEP" body={cepBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="nascimento" header="Data de nascimento" body={nascimentoBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="tel1" header="Telefone 1" body={tel1BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="tel2" header="Telefone 2" body={tel2BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="tel3" header="Telefone 3" body={tel3BodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="email" header="E-mail" body={emailBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="social" header="Rede Social" body={socialBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="como" header="Como?" body={comoBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="obs" header="Obs." body={obsBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="dataCadastro" header="Data de Cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-
+                        <Column field="cep" header="CEP" body={cepBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="nascimento" header="Nascimento" body={nascimentoBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel1" header="Tel 1" body={tel1BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel2" header="Tel 2" body={tel2BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel3" header="Tel 3" body={tel3BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="email" header="Email" body={emailBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="social" header="Social" body={socialBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="como" header="Como" body={comoBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="obs" header="Obs" body={obsBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column body={actionBodyTemplate}></Column>
                     </DataTable>
 
-                    <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+                    <Dialog visible={productDialog} style={{ width: '450px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
                         {product.image && <img src={`assets/demo/images/product/${product.image}`} alt={product.image} width="150" className="mt-0 mx-auto mb-5 block shadow-2" />}
                         <div className="field">
-                            <label htmlFor="name">Name</label>
+                            <label htmlFor="name">Nome</label>
                             <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.name && <small className="p-invalid">Name is required.</small>}
-                        </div>
-                        <div className="field">
-                            <label htmlFor="description">Description</label>
-                            <InputTextarea id="description" value={product.description} onChange={(e) => onInputChange(e, 'description')} required rows={3} cols={20} />
+                            {submitted && !product.name && <small className="p-invalid">Nome é obrigatório.</small>}
                         </div>
 
                         <div className="field">
-                            <label className="mb-3">Category</label>
-                            <div className="formgrid grid">
-                                <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category1" name="category" value="Accessories" onChange={onCategoryChange} checked={product.número === 'Accessories'} />
-                                    <label htmlFor="category1">Accessories</label>
-                                </div>
-                                <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category2" name="category" value="Clothing" onChange={onCategoryChange} checked={product.número === 'Clothing'} />
-                                    <label htmlFor="category2">Clothing</label>
-                                </div>
-                                <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category3" name="category" value="Electronics" onChange={onCategoryChange} checked={product.número === 'Electronics'} />
-                                    <label htmlFor="category3">Electronics</label>
-                                </div>
-                                <div className="field-radiobutton col-6">
-                                    <RadioButton inputId="category4" name="category" value="Fitness" onChange={onCategoryChange} checked={product.número === 'Fitness'} />
-                                    <label htmlFor="category4">Fitness</label>
-                                </div>
-                            </div>
+                            <label htmlFor="name">CPF</label>
+                            <InputText id="name" value={product.cpf} onChange={(e) => onInputChange(e, 'cpf')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.cpf && <small className="p-invalid">CPF é obrigatório</small>}
                         </div>
 
-                        <div className="formgrid grid">
+                        <div className="field">
+                            <label htmlFor="name">Endereço</label>
+                            <InputText id="name" value={product.endereço} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Número</label>
+                            <InputText id="name" value={product.número} onChange={(e) => onInputChange(e, 'número')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.número && <small className="p-invalid">Número é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Bairro</label>
+                            <InputText id="name" value={product.bairro} onChange={(e) => onInputChange(e, 'bairro')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Complemento</label>
+                            <InputText id="name" value={product.complemento} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.complemento && <small className="p-invalid">Complemento é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">CEP</label>
+                            <InputText id="name" value={product.cep} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.cep && <small className="p-invalid">CEP é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Cidade</label>
+                            <InputText id="name" value={product.cidade} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.cidade && <small className="p-invalid">Cidade é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Nascimento</label>
+                            <InputText id="name" value={product.nascimento} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.nascimento && <small className="p-invalid">Nascimento é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Tel1</label>
+                            <InputText id="name" value={product.tel1} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.tel2 && <small className="p-invalid">Tel1 é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Tel2</label>
+                            <InputText id="name" value={product.tel2} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.tel2 && <small className="p-invalid">Tel2 é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Tel3</label>
+                            <InputText id="name" value={product.tel3} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.tel3 && <small className="p-invalid">Tel3 é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Email</label>
+                            <InputText id="name" value={product.email} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.email && <small className="p-invalid">Email é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Responsável</label>
+                            <InputText id="name" value={product.responsável} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.responsável && <small className="p-invalid">Responsável é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Rede Social</label>
+                            <InputText id="name" value={product.social} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.social && <small className="p-invalid">Rede social é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Como</label>
+                            <InputText id="name" value={product.como} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.como && <small className="p-invalid">Como é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Obs</label>
+                            <InputText id="name" value={product.obs} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.obs && <small className="p-invalid">Rede social é obrigatório</small>}
+                        </div>
+
+                        <div className="field">
+                            <label htmlFor="name">Data de cadastro</label>
+                            <InputText id="name" value={product.dataCadastro} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                            {submitted && !product.dataCadastro && <small className="p-invalid">Data de cadastro é obrigatório</small>}
+                        </div>
+
+                        {/* <div className="formgrid grid">
                             <div className="field col">
                                 <label htmlFor="price">Price</label>
                                 <InputNumber id="price" value={product.endereço} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
@@ -487,7 +570,7 @@ const CrudDemo = () => {
                                 <label htmlFor="quantity">Quantity</label>
                                 <InputNumber id="quantity" value={product.quantity} onValueChange={(e) => onInputNumberChange(e, 'quantity')} integeronly />
                             </div>
-                        </div>
+                        </div> */}
                     </Dialog>
 
                     <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirm" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>
