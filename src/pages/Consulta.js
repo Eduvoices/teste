@@ -9,18 +9,23 @@ import { Toolbar } from 'primereact/toolbar';
 import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import ProductService from '../service/ProductService';
+import { InputMask } from 'primereact/inputmask';
+import SelectUf from '../components/SelectUF'
+import SelectCity from '../components/SelectCities'
 
 const Consulta = () => {
     let emptyProduct = {
-        id: null,
+        id: '',
         code: '',
         name: '',
-        cpf: null,
+        cpf: '',
+        rg: '',
         endereço: '',
         número: '',
         complemento: '',
         bairro: '',
         cep: '',
+        uf: '',
         cidade: '',
         nascimento: '',
         tel1: '',
@@ -31,7 +36,7 @@ const Consulta = () => {
         social: '',
         como: '',
         obs: '',
-        dataCadastro: ''
+        dataCadastro: dataAtual()
     };
 
     const [products, setProducts] = useState(null);
@@ -42,6 +47,13 @@ const Consulta = () => {
     const [selectedProducts, setSelectedProducts] = useState(null);
     const [submitted, setSubmitted] = useState(false);
     const [globalFilter, setGlobalFilter] = useState(null);
+    const [street, setStreet] = useState('')
+    const [block, setBlock] = useState('')
+    const [cpf, setCPF] = useState('')
+    const [formValue, setFormValue] = useState({})
+    const [cepState, setCepState] = useState('')
+    const [uf, setUf] = useState('')
+    const [city, setCity] = useState('')
     const toast = useRef(null);
     const dt = useRef(null);
 
@@ -51,10 +63,94 @@ const Consulta = () => {
     }, []);
 
 
+    function validarPrimeiroDigito(cpf) {
+        let sum = 0;
+        for (let i = 0; i < 9; i++) {
+          sum += cpf[i] * (10 - i);
+        }
+        const resto = (sum * 10) % 11;
+        if (resto < 10) {
+            // eslint-disable-next-line eqeqeq
+            return cpf[9] == resto;
+        }
+        // eslint-disable-next-line eqeqeq
+        return cpf[9] == 0;
+        }
+
+        function validarSegundoDigito(cpf) {
+        let sum = 0;
+        for (let i = 0; i < 10; i++) {
+          sum += cpf[i] * (11 - i);
+        }
+        const resto = (sum * 10) % 11;
+        if (resto < 10) {
+            // eslint-disable-next-line eqeqeq
+            return cpf[10] == resto;
+        }
+        // eslint-disable-next-line eqeqeq
+        return cpf[10] == 0;
+        }
+
+        function validarRepetido(cpf) {
+        const primeiro = cpf[0];
+        let diferente = false;
+        for(let i = 1; i < cpf.length; i++) {
+            // eslint-disable-next-line eqeqeq
+            if(cpf[i] != primeiro) {
+            diferente = true;
+            }
+        }
+        return diferente;
+        }
+
+        function validarCpf(cpf) {
+            // eslint-disable-next-line eqeqeq
+            if (cpf.length != 11) {
+            return false;
+            }
+            if(!validarRepetido(cpf)) {
+            return false;
+            }
+            if (!validarPrimeiroDigito(cpf)) {
+            return false;
+            }
+            if (!validarSegundoDigito(cpf)) {
+            return false;
+            }
+            return true;
+        }
+
+        const cpfValido = validarCpf(cpf)
+
+    let cep = ''
+
+    const checkCEP = (e) => {
+        setCepState(e.target.value)
+        if (!e.target.value) return
+        cep = e.target.value.replace(/\D/g, '')
+        fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
+            setStreet(data.logradouro)
+            setBlock(data.bairro)
+            setUf(data.uf)
+            setCity(data.localidade)
+        }).catch((err) => console.log(err))
+    }
+
+    function handleEnter(event) {
+        if (event.keyCode === 13) {
+            const form = event.target.form
+            const index = Array.prototype.indexOf.call(form, event.target)
+            form.elements[index + 1].focus()
+            event.preventDefault()
+        }
+    }
+
     const openNew = () => {
         setProduct(emptyProduct);
         setSubmitted(false);
         setProductDialog(true);
+        setCity('')
+        setUf('')
     };
 
     const hideDialog = () => {
@@ -83,7 +179,6 @@ const Consulta = () => {
                 toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
             } else {
                 _product.id = createId();
-                _product.cpf = '000.000.000-00';
                 _products.push(_product);
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
             }
@@ -109,7 +204,7 @@ const Consulta = () => {
         setProducts(_products);
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
-        toast.current.show({ severity: 'success', summary: 'Successful', detail: 'Product Deleted', life: 3000 });
+        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro removido', life: 3000 });
     };
 
     const findIndexById = (id) => {
@@ -152,10 +247,24 @@ const Consulta = () => {
     const onInputChange = (e, name) => {
         const val = (e.target && e.target.value) || '';
         let _product = { ...product };
-        _product[`${name}`] = val;
+            _product[`${name}`] = val;
 
         setProduct(_product);
     };
+
+    const handleInputChange = (e) => {
+        e.preventDefault()
+        const {value, name} = e.target
+        setFormValue({...formValue, [name]: value})
+        setUf(value)
+    }
+
+    const handleCityChange = (e) => {
+        e.preventDefault()
+        const {value, name} = e.target
+        setFormValue({...formValue, [name] : value})
+        setCity(value)
+    }
 
     const leftToolbarTemplate = () => {
         return (
@@ -204,11 +313,20 @@ const Consulta = () => {
         );
     };
 
+    const rgBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className='p-column-title'>RG</span>
+                <span width='100'>{rowData.rg}</span>
+            </>
+        )
+    }
+
     const priceBodyTemplate = (rowData) => {
         return (
             <>
                 <span className="p-column-title">Price</span>
-                {rowData.endereço}
+                {rowData.endereço || street}
             </>
         );
     };
@@ -226,7 +344,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Reviews</span>
-                <span>{rowData.bairro}</span>
+                <span>{rowData.bairro || block}</span>
             </>
         );
     };
@@ -249,6 +367,15 @@ const Consulta = () => {
         )
     }
 
+    const ufBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className='p-column-title'>UF</span>
+                <span>{rowData.uf}</span>
+            </>
+        )
+    }
+
     const cidadeBodyTemplate = (rowData) => {
         return (
             <>
@@ -261,7 +388,7 @@ const Consulta = () => {
     const nascimentoBodyTemplate = (rowData) => {
         return (
             <>
-                <span className="p-column-title">Nascimento</span>
+                <span className="p-column-title">Nascimento</span><span></span>
                 <span>{rowData.nascimento}</span>
             </>
         )
@@ -352,10 +479,17 @@ const Consulta = () => {
         return (
             <div className="actions">
                 <Button icon="pi pi-pencil" className="p-button-rounded p-button-success mr-2" onClick={() => editProduct(rowData)} />
-                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning mt-2" onClick={() => confirmDeleteProduct(rowData)} />
+                <Button icon="pi pi-trash" className="p-button-rounded p-button-warning" onClick={() => confirmDeleteProduct(rowData)} />
             </div>
         );
     };
+
+    function dataAtual() {
+        let data = new Date()
+        let day = data.getDate().toString().padStart(2, '0')
+        let month = String(data.getMonth() + 1).padStart(2, '0')
+        return `${day}/${month}/${data.getFullYear()}`
+    }
 
     const header = (
         <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
@@ -416,10 +550,12 @@ const Consulta = () => {
                         <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field='cpf' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='rg' header="RG" body={rgBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="endereço" header="Endereço" body={priceBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
                         <Column field="número" header="Número" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="bairro" header="Bairro" body={ratingBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='uf' header="UF" body={ufBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}} ></Column>
                         <Column field="cep" header="CEP" body={cepBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
                         <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
                         <Column field="nascimento" header="Nascimento" body={nascimentoBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
@@ -432,129 +568,151 @@ const Consulta = () => {
                         <Column field="como" header="Como" body={comoBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="obs" header="Obs" body={obsBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        {/* <Column body={actionBodyTemplate}></Column> */}
                     </DataTable>
 
-                    <Dialog visible={productDialog} style={{ width: '450px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
+                    <Dialog visible={productDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
                         {product.image && <img src={`assets/demo/images/product/${product.image}`} alt={product.image} width="150" className="mt-0 mx-auto mb-5 block shadow-2" />}
-                        <div className="field">
-                            <label htmlFor="name">Nome</label>
-                            <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.name && <small className="p-invalid">Nome é obrigatório.</small>}
-                        </div>
+                        <form>
 
-                        <div className="field">
-                            <label htmlFor="name">CPF</label>
-                            <InputText id="name" value={product.cpf} onChange={(e) => onInputChange(e, 'cpf')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.cpf && <small className="p-invalid">CPF é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Endereço</label>
-                            <InputText id="name" value={product.endereço} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Número</label>
-                            <InputText id="name" value={product.número} onChange={(e) => onInputChange(e, 'número')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.número && <small className="p-invalid">Número é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Bairro</label>
-                            <InputText id="name" value={product.bairro} onChange={(e) => onInputChange(e, 'bairro')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Complemento</label>
-                            <InputText id="name" value={product.complemento} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.complemento && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">CEP</label>
-                            <InputText id="name" value={product.cep} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.cep && <small className="p-invalid">CEP é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Cidade</label>
-                            <InputText id="name" value={product.cidade} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.cidade && <small className="p-invalid">Cidade é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Nascimento</label>
-                            <InputText id="name" value={product.nascimento} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.nascimento && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Tel1</label>
-                            <InputText id="name" value={product.tel1} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.tel2 && <small className="p-invalid">Tel1 é obrigatório</small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Tel2</label>
-                            <InputText id="name" value={product.tel2} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.tel2 && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Tel3</label>
-                            <InputText id="name" value={product.tel3} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.tel3 && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Email</label>
-                            <InputText id="name" value={product.email} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.email && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Responsável</label>
-                            <InputText id="name" value={product.responsável} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.responsável && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Rede Social</label>
-                            <InputText id="name" value={product.social} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.social && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Como</label>
-                            <InputText id="name" value={product.como} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.como && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Obs</label>
-                            <InputText id="name" value={product.obs} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.obs && <small className="p-invalid"></small>}
-                        </div>
-
-                        <div className="field">
-                            <label htmlFor="name">Data de cadastro</label>
-                            <InputText id="name" value={product.dataCadastro} onChange={(e) => onInputChange(e, 'endereço')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                            {submitted && !product.dataCadastro && <small className="p-invalid"></small>}
-                        </div>
-
-                        {/* <div className="formgrid grid">
-                            <div className="field col">
-                                <label htmlFor="price">Price</label>
-                                <InputNumber id="price" value={product.endereço} onValueChange={(e) => onInputNumberChange(e, 'price')} mode="currency" currency="USD" locale="en-US" />
+                            <div className="field">
+                                <label htmlFor="name">Nome</label>
+                                <InputText id="name" value={product.name} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                                {submitted && !product.name && <small className="p-invalid">Nome é obrigatório.</small>}
                             </div>
-                            <div className="field col">
-                                <label htmlFor="quantity">Quantity</label>
-                                <InputNumber id="quantity" value={product.quantity} onValueChange={(e) => onInputNumberChange(e, 'quantity')} integeronly />
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="cpf">CPF</label>
+                                    <InputText id="cpf" value={product.cpf} onBlur={(e)=> setCPF(e.target.value)} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cpf')} required className={classNames({ 'p-invalid': (submitted && !product.cpf) || (!cpfValido && cpf !== '' )})}/>
+                                    {submitted && !product.cpf && <small className="p-invalid">CPF é obrigatório</small>}
+                                    {cpfValido === true ||  cpf.length === 11 || cpf === '' ? (
+                                        <span id='valid'></span>
+                                    ) : (
+                                        <small id='invalid' style={{color: 'red'}}>CPF inválido</small>
+                                    )}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="rg">RG</label>
+                                    <InputMask mask='99.999.999-9' id="rg" value={product.rg} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'rg')} required className={classNames({ 'p-invalid': submitted && !product.rg })} />
+                                    {submitted && !product.rg && <small className="p-invalid">RG é obrigatório</small>}
+                                </div>
                             </div>
-                        </div> */}
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="cep">CEP</label>
+                                    <InputText id="cep" value={product.cep} onBlur={checkCEP} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cep')} required className={classNames({ 'p-invalid': submitted && !product.cep })} />
+                                    {submitted && !product.cep && <small className="p-invalid">CEP é obrigatório</small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="endereço">Endereço</label>
+                                    <InputText id="endereço" value={street} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
+                                    {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="número">Número</label>
+                                    <InputText id="número" value={product.número} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'número')} required className={classNames({ 'p-invalid': submitted && !product.número })} />
+                                    {submitted && !product.número && <small className="p-invalid">Número é obrigatório</small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="bairro">Bairro</label>
+                                    <InputText id="bairro" value={block} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
+                                    {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="complemento">Complemento</label>
+                                    <InputText id="complemento" value={product.complemento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'complemento')} className={classNames({ 'p-invalid': submitted && !product.complemento })} />
+                                    {submitted && !product.complemento && <small className="p-invalid"></small>}
+                                </div>
+
+
+                                <div className="field col">
+                                    <label htmlFor="uf">UF</label>
+                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={uf} onBlur={(e) => onInputChange(e, 'uf')} required className={classNames({ 'p-invalid': submitted && !product.uf })}/>
+                                    {submitted && !product.uf && <small className="p-invalid">UF é obrigatório</small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="cidade">Cidade</label>
+                                    <SelectCity id="cidade" value={city} state={formValue.states || uf} city={city} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required className={classNames({ 'p-invalid': submitted && !product.cidade })} />
+                                    {submitted && !product.cidade && <small className="p-invalid">Cidade é obrigatório</small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="nascimento">Nascimento</label>
+                                    <InputMask mask='99/99/9999' id="nascimento" value={product.nascimento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'nascimento')} required className={classNames({ 'p-invalid': submitted && !product.nascimento })} />
+                                    {submitted && !product.nascimento && <small className="p-invalid"></small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="tel1">Tel1</label>
+                                    <InputMask mask='(99) 99999-9999' id="tel1" value={product.tel1} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel1')} required className={classNames({ 'p-invalid': submitted && !product.tel1 })} />
+                                    {submitted && !product.tel2 && <small className="p-invalid">Tel1 é obrigatório</small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="tel2">Tel2</label>
+                                    <InputMask mask='(99) 99999-9999' id="tel2" value={product.tel2} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel2')} required className={classNames({ 'p-invalid': submitted && !product.tel2 })} />
+                                    {submitted && !product.tel2 && <small className="p-invalid"></small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="tel3">Tel3</label>
+                                    <InputMask mask='(99) 99999-9999' id="tel3" value={product.tel3} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel3')} required className={classNames({ 'p-invalid': submitted && !product.tel3 })} />
+                                    {submitted && !product.tel3 && <small className="p-invalid"></small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="email">Email</label>
+                                    <InputText id="email" value={product.email} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'email')} required className={classNames({ 'p-invalid': submitted && !product.email })} />
+                                    {submitted && !product.email && <small className="p-invalid"></small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="responsável">Responsável</label>
+                                    <InputText id="responsável" value={product.responsável} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'responsável')} required className={classNames({ 'p-invalid': submitted && !product.responsável })} />
+                                    {submitted && !product.responsável && <small className="p-invalid"></small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="social">Rede Social</label>
+                                    <InputText id="social" value={product.social} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'social')} className={classNames({ 'p-invalid': submitted && !product.social })} />
+                                    {submitted && !product.social && <small className="p-invalid"></small>}
+                                </div>
+                            </div>
+
+                            <div className='formgrid grid'>
+                                <div className="field col">
+                                    <label htmlFor="obs">Obs</label>
+                                    <InputText id="obs" value={product.obs} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'obs')} className={classNames({ 'p-invalid': submitted && !product.obs })} />
+                                    {submitted && !product.obs && <small className="p-invalid"></small>}
+                                </div>
+
+                                <div className="field col">
+                                    <label htmlFor="dataCadastro">Data de cadastro</label>
+                                    <InputText id="dataCadastro" value={dataAtual()} disabled />
+                                </div>
+                            </div>
+
+                        </form>
+
                     </Dialog>
 
                     <Dialog visible={deleteProductDialog} style={{ width: '450px' }} header="Confirmar" modal footer={deleteProductDialogFooter} onHide={hideDeleteProductDialog}>

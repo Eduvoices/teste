@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchUF, parseStates } from "../service/HelperIbge";
 
-const SelectUf = ({id, uf, name, onChange = () => {}}) => {
+const SelectUf = ({id, uf, name, onBlur = () => {} ,onChange = () => {}}) => {
     const [states, setStates] = useState([])
 
     useEffect(() => {
@@ -10,7 +10,7 @@ const SelectUf = ({id, uf, name, onChange = () => {}}) => {
 
     return (
         <div>
-            <select id={id || name} name={name || id} onChange={onChange} title="select de estados(UF)" required>
+            <select id={id || name} name={name || id} onChange={onChange} onBlur={onBlur} title="select de estados(UF)" className="p-fluid p-inputtext" style={{appearance:'auto'}}>
                 {uf ? (
                     <option value={uf}>{uf}</option>
                 ) : (<option value=''>UF</option>)}
