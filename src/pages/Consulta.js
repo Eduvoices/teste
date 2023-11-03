@@ -250,6 +250,10 @@ const Consulta = () => {
             _product[`${name}`] = val;
 
         setProduct(_product);
+
+        if (name === 'endereço') {
+            console.log(e.target.value)
+        }
     };
 
     const handleInputChange = (e) => {
@@ -608,7 +612,7 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="endereço">Endereço</label>
-                                    <InputText id="endereço" value={street} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
+                                    <InputText id="endereço" value={product.endereço} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
                                     {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
                                 </div>
                             </div>
@@ -622,7 +626,7 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="bairro">Bairro</label>
-                                    <InputText id="bairro" value={block} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
+                                    <InputText id="bairro" value={product.bairro} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
                                     {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
                                 </div>
                             </div>
@@ -630,14 +634,13 @@ const Consulta = () => {
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="complemento">Complemento</label>
-                                    <InputText id="complemento" value={product.complemento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'complemento')} className={classNames({ 'p-invalid': submitted && !product.complemento })} />
-                                    {submitted && !product.complemento && <small className="p-invalid"></small>}
+                                    <InputText id="complemento" value={product.complemento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'complemento')} />
                                 </div>
 
 
                                 <div className="field col">
                                     <label htmlFor="uf">UF</label>
-                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={uf} onBlur={(e) => onInputChange(e, 'uf')} required className={classNames({ 'p-invalid': submitted && !product.uf })}/>
+                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={product.uf || uf} onBlur={(e) => onInputChange(e, 'uf')} required className={classNames({ 'p-invalid': submitted && !product.uf })}/>
                                     {submitted && !product.uf && <small className="p-invalid">UF é obrigatório</small>}
                                 </div>
                             </div>
@@ -645,7 +648,7 @@ const Consulta = () => {
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <SelectCity id="cidade" value={city} state={formValue.states || uf} city={city} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required className={classNames({ 'p-invalid': submitted && !product.cidade })} />
+                                    <SelectCity id="cidade" value={product.cidade} state={formValue.states || product.uf} city={city || product.cidade} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required className={classNames({ 'p-invalid': submitted && !product.cidade })} />
                                     {submitted && !product.cidade && <small className="p-invalid">Cidade é obrigatório</small>}
                                 </div>
 
@@ -660,49 +663,43 @@ const Consulta = () => {
                                 <div className="field col">
                                     <label htmlFor="tel1">Tel1</label>
                                     <InputMask mask='(99) 99999-9999' id="tel1" value={product.tel1} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel1')} required className={classNames({ 'p-invalid': submitted && !product.tel1 })} />
-                                    {submitted && !product.tel2 && <small className="p-invalid">Tel1 é obrigatório</small>}
+                                    {submitted && !product.tel1 && <small className="p-invalid">Tel1 é obrigatório</small>}
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="tel2">Tel2</label>
-                                    <InputMask mask='(99) 99999-9999' id="tel2" value={product.tel2} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel2')} required className={classNames({ 'p-invalid': submitted && !product.tel2 })} />
-                                    {submitted && !product.tel2 && <small className="p-invalid"></small>}
+                                    <InputMask mask='(99) 99999-9999' id="tel2" value={product.tel2} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel2')}   />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="tel3">Tel3</label>
-                                    <InputMask mask='(99) 99999-9999' id="tel3" value={product.tel3} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel3')} required className={classNames({ 'p-invalid': submitted && !product.tel3 })} />
-                                    {submitted && !product.tel3 && <small className="p-invalid"></small>}
+                                    <InputMask mask='(99) 99999-9999' id="tel3" value={product.tel3} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel3')} />
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="email">Email</label>
-                                    <InputText id="email" value={product.email} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'email')} required className={classNames({ 'p-invalid': submitted && !product.email })} />
-                                    {submitted && !product.email && <small className="p-invalid"></small>}
+                                    <InputText id="email" value={product.email} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'email')} />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="responsável">Responsável</label>
-                                    <InputText id="responsável" value={product.responsável} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'responsável')} required className={classNames({ 'p-invalid': submitted && !product.responsável })} />
-                                    {submitted && !product.responsável && <small className="p-invalid"></small>}
+                                    <InputText id="responsável" value={product.responsável} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'responsável')} />
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="social">Rede Social</label>
-                                    <InputText id="social" value={product.social} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'social')} className={classNames({ 'p-invalid': submitted && !product.social })} />
-                                    {submitted && !product.social && <small className="p-invalid"></small>}
+                                    <InputText id="social" value={product.social} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'social')} />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="obs">Obs</label>
-                                    <InputText id="obs" value={product.obs} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'obs')} className={classNames({ 'p-invalid': submitted && !product.obs })} />
-                                    {submitted && !product.obs && <small className="p-invalid"></small>}
+                                    <InputText id="obs" value={product.obs} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'obs')} />
                                 </div>
 
                                 <div className="field col">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchCitiesByState, parseCities } from "../service/HelperIbge";
 
-const SelectCity = ({id, name, city, state, uf, onBlur = () => {}, onChange=()=>{}}) => {
+const SelectCity = ({id, name, value, city, state, uf, onBlur = () => {}, onChange=()=>{}}) => {
     const [cities, setCities] = useState([])
 
     useEffect(()=>{
@@ -12,9 +12,9 @@ const SelectCity = ({id, name, city, state, uf, onBlur = () => {}, onChange=()=>
 
     return (
         <div>
-            <select id={id || name} name={name || id} onChange={onChange} onBlur={onBlur} title="select de cidades" required>
+            <select id={id || name} name={name || id} onChange={onChange} onBlur={onBlur} title="select de cidades" className="p-fluid p-inputtext" style={{appearance:'auto'}} required>
                 {city ? (
-                    <option value={city}>{city}</option>
+                    <option value={value || city}>{value || city}</option>
                 ) : (<option value=''>Cidades</option>)}
 
                 {cities.map((city)=>{
