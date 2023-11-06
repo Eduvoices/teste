@@ -151,6 +151,8 @@ const Consulta = () => {
         setProductDialog(true);
         setCity('')
         setUf('')
+        setBlock('')
+        setStreet('')
     };
 
     const hideDialog = () => {
@@ -251,9 +253,10 @@ const Consulta = () => {
 
         setProduct(_product);
 
-        if (name === 'endereço') {
-            console.log(e.target.value)
-        }
+        // if (name === 'endereço') {
+        //     setStreet(val)
+        //     console.log(street)
+        // }
     };
 
     const handleInputChange = (e) => {
@@ -505,10 +508,18 @@ const Consulta = () => {
         </div>
     );
 
+    function enable() {
+        if (product.cep && product.name && product.cidade && product.uf && (product.endereço || street) && (product.bairro || block) && product.rg && product.tel1 && cpfValido) {
+            return false
+        } else {
+            return true
+        }
+    }
+
     const productDialogFooter = (
         <>
             <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={saveProduct} />
+            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={saveProduct} disabled={enable()}/>
         </>
     );
     const deleteProductDialogFooter = (
@@ -523,6 +534,8 @@ const Consulta = () => {
             <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedProducts} />
         </>
     );
+
+    console.log(cpfValido)
 
     return (
         <div className="grid crud-demo">
@@ -551,27 +564,27 @@ const Consulta = () => {
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                         <Column body={actionBodyTemplate}></Column>
+                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field='cpf' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field='rg' header="RG" body={rgBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="endereço" header="Endereço" body={priceBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
+                        <Column field="endereço" header="Endereço" body={priceBodyTemplate} headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
                         <Column field="número" header="Número" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="bairro" header="Bairro" body={ratingBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="bairro" header="Bairro" body={ratingBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field='uf' header="UF" body={ufBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}} ></Column>
-                        <Column field="cep" header="CEP" body={cepBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="nascimento" header="Nascimento" body={nascimentoBodyTemplate} sortable headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel1" header="Tel 1" body={tel1BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel2" header="Tel 2" body={tel2BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel3" header="Tel 3" body={tel3BodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="email" header="Email" body={emailBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="social" header="Social" body={socialBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="como" header="Como" body={comoBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="obs" header="Obs" body={obsBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field='uf' header="UF" body={ufBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}} ></Column>
+                        <Column field="cep" header="CEP" body={cepBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="nascimento" header="Nascimento" body={nascimentoBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel1" header="Tel 1" body={tel1BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel2" header="Tel 2" body={tel2BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="tel3" header="Tel 3" body={tel3BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="email" header="Email" body={emailBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="social" header="Social" body={socialBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="como" header="Como" body={comoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="obs" header="Obs" body={obsBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                     </DataTable>
 
                     <Dialog visible={productDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
@@ -587,7 +600,7 @@ const Consulta = () => {
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cpf">CPF</label>
-                                    <InputText id="cpf" value={product.cpf} onBlur={(e)=> setCPF(e.target.value)} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cpf')} required className={classNames({ 'p-invalid': (submitted && !product.cpf) || (!cpfValido && cpf !== '' )})}/>
+                                    <InputText maxLength={11} id="cpf" value={product.cpf} onBlur={(e)=> setCPF(e.target.value)} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cpf')} required className={classNames({ 'p-invalid': (submitted && !product.cpf) || (!cpfValido && cpf !== '' )})}/>
                                     {submitted && !product.cpf && <small className="p-invalid">CPF é obrigatório</small>}
                                     {cpfValido === true ||  cpf.length === 11 || cpf === '' ? (
                                         <span id='valid'></span>
@@ -612,7 +625,7 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="endereço">Endereço</label>
-                                    <InputText id="endereço" value={product.endereço} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
+                                    <InputText id="endereço" value={product.endereço || street} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
                                     {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
                                 </div>
                             </div>
@@ -626,7 +639,7 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="bairro">Bairro</label>
-                                    <InputText id="bairro" value={product.bairro} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
+                                    <InputText id="bairro" value={product.bairro || block} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
                                     {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
                                 </div>
                             </div>
@@ -640,16 +653,14 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="uf">UF</label>
-                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={product.uf || uf} onBlur={(e) => onInputChange(e, 'uf')} required className={classNames({ 'p-invalid': submitted && !product.uf })}/>
-                                    {submitted && !product.uf && <small className="p-invalid">UF é obrigatório</small>}
+                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={product.uf || uf} onBlur={(e) => onInputChange(e, 'uf')} required />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <SelectCity id="cidade" value={product.cidade} state={formValue.states || product.uf} city={city || product.cidade} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required className={classNames({ 'p-invalid': submitted && !product.cidade })} />
-                                    {submitted && !product.cidade && <small className="p-invalid">Cidade é obrigatório</small>}
+                                    <SelectCity id="cidade" value={product.cidade} state={formValue.states || product.uf} city={city || product.cidade} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required />
                                 </div>
 
                                 <div className="field col">
