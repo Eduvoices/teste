@@ -8,7 +8,6 @@ import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
 
 import Agenda from './pages/Agenda'
-// import Consulta from './pages/Consulta-reserva';
 import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
@@ -59,7 +58,6 @@ const App = () => {
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/agenda', parent: 'Pages', label: 'Agenda' },
-        // {path: '/crud', parent: 'Pages', label: 'Crud'}
     ];
 
     const menu = [
@@ -74,15 +72,13 @@ const App = () => {
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
-                // {label: 'Crud', icon: 'pi pi-fw pi-file', to:'/crud'},
-                {
-                    label: 'Cadastro',
-                    icon: 'pi pi-fw pi-folder',
-                    items: [
-                        { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
-                    ]
-                },
-                {label: 'Agenda', icon: 'pi pi-fw pi-calendar', to: '/agenda'}
+                // {
+                //     label: 'Cadastro',
+                //     icon: 'pi pi-fw pi-folder',
+                //     items: [
+                //         { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
+                //     ]
+                // },
             ]
         }
     ];
@@ -285,7 +281,6 @@ const App = () => {
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        {/* <Route path="/consulta" element={<Consulta />} /> */}
                         <Route path="/invoice" element={<Recibos />} />
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />

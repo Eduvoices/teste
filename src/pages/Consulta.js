@@ -252,11 +252,6 @@ const Consulta = () => {
             _product[`${name}`] = val;
 
         setProduct(_product);
-
-        // if (name === 'endereço') {
-        //     setStreet(val)
-        //     console.log(street)
-        // }
     };
 
     const handleInputChange = (e) => {

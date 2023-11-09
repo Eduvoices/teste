@@ -42,41 +42,20 @@ const AppTopbar = (props) => {
                                     <span>Alterar Senha</span>
                                 </button>
                             </li>
+                            <li role="menuitem">
+                                <button className="p-link" onClick={(e)=> navigate('/')}>
+                                    <i className="pi pi-sign-out"></i>
+                                    <span>Sair do sistema</span>
+                                </button>
+                            </li>
                         </ul>
                     </li>
                 )}
                 <li className={activeTopbarItemClassName('notifications')}>
-                    <button className="p-link" onClick={(e) => props.onTopbarItemClick(e, 'notifications')}>
+                    <button className="p-link" onClick={(e) => navigate('/agenda')}>
                         <i className="topbar-icon pi pi-calendar"></i>
-                        <span className="topbar-item-name">Notifications</span>
+                        <span className="topbar-item-name">Agenda</span>
                     </button>
-                    <ul className={classNames({ fadeInDown: !props.isMobile() })}>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-tags"></i>
-                                <span>Pending tasks</span>
-                                <span className="topbar-submenuitem-badge">6</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-calendar-plus"></i>
-                                <span>Meeting today at 3pm</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-download"></i>
-                                <span>Download</span>
-                            </button>
-                        </li>
-                        <li role="menuitem">
-                            <button className="p-link">
-                                <i className="pi pi-lock"></i>
-                                <span>Book flight</span>
-                            </button>
-                        </li>
-                    </ul>
                 </li>
                 <li className={activeTopbarItemClassName('messages')}>
                     <button className="p-link" onClick={(e) => props.onTopbarItemClick(e, 'messages')}>
