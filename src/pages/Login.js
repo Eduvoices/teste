@@ -28,8 +28,8 @@ useEffect(()=>{
         method: 'POST',
         mode: 'no-cors',
         body: JSON.stringify({
-            email: 'title',
-            senha: 'body',
+            email: email,
+            senha: password,
             subdomínio: 'TECJUS'
         }),
         headers: {
@@ -47,7 +47,7 @@ useEffect(()=>{
     console.log(err.message);
     })
 
-},[response])
+},[response, email, password])
 
     function handleEnter(event) {
         if (event.keyCode === 13) {
@@ -83,9 +83,6 @@ useEffect(()=>{
                 <Button
                     label="Entrar"
                     type='submit'
-                    // onClick={() => {
-                    //     err === 'Unexpected end of input' ? navigate('/denied') : navigate('/dashboard') ;
-                    // }}
                     onClick={()=> navigate('/dashboard')}
                 />
                 </form>

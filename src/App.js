@@ -72,13 +72,6 @@ const App = () => {
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
                 {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
-                // {
-                //     label: 'Cadastro',
-                //     icon: 'pi pi-fw pi-folder',
-                //     items: [
-                //         { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/cadastro'},
-                //     ]
-                // },
             ]
         }
     ];
@@ -239,8 +232,6 @@ const App = () => {
         'layout-mobile-active': staticMenuMobileActive,
         'layout-menu-dark': darkMenu,
         'layout-menu-light': !darkMenu,
-        // 'p-input-filled': inputStyle === 'filled',
-        // 'p-ripple-disabled': !ripple
     });
 
     const menuContainerClassName = classNames('layout-menu-container', { 'layout-menu-container-inactive': !isMenuVisible() });

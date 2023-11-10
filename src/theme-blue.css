@@ -1763,9 +1763,9 @@
   border-color: #4b453d;
 }
 .p-button:enabled:active, .p-button:not(button):not(a):not(.p-disabled):active {
-  background: #0b7ad1;
+  background: #5b462f;
   color: #ffffff;
-  border-color: #0b7ad1;
+  border-color: #5b462f;
 }
 .p-button.p-button-outlined {
   background-color: transparent;
