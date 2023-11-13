@@ -3,51 +3,76 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 // import api from '../service/api';
 
 export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [response, setResponse] = useState('')
-
-useEffect(()=>{
-        let headers = new Headers();
-
-        headers.append('Content-Type', 'application/json');
-        headers.append('Accept', 'application/json');
-
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
-        headers.append('Access-Control-Allow-Credentials', 'true');
-
-        headers.append('GET', 'POST', 'OPTIONS');
+    const [error, setError] = useState('')
 
 
-        fetch('https://tecjusbackend.vercel.app/login', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-            email: email,
-            senha: password,
-            subdomínio: 'TECJUS'
-        }),
-        headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-    }
-    })
-    .then((data) => {
-    console.log(data.status)
-    setResponse(data.status)
-    console.log(response)
-    })
-    .catch((err) => {
-    console.log(err.message);
-    })
+    // try {
+    //         const response = fetch(`https://tecjusbackend.vercel.app/login`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Access-Control-Allow-Origin': '*'
+    //             },
+    //             body: JSON.stringify({
+    //                 email: email,
+    //                 senha: password,
+    //                 subdomínio: 'TECJUS'
+    //             })
+    //         })
 
-},[response, email, password])
+    //         console.log(response)
+
+    //         const json = response.json()
+
+    //         if (response.status !== 200) throw new Error(json)
+
+    // } catch (err) {
+    //     setError(err.message)
+    //     console.log(error)
+    // }
+
+// useEffect(()=>{
+//         let headers = new Headers();
+
+//         headers.append('Content-Type', 'application/json');
+//         headers.append('Accept', 'application/json');
+
+//         headers.append('Access-Control-Allow-Origin', 'http://localhost:3000');
+//         headers.append('Access-Control-Allow-Credentials', 'true');
+
+//         headers.append('GET', 'POST', 'OPTIONS');
+
+
+//         fetch('https://tecjusbackend.vercel.app/login', {
+//         method: 'POST',
+//         mode: 'no-cors',
+//         body: JSON.stringify({
+//             email: email,
+//             senha: password,
+//             subdomínio: 'TECJUS'
+//         }),
+//         headers: {
+//         'Content-Type': 'application/json',
+//         'Accept': 'application/json',
+//         'Access-Control-Allow-Origin': 'http://localhost:3000',
+//     }
+//     })
+//     .then((data) => {
+//     console.log(data.status)
+//     setResponse(data.status)
+//     console.log(response)
+//     })
+//     .catch((err) => {
+//     console.log(err.message);
+//     })
+
+// },[response, email, password])
 
     function handleEnter(event) {
         if (event.keyCode === 13) {
