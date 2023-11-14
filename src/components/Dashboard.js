@@ -8,7 +8,73 @@ import localeBr from '@fullcalendar/core/locales/pt-br'
 import { Menu } from 'primereact/menu';
 import { Button } from 'primereact/button';
 import { Checkbox } from 'primereact/checkbox';
-import logo from '../assets/logo.png'
+import {Chart} from 'primereact/chart'
+import logo from '../assets/logo-white.png'
+
+const chartData = {
+    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    datasets: [
+        {
+            label: 'Vendas',
+            data: [12, 19, 3, 5, 2, 3, 9, 16, 13, 22, 12, 8],
+            borderColor: ['#7E57C2'],
+            borderWidth: 3,
+            borderDash: [5, 5],
+            fill: false,
+            pointRadius: 3,
+            tension: 0.4
+        },
+        {
+            label: 'Receitas',
+            data: [1, 2, 5, 3, 12, 7, 15, 19, 21, 23, 25, 21],
+            backgroundColor: ['rgba(187,222,251,0.2)'],
+            borderColor: ['#42A5F5'],
+            borderWidth: 3,
+            fill: true,
+            tension: 0.4
+        },
+        {
+            label: 'Despesas',
+            data: [7, 12, 15, 5, 3, 13, 21, 15, 11, 10, 8, 5],
+            borderColor: ['#FFB300'],
+            borderWidth: 3,
+            fill: false,
+            pointRadius: [4, 6, 4, 12, 8, 0, 4],
+            tension: 0.4
+        },
+        {
+            label: 'Novos usuários',
+            data: [3, 7, 2, 17, 15, 13, 19, 20, 21, 23, 25, 27],
+            borderColor: ['#66BB6A'],
+            borderWidth: 3,
+            fill: false,
+            tension: 0.4
+        }
+    ]
+};
+
+const chartOptions = {
+    responsive: true,
+    hover: {
+        mode: 'index'
+    },
+    scales: {
+        x: {
+            display: true,
+            title: {
+                display: true,
+                text: 'Mês'
+            }
+        },
+        y: {
+            display: true,
+            title: {
+                display: true,
+                text: 'Valor'
+            }
+        }
+    }
+};
 
 const Dashboard = () => {
     const [events, setEvents] = useState([]);
@@ -78,9 +144,45 @@ const Dashboard = () => {
     return (
         <div className="layout-dashboard">
             <div className="grid">
+            <div className="col-12 lg:col-6 xl:col-3">
+                    <div className="overview-box sales">
+                        <i className="overview-icon pi pi-dollar"></i>
+                        <span className="overview-title">Vendas</span>
+                        <i className="overview-arrow pi pi-chevron-circle-up"></i>
+                        <div className="overview-numbers">$ 92,440</div>
+                        <div className="overview-subinfo">21% mais do que ontem</div>
+                    </div>
+                </div>
+                <div className="col-12 lg:col-6 xl:col-3">
+                    <div className="overview-box views">
+                        <i className="overview-icon pi pi-search"></i>
+                        <span className="overview-title">Visualizações</span>
+                        <i className="overview-arrow pi pi-chevron-circle-up"></i>
+                        <div className="overview-numbers">7029</div>
+                        <div className="overview-subinfo">2% mais do que ontem</div>
+                    </div>
+                </div>
+                <div className="col-12 lg:col-6 xl:col-3">
+                    <div className="overview-box users">
+                        <i className="overview-icon pi pi-users"></i>
+                        <span className="overview-title">Usuários</span>
+                        <i className="overview-arrow pi pi-chevron-circle-up"></i>
+                        <div className="overview-numbers">9522</div>
+                        <div className="overview-subinfo">7% more than yesterday</div>
+                    </div>
+                </div>
+                <div className="col-12 lg:col-6 xl:col-3">
+                    <div className="overview-box checkin">
+                        <i className="overview-icon pi pi-map-marker"></i>
+                        <span className="overview-title">Check-Ins</span>
+                        <i className="overview-arrow pi pi-chevron-circle-up"></i>
+                        <div className="overview-numbers">4211</div>
+                        <div className="overview-subinfo">18% mais do que ontem</div>
+                    </div>
+                </div>
 
                 <div className="col-6 md:col-6 lg:col-6">
-                    <div className="card card-w-title">
+                    <div className="card card-w-title" style={{height:'100%'}}>
                         <FullCalendar
                         eventClick={handleEventClick}
                         events={events}
@@ -99,32 +201,31 @@ const Dashboard = () => {
                 </div>
 
                 <div className="col-6 md:col-6 lg:col-6">
-                    <div className="user-card card">
-                        <div className="user-card-header">
-                            <img src="assets/layout/images/dashboard/bg-header.png" alt="babylon-layout" className="profile-image" />
-                        </div>
+                    <div className="user-card card" style={{height:'100%'}}>
                         <div className="user-card-content">
-                            <img src={logo} alt="babylon-layout" />
-                            <Menu ref={menuRef} popup model={items} appendTo={document.body} />
-                            <Button id="user-button" type="button" icon="pi pi-bars" className="secondary-btn" onClick={menuToggle} />
+                            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'8px'}}>
+                                <img src={logo} alt="babylon-layout"/>
+                                <div>
+                                    <span style={{color:'#000', fontSize:'20px', fontWeight:'bold'}}>Tecjus</span>
+                                </div>
+                                <Menu ref={menuRef} popup model={items} appendTo={document.body} />
+                                <Button id="user-button" type="button" icon="pi pi-bars" className="secondary-btn" onClick={menuToggle} />
 
-                            <div className="user-card-name">
-                                <span>Arlene Welch</span>
                             </div>
 
                             <div className="user-detail">
                                 <ul>
                                     <li className="clearfix">
                                         <i className="pi pi-list"></i>
-                                        <span className="project-title">Tasks</span>
-                                        <span className="project-detail">3 open</span>
+                                        <span className="project-title">Tarefas</span>
+                                        <span className="project-detail">3 em aberto</span>
                                         <div className="project-progressbar">
                                             <div className="project-progressbar-value" style={{ width: '50%' }}></div>
                                         </div>
                                     </li>
                                     <li className="clearfix">
                                         <i className="pi pi-dollar"></i>
-                                        <span className="project-title">Revenue</span>
+                                        <span className="project-title">Receita</span>
                                         <span className="project-detail">+20%</span>
                                         <div className="project-progressbar">
                                             <div className="project-progressbar-value" style={{ width: '20%' }}></div>
@@ -132,15 +233,15 @@ const Dashboard = () => {
                                     </li>
                                     <li className="clearfix">
                                         <i className="pi pi-money-bill"></i>
-                                        <span className="project-title">Payments</span>
-                                        <span className="project-detail">24 new</span>
+                                        <span className="project-title">Pagamentos</span>
+                                        <span className="project-detail">24 novos</span>
                                         <div className="project-progressbar">
                                             <div className="project-progressbar-value" style={{ width: '65%' }}></div>
                                         </div>
                                     </li>
                                     <li className="clearfix">
                                         <i className="pi pi-users"></i>
-                                        <span className="project-title">Clients</span>
+                                        <span className="project-title">Clientes</span>
                                         <span className="project-detail">+80%</span>
                                         <div className="project-progressbar">
                                             <div className="project-progressbar-value" style={{ width: '80%' }}></div>
@@ -148,7 +249,7 @@ const Dashboard = () => {
                                     </li>
                                     <li className="clearfix">
                                         <i className="pi pi-money-bill"></i>
-                                        <span className="project-title">Sales</span>
+                                        <span className="project-title">Vendas</span>
                                         <span className="project-detail">+45</span>
                                         <div className="project-progressbar">
                                             <div className="project-progressbar-value" style={{ width: '45%' }}></div>
@@ -168,33 +269,34 @@ const Dashboard = () => {
                     </div>
                 </div>
 
+
                 <div className="col-6 md:col-6 lg:col-6">
-                    <div className="card card-w-title tasks">
-                        <h5>Tasks</h5>
+                    <div className="card card-w-title tasks" style={{height:'100%'}}>
+                        <h5>Tarefas</h5>
                         <ul>
                             <li>
                                 <Checkbox checked={checked1} onChange={(e) => setChecked1(e.checked)} />
-                                <span>Sales Reports</span>
+                                <span>Relatórios de vendas</span>
                                 <span className="task-badge red"></span>
                             </li>
                             <li>
                                 <Checkbox checked={checked2} onChange={(e) => setChecked2(e.checked)} />
-                                <span>Pay Invoices</span>
+                                <span>Pagar faturas</span>
                                 <span className="task-badge orange"></span>
                             </li>
                             <li>
                                 <Checkbox checked={checked3} onChange={(e) => setChecked3(e.checked)} />
-                                <span>Kate's Birthday</span>
+                                <span>Aniversário da Rosana</span>
                                 <span className="task-badge orange"></span>
                             </li>
                             <li>
                                 <Checkbox checked={checked4} onChange={(e) => setChecked4(e.checked)} />
-                                <span>Client Meeting</span>
+                                <span>Reunião com cliente</span>
                                 <span className="task-badge green"></span>
                             </li>
                             <li>
                                 <Checkbox checked={checked5} onChange={(e) => setChecked5(e.checked)} />
-                                <span>New Themes</span>
+                                <span>Novos temas</span>
                                 <span className="task-badge green"></span>
                             </li>
                         </ul>
@@ -202,82 +304,11 @@ const Dashboard = () => {
                 </div>
 
                 <div className="col-6 md:col-6 lg:col-6">
-                    <div className="card card-w-title timeline">
-                        <h5>Timeline</h5>
-                        <ul>
-                            <li>
-                                <div className="activity-link"></div>
-                                <div className="timeline-icon">
-                                    <i className="pi pi-globe"></i>
-                                </div>
-                                <div className="timeline-content">
-                                    <h3>Notes Added</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean blandit tortor a ipsum vehicula, in semper sapien auctor.</p>
-                                    <div className="timeline-footer">
-                                        <i className="pi pi-clock"></i>
-                                        <span>3 Sep 2018 at 10:41</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="activity-link"></div>
-                                <div className="timeline-icon">
-                                    <i className="pi pi-calendar"></i>
-                                </div>
-                                <div className="timeline-content">
-                                    <h3>Reminder Scheduled</h3>
-                                    <p>
-                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                        explicabo.
-                                    </p>
-                                    <div className="timeline-footer">
-                                        <i className="pi pi-clock"></i>
-                                        <span>4 Sep 2018 at 11:30</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="activity-link"></div>
-                                <div className="timeline-icon">
-                                    <i className="pi pi-image"></i>
-                                </div>
-                                <div className="timeline-content">
-                                    <div className="child">
-                                        <div>
-                                            <span>3 Photos Added to</span>
-                                            <span className="colorful">Album-23</span>
-                                        </div>
-                                        <img src="assets/layout/images/dashboard/image-1.png" alt="babylon-layout" />
-                                        <img src="assets/layout/images/dashboard/image-2.png" alt="babylon-layout" />
-                                        <img src="assets/layout/images/dashboard/image-3.png" alt="babylon-layout" />
-                                        <div className="timeline-footer">
-                                            <i className="pi pi-clock"></i>
-                                            <span>9 Sep 2018 at 00:44</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div className="activity-link"></div>
-                                <div className="timeline-icon">
-                                    <i className="pi pi-image"></i>
-                                </div>
-                                <div className="timeline-content">
-                                    <div className="child">
-                                        <h3>Location Update</h3>
-                                        <img src="assets/layout/images/dashboard/antalya.png" alt="babylon-layout" style={{ width: '100%' }} />
-                                        <div className="timeline-footer">
-                                            <i className="pi pi-clock"></i>
-                                            <span>16 Sep 2018 at 20:02</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                    <div className="card card-w-title statistics" style={{height:'100%'}}>
+                        <h5>Estatísticas</h5>
+                        <Chart type="line" data={chartData} options={chartOptions} />
                     </div>
                 </div>
-
-
             </div>
         </div>
     );

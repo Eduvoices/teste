@@ -12,31 +12,6 @@ export const Login = () => {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
-
-    // try {
-    //         const response = fetch(`https://tecjusbackend.vercel.app/login`, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Access-Control-Allow-Origin': '*'
-    //             },
-    //             body: JSON.stringify({
-    //                 email: email,
-    //                 senha: password,
-    //                 subdomínio: 'TECJUS'
-    //             })
-    //         })
-
-    //         console.log(response)
-
-    //         const json = response.json()
-
-    //         if (response.status !== 200) throw new Error(json)
-
-    // } catch (err) {
-    //     setError(err.message)
-    //     console.log(error)
-    // }
-
 // useEffect(()=>{
 //         let headers = new Headers();
 
