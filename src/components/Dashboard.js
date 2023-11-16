@@ -17,7 +17,7 @@ const chartData = {
         {
             label: 'Vendas',
             data: [12, 19, 3, 5, 2, 3, 9, 16, 13, 22, 12, 8],
-            borderColor: ['#7E57C2'],
+            borderColor: ['#4b453d'],
             borderWidth: 3,
             borderDash: [5, 5],
             fill: false,
@@ -28,7 +28,7 @@ const chartData = {
             label: 'Receitas',
             data: [1, 2, 5, 3, 12, 7, 15, 19, 21, 23, 25, 21],
             backgroundColor: ['rgba(187,222,251,0.2)'],
-            borderColor: ['#42A5F5'],
+            borderColor: ['#814b05'],
             borderWidth: 3,
             fill: true,
             tension: 0.4
@@ -36,7 +36,7 @@ const chartData = {
         {
             label: 'Despesas',
             data: [7, 12, 15, 5, 3, 13, 21, 15, 11, 10, 8, 5],
-            borderColor: ['#FFB300'],
+            borderColor: ['#ab9c6f'],
             borderWidth: 3,
             fill: false,
             pointRadius: [4, 6, 4, 12, 8, 0, 4],
@@ -45,7 +45,7 @@ const chartData = {
         {
             label: 'Novos usuários',
             data: [3, 7, 2, 17, 15, 13, 19, 20, 21, 23, 25, 27],
-            borderColor: ['#66BB6A'],
+            borderColor: ['#c3b58b'],
             borderWidth: 3,
             fill: false,
             tension: 0.4
@@ -277,7 +277,7 @@ const Dashboard = () => {
                             <li>
                                 <Checkbox checked={checked1} onChange={(e) => setChecked1(e.checked)} />
                                 <span>Relatórios de vendas</span>
-                                <span className="task-badge red"></span>
+                                <span className="task-badge coffee"></span>
                             </li>
                             <li>
                                 <Checkbox checked={checked2} onChange={(e) => setChecked2(e.checked)} />

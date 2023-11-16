@@ -1695,34 +1695,34 @@ a {
   color: #fff;
 }
 .layout-dashboard .overview-box.views {
-  background-color: #7E57C2;
+  background-color: #68563f;
 }
 .layout-dashboard .overview-box.views .overview-icon {
-  color: #D1C4E9;
+  color: #fff;
 }
 .layout-dashboard .overview-box.views .overview-subinfo {
-  border-color: #D1C4E9;
-  color: #D1C4E9;
+  border-color: #fff;
+  color: #fff;
 }
 .layout-dashboard .overview-box.users {
-  background-color: #FFB300;
+  background-color: #ab9c6f;
 }
 .layout-dashboard .overview-box.users .overview-icon {
-  color: #FFECB3;
+  color: #fff;
 }
 .layout-dashboard .overview-box.users .overview-subinfo {
-  border-color: #FFECB3;
-  color: #FFECB3;
+  border-color: #fff;
+  color: #fff;
 }
 .layout-dashboard .overview-box.checkin {
-  background-color: #66BB6A;
+  background-color: #c3b58b ;
 }
 .layout-dashboard .overview-box.checkin .overview-icon {
-  color: #FFF8E1;
+  color: #fff;
 }
 .layout-dashboard .overview-box.checkin .overview-subinfo {
-  border-color: #FFF8E1;
-  color: #FFF8E1;
+  border-color: #fff;
+  color: #fff;
 }
 .layout-dashboard .tasks {
   min-height: 300px;
@@ -1759,14 +1759,14 @@ a {
   height: 12px;
   border-radius: 50%;
 }
-.layout-dashboard .tasks ul li .task-badge.red {
-  background-color: #E91E63;
+.layout-dashboard .tasks ul li .task-badge.coffee {
+  background-color: #af8550;
 }
 .layout-dashboard .tasks ul li .task-badge.orange {
-  background-color: #FF9800;
+  background-color: #ab9c6f;
 }
 .layout-dashboard .tasks ul li .task-badge.green {
-  background-color: #4CAF50;
+  background-color: #c3b58b;
 }
 .layout-dashboard .resolution-center {
   min-height: 300px;
@@ -1953,40 +1953,40 @@ a {
   height: 4px;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(1) .project-progressbar-value {
-  background-color: #009688;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(1) i {
-  color: #009688;
+  color: #ab9c6f;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(2) .project-progressbar-value {
-  background-color: #4CAF50;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(2) i {
-  color: #4CAF50;
+  color: #ab9c6f;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(3) .project-progressbar-value {
-  background-color: #9C27B0;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(3) i {
-  color: #9C27B0;
+  color: #ab9c6f;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(4) .project-progressbar-value {
-  background-color: #FFC107;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(4) i {
-  color: #FFC107;
+  color: #ab9c6f;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(5) .project-progressbar-value {
-  background-color: #00BCD4;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(5) i {
-  color: #00BCD4;
+  color: #ab9c6f;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(6) .project-progressbar-value {
-  background-color: #607D8B;
+  background-color: #4b453d;
 }
 .layout-dashboard .user-card .user-card-content .user-detail ul li:nth-child(6) i {
-  color: #607D8B;
+  color: #ab9c6f;
 }
 .layout-dashboard .timeline ul {
   padding: 0;

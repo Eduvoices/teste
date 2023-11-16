@@ -58,6 +58,8 @@ export const Login = () => {
         }
     }
 
+    const handleSubmit = () => {}
+
     return (
         <div className="login-body">
             <div className="login-panel"></div>
@@ -70,7 +72,7 @@ export const Login = () => {
                 </h1>
                 <p>Bem vindo, por favor faça login usando os campos a seguir.</p>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className="login-input-wrapper">
                         <InputText placeholder="Usuário" onKeyDown={handleEnter} onChange={(e)=> setEmail(e.target.value)}/>
                         <i className="pi pi-user"></i>
