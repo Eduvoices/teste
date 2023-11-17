@@ -87,10 +87,10 @@ const Agenda = () => {
         <div className='grid'>
             <div className='col-12'>
                 <div className='card calendar-demo'>
-                    <div className='demo-app'>
-                    {renderSidebar()}
-                        <div className='demo-app-main'>
-                        <FullCalendar
+                {/* {renderSidebar()} */}
+                <div className="col-12 md:col-12 lg:col-12">
+                    <div className="card card-w-title" style={{height:'100%'}}>
+                    <FullCalendar
                         eventClick={handleEventClick}
                         eventContent={renderEventContent}
                         eventsSet={handleEvents}
@@ -104,8 +104,8 @@ const Agenda = () => {
                         locale={localeBr}
                         select={handleDateSelect}
                     />
-                        </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

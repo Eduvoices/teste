@@ -2388,8 +2388,8 @@ a {
     margin: 0 auto;
     padding: 20px;
     border: 1px solid black;
-    border-radius: 30px;
-    width: 960px;
+    border-radius: 24px;
+    width: 100%;
 }
 
 #invoice-content div {

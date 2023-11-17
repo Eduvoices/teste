@@ -49,6 +49,29 @@ export const Login = () => {
 
 // },[response, email, password])
 
+const access = async (email, password) => {
+    await fetch('https://tecjusbackend.vercel.app/login', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: JSON.stringify({
+            email: email,
+            senha: password,
+            domínio: 'TECJUS'
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Origin': 'http://localhost:3000'
+        }
+    })
+    .then((data) => {
+        console.log(data.status)
+    })
+    .catch((err) => {
+        console.log(err.message)
+    })
+}
+
     function handleEnter(event) {
         if (event.keyCode === 13) {
             const form = event.target.form
@@ -58,7 +81,10 @@ export const Login = () => {
         }
     }
 
-    const handleSubmit = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        access(email, password)
+    }
 
     return (
         <div className="login-body">
@@ -85,7 +111,8 @@ export const Login = () => {
                 <Button
                     label="Entrar"
                     type='submit'
-                    onClick={()=> navigate('/dashboard')}
+                    onSubmit={handleSubmit}
+                    // onClick={()=> navigate('/dashboard')}
                 />
                 </form>
             </div>

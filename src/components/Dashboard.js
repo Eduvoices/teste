@@ -168,7 +168,7 @@ const Dashboard = () => {
                         <span className="overview-title">Usuários</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
                         <div className="overview-numbers">9522</div>
-                        <div className="overview-subinfo">7% more than yesterday</div>
+                        <div className="overview-subinfo">7% mais do que ontem</div>
                     </div>
                 </div>
                 <div className="col-12 lg:col-6 xl:col-3">
@@ -181,7 +181,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-6 md:col-6 lg:col-6">
+                <div className="col-12 md:col-12 lg:col-6">
                     <div className="card card-w-title" style={{height:'100%'}}>
                         <FullCalendar
                         eventClick={handleEventClick}
@@ -200,7 +200,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-6 md:col-6 lg:col-6">
+                <div className="col-12 md:col-12 lg:col-6">
                     <div className="user-card card" style={{height:'100%'}}>
                         <div className="user-card-content">
                             <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'8px'}}>
@@ -270,7 +270,7 @@ const Dashboard = () => {
                 </div>
 
 
-                <div className="col-6 md:col-6 lg:col-6">
+                <div className="col-12 md:col-12 lg:col-6">
                     <div className="card card-w-title tasks" style={{height:'100%'}}>
                         <h5>Tarefas</h5>
                         <ul>
@@ -303,12 +303,13 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="col-6 md:col-6 lg:col-6">
+                <div className="col-12 lg:col-6">
                     <div className="card card-w-title statistics" style={{height:'100%'}}>
-                        <h5>Estatísticas</h5>
+                        <h5>Statistics</h5>
                         <Chart type="line" data={chartData} options={chartOptions} />
                     </div>
                 </div>
+
             </div>
         </div>
     );

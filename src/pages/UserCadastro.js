@@ -106,13 +106,13 @@ const UserCadastro = () => {
                         <div className="field col-12 md:col-12">
                             <span>Status*</span>
                             <div className='flex' style={{marginTop:'8px'}}>
-                        <div className="col-12 md:col-4">
+                        <div className="col-6 md:col-4">
                             <div className="field-radiobutton">
                                 <RadioButton inputId="option1" name="option" value="Ativo" checked={radioValue === 'Ativo'} onChange={(e) => setRadioValue(e.value)} />
                                 <label htmlFor="option1">Ativo</label>
                             </div>
                         </div>
-                        <div className="col-12 md:col-4">
+                        <div className="col-6 md:col-4">
                             <div className="field-radiobutton">
                                 <RadioButton inputId="option2" name="option" value="Cancelado" checked={radioValue === 'Cancelado'} onChange={(e) => setRadioValue(e.value)} />
                                 <label htmlFor="option2">Cancelado</label>
