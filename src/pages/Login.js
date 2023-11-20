@@ -56,19 +56,27 @@ const access = async (email, password) => {
         body: JSON.stringify({
             email: email,
             senha: password,
-            domínio: 'TECJUS'
+            subdomínio: 'TECJUS'
         }),
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000'
+            'Access-Control-Allow-Origin': 'http://localhost:3000',
+            'Origin': 'http://localhost:3000'
         }
     })
     .then((data) => {
-        console.log(data.status)
+        console.log('Status:', data.status)
+        console.log('Status Text:', data.statusText)
+        console.log('Type:', data.type)
+        console.log('Ok:', data.ok)
+        console.log('Redirected:', data.redirected)
+        console.log('URL:', data.url)
     })
     .catch((err) => {
         console.log(err.message)
+        setError(err.message)
+        console.log(error)
     })
 }
 
@@ -111,7 +119,6 @@ const access = async (email, password) => {
                 <Button
                     label="Entrar"
                     type='submit'
-                    onSubmit={handleSubmit}
                     // onClick={()=> navigate('/dashboard')}
                 />
                 </form>
