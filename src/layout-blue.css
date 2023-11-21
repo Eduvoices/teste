@@ -94,23 +94,23 @@ p:last-child {
   background-color: #4b453d;
 }
 .loader-screen .loader .bar2 {
-  background-color: #4b453d;
+  background-color: #746b5f;
   animation-delay: -0.7s;
 }
 .loader-screen .loader .bar3 {
-  background-color: #4b453d;
+  background-color: #ac9e8b;
   animation-delay: -0.6s;
 }
 .loader-screen .loader .bar4 {
-  background-color: #4b453d;
+  background-color: #dbbe96;
   animation-delay: -0.5s;
 }
 .loader-screen .loader .bar5 {
-  background-color: #4b453d;
+  background-color: #ab9c6f;
   animation-delay: -0.4s;
 }
 .loader-screen .loader .bar6 {
-  background-color: #4b453d;
+  background-color: #c3b58b;
   animation-delay: -0.3s;
 }
 

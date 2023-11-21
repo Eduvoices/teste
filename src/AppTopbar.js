@@ -32,7 +32,7 @@ const AppTopbar = (props) => {
                     <li className={profileItemClassName}>
                         <button className="p-link" onClick={(e) => props.onTopbarItemClick(e, 'profile')}>
                             <img alt="babylon-layout" src={logo} />
-                            <span className="topbar-item-name">Arlene Welch</span>
+                            <span className="topbar-item-name">Tecjus</span>
                         </button>
 
                         <ul className={classNames({ fadeInDown: !props.isMobile() })}>
@@ -60,38 +60,38 @@ const AppTopbar = (props) => {
                 <li className={activeTopbarItemClassName('messages')}>
                     <button className="p-link" onClick={(e) => props.onTopbarItemClick(e, 'messages')}>
                         <i className="topbar-icon pi pi-inbox"></i>
-                        <span className="topbar-item-name">Messages</span>
+                        <span className="topbar-item-name">Mensagens</span>
                         <span className="topbar-badge">8</span>
                     </button>
                     <ul className={classNames({ fadeInDown: !props.isMobile() })}>
                         <li role="menuitem">
                             <button className="topbar-message p-link">
                                 <img src="assets/layout/images/avatar-john.png" alt="babylon-layout" />
-                                <span>Give me a call</span>
+                                <span>Ligar Carlos</span>
                             </button>
                         </li>
                         <li role="menuitem">
                             <button className="topbar-message p-link">
                                 <img src="assets/layout/images/avatar-julia.png" alt="babylon-layout" />
-                                <span>Reports attached</span>
+                                <span>Relatórios anexados</span>
                             </button>
                         </li>
                         <li role="menuitem">
                             <button className="topbar-message p-link">
                                 <img src="assets/layout/images/avatar-kevin.png" alt="babylon-layout" />
-                                <span>About your invoice</span>
+                                <span>Sobre os recebimentos</span>
                             </button>
                         </li>
                         <li role="menuitem">
                             <button className="topbar-message p-link">
                                 <img src="assets/layout/images/avatar-julia.png" alt="babylon-layout" />
-                                <span>Meeting today</span>
+                                <span>Reunião hoje</span>
                             </button>
                         </li>
                         <li role="menuitem">
                             <button className="topbar-message p-link">
                                 <img src="assets/layout/images/avatar.png" alt="babylon-layout" />
-                                <span>Out of office</span>
+                                <span>Fora do escritório</span>
                             </button>
                         </li>
                     </ul>

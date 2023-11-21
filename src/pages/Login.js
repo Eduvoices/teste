@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 // import { useEffect } from 'react';
 // import api from '../service/api';
 
 export const Login = () => {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
+    // const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        email: '',
+        senha: '',
+        subdomínio: 'TECJUS'
+    })
 
 // useEffect(()=>{
 //         let headers = new Headers();
@@ -49,36 +51,36 @@ export const Login = () => {
 
 // },[response, email, password])
 
-const access = async (email, password) => {
-    await fetch('https://tecjusbackend.vercel.app/login', {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({
-            email: email,
-            senha: password,
-            subdomínio: 'TECJUS'
-        }),
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            'Access-Control-Allow-Origin': 'http://localhost:3000',
-            'Origin': 'http://localhost:3000'
-        }
-    })
-    .then((data) => {
-        console.log('Status:', data.status)
-        console.log('Status Text:', data.statusText)
-        console.log('Type:', data.type)
-        console.log('Ok:', data.ok)
-        console.log('Redirected:', data.redirected)
-        console.log('URL:', data.url)
-    })
-    .catch((err) => {
-        console.log(err.message)
-        setError(err.message)
-        console.log(error)
-    })
-}
+// const access = async (email, password) => {
+//     await fetch('https://tecjusbackend.vercel.app/login', {
+//         method: 'POST',
+//         mode: 'no-cors',
+//         body: JSON.stringify({
+//             email: email,
+//             senha: password,
+//             subdomínio: 'TECJUS'
+//         }),
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Accept': 'application/json',
+//             'Access-Control-Allow-Origin': 'http://localhost:3000',
+//             'Origin': 'http://localhost:3000'
+//         }
+//     })
+//     .then((data) => {
+//         console.log('Status:', data.status)
+//         console.log('Status Text:', data.statusText)
+//         console.log('Type:', data.type)
+//         console.log('Ok:', data.ok)
+//         console.log('Redirected:', data.redirected)
+//         console.log('URL:', data.url)
+//     })
+//     .catch((err) => {
+//         console.log(err.message)
+//         setError(err.message)
+//         console.log(error)
+//     })
+// }
 
     function handleEnter(event) {
         if (event.keyCode === 13) {
@@ -89,9 +91,31 @@ const access = async (email, password) => {
         }
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        access(email, password)
+    const handleFormEdit = (event, name) => {
+        setFormData({...formData, [name]: event.target.value})
+    }
+
+    const handleForm = async (event) => {
+        let headers = new Headers()
+        headers.append('Content-Type', 'application/json')
+        headers.append('Accept', 'application/json')
+        headers.append('Access-Control-Allow-Origin', 'https://localhost:3000')
+        headers.append('Access-Control-Allow-Credentials', 'true')
+        headers.append('GET', 'POST', 'DELETE')
+        try {
+            event.preventDefault()
+            const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(formData),
+                mode: 'no-cors'
+            })
+            const json = await response.json()
+            console.log('Resposta:', response)
+            console.log(json)
+        } catch (err) {
+            console.log(err.message)
+        }
     }
 
     return (
@@ -106,14 +130,14 @@ const access = async (email, password) => {
                 </h1>
                 <p>Bem vindo, por favor faça login usando os campos a seguir.</p>
 
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleForm}>
                     <div className="login-input-wrapper">
-                        <InputText placeholder="Usuário" onKeyDown={handleEnter} onChange={(e)=> setEmail(e.target.value)}/>
+                        <InputText placeholder="Usuário" value={formData.email} onKeyDown={handleEnter} onChange={(e)=>handleFormEdit(e, 'email')}/>
                         <i className="pi pi-user"></i>
                     </div>
 
                     <div className="login-input-wrapper">
-                        <InputText placeholder="Senha" onKeyDown={handleEnter} type='password' onChange={(e)=> setPassword(e.target.value)}/>
+                        <InputText placeholder="Senha" onKeyDown={handleEnter} type='password' onChange={(e)=>handleFormEdit(e, 'senha')}/>
                         <i className="pi pi-lock"></i>
                     </div>
                 <Button
