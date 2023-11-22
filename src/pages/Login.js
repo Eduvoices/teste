@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 // import { useEffect } from 'react';
 // import api from '../service/api';
 
 export const Login = () => {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         senha: '',
@@ -110,9 +110,7 @@ export const Login = () => {
                 body: JSON.stringify(formData),
                 mode: 'no-cors'
             })
-            const json = await response.json()
             console.log('Resposta:', response)
-            console.log(json)
         } catch (err) {
             console.log(err.message)
         }
