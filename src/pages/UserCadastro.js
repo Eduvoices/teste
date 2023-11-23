@@ -14,12 +14,6 @@ const UserCadastro = () => {
     const RefConfirm = useRef(null)
     const RefBtn = useRef(null)
 
-    function enterAsTab(e) {
-        if (e.keyCode === 13) {
-            RefBtn.current.focus()
-        }
-    }
-
     function handleEnter(event) {
         if (event.keyCode === 13) {
             const form = event.target.form
@@ -47,7 +41,7 @@ const UserCadastro = () => {
 
     return (
         <div className='flex'>
-            <div className='col-12 md:col-4'>
+            <div className='col-12 md:col-12 lg:col-4'>
                 <div className='card p-fluid' style={{alignItems:'center', justifyContent:'center', display:'flex', flexDirection:'column'}}>
                     <div>
                         <h3>Cadastro de Usuário</h3>
@@ -57,9 +51,9 @@ const UserCadastro = () => {
                         <span style={{fontSize:'12px', color:'#c4b69c'}}>*Campo obrigatório</span>
                     </div>
 
-                    <form>
+                    <form style={{width:'100%'}}>
                         <div className="field col-12 md:col-12">
-                            <label htmlFor="email" data-placeholder='Emaill*'>Email</label>
+                            <label htmlFor="email" data-placeholder='Emaill*'>Email*</label>
                             <InputText
                             id='email'
                             className="input"

@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import axios from 'axios';
 // import { useEffect } from 'react';
 // import api from '../service/api';
 
@@ -95,25 +96,39 @@ export const Login = () => {
         setFormData({...formData, [name]: event.target.value})
     }
 
-    const handleForm = async (event) => {
-        let headers = new Headers()
-        headers.append('Content-Type', 'application/json')
-        headers.append('Accept', 'application/json')
-        headers.append('Access-Control-Allow-Origin', 'https://localhost:3000')
-        headers.append('Access-Control-Allow-Credentials', 'true')
-        headers.append('GET', 'POST', 'DELETE')
-        try {
-            event.preventDefault()
-            const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
-                method: 'POST',
-                headers: headers,
-                body: JSON.stringify(formData),
-                mode: 'no-cors'
-            })
-            console.log('Resposta:', response)
-        } catch (err) {
-            console.log(err.message)
-        }
+    // const handleForm = async (event) => {
+    //     let headers = new Headers()
+    //     headers.append('Content-Type', 'application/json')
+    //     headers.append('Accept', 'application/json')
+    //     headers.append('Access-Control-Allow-Origin', 'https://localhost:3000')
+    //     headers.append('Access-Control-Allow-Credentials', 'true')
+    //     headers.append('GET', 'POST', 'DELETE')
+    //     try {
+    //         event.preventDefault()
+    //         const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
+    //             method: 'POST',
+    //             headers: headers,
+    //             body: JSON.stringify(formData),
+    //             mode: 'no-cors'
+    //         })
+    //         console.log('Resposta:', response)
+    //     } catch (err) {
+    //         console.log(err.message)
+    //     }
+    // }
+
+    const baseUrl = 'https://tecjusbackend.vercel.app/login'
+
+    function handleForm(e) {
+        e.preventDefault()
+        axios.post(baseUrl, {
+            headers: {
+                'Content-Type': 'text/html; charset=utf-8',
+                'Access-Control-Request-Method': 'POST',
+                'Origin': 'http://localhost:3000'
+            },
+            body: formData
+        }).then((response) => console.log(response.data))
     }
 
     return (

@@ -45,7 +45,7 @@ const AlteraSenha = () => {
 
     return (
         <div className='flex teste'>
-            <div className='col-12 md:col-4'>
+            <div className='col-12 md:col-12 lg:col-4'>
                 <div className='card p-fluid' style={{alignItems:'center', justifyContent:'center', display:'flex', flexDirection:'column'}}>
                     <div>
                         <h3>Alterar Senha</h3>
@@ -55,7 +55,7 @@ const AlteraSenha = () => {
                         <span style={{fontSize:'12px', color:'#c4b69c'}}>*Campo obrigatório</span>
                     </div>
 
-                    <form>
+                    <form style={{width:'100%'}}>
                         <div className="field col-12 md:col-12">
                             <label htmlFor="senha-atual" data-placeholder='Senha Atual*'>Senha atual</label>
                             <InputText
