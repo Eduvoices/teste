@@ -4,7 +4,7 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import axios from 'axios';
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 // import api from '../service/api';
 
 export const Login = () => {
@@ -122,14 +122,31 @@ export const Login = () => {
     function handleForm(e) {
         e.preventDefault()
         axios.post(baseUrl, {
-            headers: {
-                'Content-Type': 'text/html; charset=utf-8',
-                'Access-Control-Request-Method': 'POST',
-                'Origin': 'http://localhost:3000'
-            },
-            body: formData
+            email: formData.email,
+            senha: formData.senha,
+            subdomínio: formData.subdomínio
         }).then((response) => console.log(response.data))
     }
+
+    // const baseUrl2 = 'https://jsonplaceholder.typicode.com/posts'
+
+    // const handleForm = (e) => {
+    //     e.preventDefault();
+    //     addPosts(title, body);
+    //  };
+
+    //  const addPosts = (title, body) => {
+    //     axios
+    //        .post(baseUrl2, {
+    //           title: 'teste',
+    //           body: 'body',
+    //        })
+    //        .then((response) => {
+    //           console.log(response.data.title);
+    //        });
+    //     setTitle('');
+    //     setBody('');
+    //  };
 
     return (
         <div className="login-body">
