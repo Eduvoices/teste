@@ -4,8 +4,6 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
 import axios from 'axios';
-import { useEffect } from 'react';
-// import api from '../service/api';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -96,25 +94,18 @@ export const Login = () => {
         setFormData({...formData, [name]: event.target.value})
     }
 
-    // const handleForm = async (event) => {
-    //     let headers = new Headers()
-    //     headers.append('Content-Type', 'application/json')
-    //     headers.append('Accept', 'application/json')
-    //     headers.append('Access-Control-Allow-Origin', 'https://localhost:3000')
-    //     headers.append('Access-Control-Allow-Credentials', 'true')
-    //     headers.append('GET', 'POST', 'DELETE')
-    //     try {
-    //         event.preventDefault()
-    //         const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
-    //             method: 'POST',
-    //             headers: headers,
-    //             body: JSON.stringify(formData),
-    //             mode: 'no-cors'
-    //         })
-    //         console.log('Resposta:', response)
-    //     } catch (err) {
-    //         console.log(err.message)
-    //     }
+    // const handleForm = async (e) => {
+    //     e.preventDefault()
+    //     const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
+    //         method: 'POST',
+    //         mode: 'cors',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(formData)
+    //     })
+    //     console.log(response)
+    //     console.log(response.data)
     // }
 
     const baseUrl = 'https://tecjusbackend.vercel.app/login'
@@ -127,26 +118,6 @@ export const Login = () => {
             subdomínio: formData.subdomínio
         }).then((response) => console.log(response.data))
     }
-
-    // const baseUrl2 = 'https://jsonplaceholder.typicode.com/posts'
-
-    // const handleForm = (e) => {
-    //     e.preventDefault();
-    //     addPosts(title, body);
-    //  };
-
-    //  const addPosts = (title, body) => {
-    //     axios
-    //        .post(baseUrl2, {
-    //           title: 'teste',
-    //           body: 'body',
-    //        })
-    //        .then((response) => {
-    //           console.log(response.data.title);
-    //        });
-    //     setTitle('');
-    //     setBody('');
-    //  };
 
     return (
         <div className="login-body">
