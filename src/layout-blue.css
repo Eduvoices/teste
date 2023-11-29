@@ -152,6 +152,14 @@ a {
   transition: color 0.3s;
 }
 
+#button_a {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #c9b4a0;
+    cursor: pointer;
+}
+
 .layout-wrapper .route-bar {
   min-height: 32px;
   background-color: #ffffff;

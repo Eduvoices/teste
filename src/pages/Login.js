@@ -39,10 +39,13 @@ export const Login = () => {
         })
         const data = await response.json()
         console.log(data.message)
-        // navigate('/dashboard')
-    }
 
-    console.log(formData)
+        if (data.message === 'Primeiro acesso') {
+            navigate('/userCadastro')
+        } else if (data.message === 'Acesso negado') {
+            navigate('/denied')
+        }
+    }
 
     return (
         <div className="login-body">

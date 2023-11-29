@@ -1,7 +1,9 @@
 import React from "react";
 import logo from '../assets/logo.png'
+import { useNavigate } from "react-router-dom";
 
 export const Access = () => {
+    const navigate = useNavigate()
     return (
         <div className="exception-body access-denied">
             <div className="exception-panel"></div>
@@ -13,7 +15,7 @@ export const Access = () => {
                     <span className="exception-name">ACESSO</span> NEGADO
                 </h1>
                 <p>Parece que você não possui as permissões necessárias</p>
-                <a href="/">Retornar à tela de login</a>
+                <button onClick={()=>navigate('/')} id='button_a'>Retornar à tela de login</button>
             </div>
         </div>
     )
