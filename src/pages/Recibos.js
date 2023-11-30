@@ -7,6 +7,10 @@ import Recibo1 from '../components/documentos/_testeDocs/_testeRecibo';
 import Recibo2 from '../components/documentos/_teste2Docs/_teste2Recibo';
 import Procuração from '../components/documentos/_testeDocs/_testeProcuração';
 import Procuração2 from '../components/documentos/_teste2Docs/_teste2Procuração';
+import ReciboAvalon from '../components/documentos/_teste4Docs/_testeRecibo4';
+import Procuração4 from '../components/documentos/_teste4Docs/_testeProcuração4';
+import ReciboRoma from '../components/documentos/_testeRecibo3.js/_teste3Recibo';
+import ProcuraçãoRoma from '../components/documentos/_testeRecibo3.js/_testeProcuração3';
 
 const Recibos = () => {
 const [nome, setNome] = useState('')
@@ -30,7 +34,9 @@ const [nome, setNome] = useState('')
 
     const dropdownEscritorios = [
         {name: 'Escritório 1'},
-        {name: 'Escritório 2'}
+        {name: 'Escritório 2'},
+        {name: 'Escritório 3'},
+        {name: 'Escritório 4'}
     ]
 
     function handleInputChange(e) {
@@ -54,6 +60,14 @@ const [nome, setNome] = useState('')
             return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
         } else if (doc.name === 'Procuração' && param.name === 'Escritório 2') {
             return <Procuração2 dataAtual={dataAtual()} outorgante={emitente}/>
+        } else if (doc.name === 'Recibo' && param.name === 'EScritório 4') {
+            return <ReciboAvalon nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+        } else if (doc.name === 'Procuração'&& param.name === 'Escritório 4') {
+            return <Procuração4 dataAtual={dataAtual()} outorgante={emitente}/>
+        } else if (doc.name === 'Recibo' && param.name === 'Escritório 3') {
+            return <ReciboRoma nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+        } else if (doc.name === 'Procuração' && param.name === 'Escritório 3') {
+            return <ProcuraçãoRoma dataAtual={dataAtual()} outorgante={emitente}/>
         }
     }
 

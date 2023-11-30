@@ -8,7 +8,7 @@ const Recibo2 = ({numeroCtrl, nome, dataAtual, emitente, cash, extenso}) => {
             <div id='controle'>
                 <span>{numeroCtrl}</span>
             </div>
-            <p>Recebmos de <span id='recibo_nome'>{nome}</span>, a importância de <span id='recibo_valor'>R$ {cash}</span> {extenso} referente ao pagamento de honorários adovcatícionss</p>
+            <p>Recebemos de <span id='recibo_nome'>{nome}</span>, a importância de <span id='recibo_valor'>R$ {cash}</span> {extenso} referente ao pagamento de honorários advocatícios</p>
             <span id='data'>{dataAtual}</span>
             <span id='assinatura'>{emitente}</span>
 

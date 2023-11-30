@@ -12,8 +12,6 @@ export const Login = () => {
         subdomínio: 'TECJUS'
     })
 
-    const user = 'priscilablasechi@yahoo.com.br'
-
     function handleEnter(event) {
         if (event.keyCode === 13) {
             const form = event.target.form
