@@ -1,4 +1,5 @@
-const ReciboRoma = (numeroCtrl, nome, dataAtual, emitente, cash, extenso) => {
+const ReciboRoma = ({numeroCtrl, nome, dataAtual, emitente, cash, extenso}) => {
+    return (
     <div>
         <h1>ROMA</h1>
         <h2>Recibo - Roma</h2>
@@ -15,6 +16,7 @@ const ReciboRoma = (numeroCtrl, nome, dataAtual, emitente, cash, extenso) => {
             <span>R$ {cash}</span>
         </div>
     </div>
+    )
 }
 
 export default ReciboRoma

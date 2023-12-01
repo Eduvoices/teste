@@ -1,4 +1,4 @@
-const ProcuraçãoRoma = (outorgante, dataAtual) => {
+const ProcuraçãoRoma = ({outorgante, dataAtual}) => {
     return (
         <div>
             <h1>ROMA</h1>

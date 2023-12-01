@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
@@ -11,14 +11,16 @@ import ReciboAvalon from '../components/documentos/_teste4Docs/_testeRecibo4';
 import Procuração4 from '../components/documentos/_teste4Docs/_testeProcuração4';
 import ReciboRoma from '../components/documentos/_testeRecibo3.js/_teste3Recibo';
 import ProcuraçãoRoma from '../components/documentos/_testeRecibo3.js/_testeProcuração3';
+import { useParams } from 'react-router-dom';
 
-const Recibos = () => {
+const Recibos = (props) => {
 const [nome, setNome] = useState('')
     const [emitente, setEmitente] = useState('')
     const [valor, setValor] = useState('')
     const [extenso, setExtenso] = useState('')
     const [doc, setDoc] = useState('')
     const [param, setParam] = useState('Escritório 1')
+    const [resposta, setResposta] = useState('')
 
     function dataAtual() {
         let data = new Date()
@@ -60,7 +62,7 @@ const [nome, setNome] = useState('')
             return <Procuração dataAtual={dataAtual()} outorgante={emitente}/>
         } else if (doc.name === 'Procuração' && param.name === 'Escritório 2') {
             return <Procuração2 dataAtual={dataAtual()} outorgante={emitente}/>
-        } else if (doc.name === 'Recibo' && param.name === 'EScritório 4') {
+        } else if (doc.name === 'Recibo' && param.name === 'Escritório 4') {
             return <ReciboAvalon nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
         } else if (doc.name === 'Procuração'&& param.name === 'Escritório 4') {
             return <Procuração4 dataAtual={dataAtual()} outorgante={emitente}/>
@@ -73,10 +75,31 @@ const [nome, setNome] = useState('')
 
     const cash = parseFloat(valor).toLocaleString('pt-br', {minimumFractionDigits: 2})
 
+    useEffect(()=>{
+
+                        var url = window.location.href
+                        var res = url.split('?')
+
+                        if (res[1] === undefined) {
+                            console.log('No params')
+                        } else {
+
+                            console.log(res[1])
+
+                            var param = res[1].split('&')
+                            setEmitente(param[0])
+                            setNome(param[1])
+                            setExtenso(param[2])
+                            setValor(param[3])
+                        }
+    },[])
+
+    console.log(nome, emitente)
+
     return (
         <>
             <Button label="Print" icon="pi pi-print" onClick={() => window.print()} style={{ display: 'block', marginBottom: '20px', marginLeft: '6px' }} />
-
+{/*
             <div className='grid'>
                 <div className='col-12 md:col-12'>
                     <div className='card p-fluid'>
@@ -87,7 +110,7 @@ const [nome, setNome] = useState('')
                                 <label htmlFor="emitente" >
                                     Emitente
                                 </label>
-                                <InputText type='text' id='emitente' onChange={(e)=>setEmitente(e.target.value)}/>
+                                <InputText type='text' id='emitente' value={emitente} onChange={(e)=>setEmitente(e.target.value)}/>
                             </div>
 
                             <div className="field col">
@@ -129,12 +152,13 @@ const [nome, setNome] = useState('')
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div>
                 <div className='card'>
                     <div id="invoice-content">
-                        {returnDoc()}
+                        {/* {returnDoc()} */}
+                        <Recibo1 nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
                     </div>
                 </div>
             </div>

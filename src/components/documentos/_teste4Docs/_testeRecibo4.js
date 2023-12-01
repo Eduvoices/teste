@@ -1,4 +1,4 @@
-const ReciboAvalon = (numeroCtrl, nome, dataAtual, emitente, cash, extenso) => {
+const ReciboAvalon = ({numeroCtrl, nome, dataAtual, emitente, cash, extenso}) => {
     return (
         <div>
             <h1>AVALON</h1>
