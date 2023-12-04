@@ -11,7 +11,6 @@ import ReciboAvalon from '../components/documentos/_teste4Docs/_testeRecibo4';
 import Procuração4 from '../components/documentos/_teste4Docs/_testeProcuração4';
 import ReciboRoma from '../components/documentos/_testeRecibo3.js/_teste3Recibo';
 import ProcuraçãoRoma from '../components/documentos/_testeRecibo3.js/_testeProcuração3';
-import { useParams } from 'react-router-dom';
 
 const Recibos = (props) => {
 const [nome, setNome] = useState('')
@@ -20,6 +19,7 @@ const [nome, setNome] = useState('')
     const [extenso, setExtenso] = useState('')
     const [doc, setDoc] = useState('')
     const [param, setParam] = useState('Escritório 1')
+    const [sobrenome, setSobrenome] = useState('')
     const [resposta, setResposta] = useState('')
 
     function dataAtual() {
@@ -89,8 +89,10 @@ const [nome, setNome] = useState('')
                             var param = res[1].split('&')
                             setEmitente(param[0])
                             setNome(param[1])
-                            setExtenso(param[2])
-                            setValor(param[3])
+                            setSobrenome(param[2])
+                            setExtenso(param[3])
+                            setValor(param[4])
+                            setResposta(param[5])
                         }
     },[])
 
@@ -157,8 +159,7 @@ const [nome, setNome] = useState('')
             <div>
                 <div className='card'>
                     <div id="invoice-content">
-                        {/* {returnDoc()} */}
-                        <Recibo1 nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()}/>
+                        <Recibo1 nome={nome} cash={cash} extenso={extenso} emitente={emitente} dataAtual={dataAtual()} sobrenome={sobrenome} numeroCtrl={resposta}/>
                     </div>
                 </div>
             </div>
