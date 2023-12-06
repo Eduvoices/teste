@@ -2417,15 +2417,18 @@ a {
     margin: 64px 0;
     text-align: justify;
     line-height: 200%;
+    font-size: 18px;
 }
 #invoice-content div #data {
     margin-bottom: 96px;
+    font-size: 18px;
 }
 
 #invoice-content div #assinatura {
     padding: 12px;
     border-top: 1px solid black;
     text-transform: uppercase;
+    font-size: 18px;
 }
 
 #invoice-content div #controle {
