@@ -147,7 +147,7 @@ const Dashboard = () => {
             <div className="col-12 lg:col-6 xl:col-3">
                     <div className="overview-box sales">
                         <i className="overview-icon pi pi-dollar"></i>
-                        <span className="overview-title">Vendas</span>
+                        <span className="overview-title">Caixa</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
                         <div className="overview-numbers">$ 92,440</div>
                         <div className="overview-subinfo">21% mais do que ontem</div>
@@ -155,8 +155,8 @@ const Dashboard = () => {
                 </div>
                 <div className="col-12 lg:col-6 xl:col-3">
                     <div className="overview-box views">
-                        <i className="overview-icon pi pi-search"></i>
-                        <span className="overview-title">Visualizações</span>
+                        <i className="overview-icon pi pi-file"></i>
+                        <span className="overview-title">Protocolos Administrativos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
                         <div className="overview-numbers">7029</div>
                         <div className="overview-subinfo">2% mais do que ontem</div>
@@ -165,7 +165,7 @@ const Dashboard = () => {
                 <div className="col-12 lg:col-6 xl:col-3">
                     <div className="overview-box users">
                         <i className="overview-icon pi pi-users"></i>
-                        <span className="overview-title">Usuários</span>
+                        <span className="overview-title">Atendimentos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
                         <div className="overview-numbers">9522</div>
                         <div className="overview-subinfo">7% mais do que ontem</div>
@@ -173,8 +173,8 @@ const Dashboard = () => {
                 </div>
                 <div className="col-12 lg:col-6 xl:col-3">
                     <div className="overview-box checkin">
-                        <i className="overview-icon pi pi-map-marker"></i>
-                        <span className="overview-title">Check-Ins</span>
+                        <i className="overview-icon pi pi-folder"></i>
+                        <span className="overview-title">Novos Processos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
                         <div className="overview-numbers">4211</div>
                         <div className="overview-subinfo">18% mais do que ontem</div>
@@ -206,7 +206,7 @@ const Dashboard = () => {
                             <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'8px'}}>
                                 <img src={logo} alt="babylon-layout"/>
                                 <div>
-                                    <span style={{color:'#000', fontSize:'20px', fontWeight:'bold'}}>Tecjus</span>
+                                    <h5 style={{color:'#000'}}>Prazos em aberto</h5>
                                 </div>
                                 <Menu ref={menuRef} popup model={items} appendTo={document.body} />
                                 <Button id="user-button" type="button" icon="pi pi-bars" className="secondary-btn" onClick={menuToggle} />
@@ -272,7 +272,7 @@ const Dashboard = () => {
 
                 <div className="col-12 md:col-12 lg:col-6">
                     <div className="card card-w-title tasks" style={{height:'100%'}}>
-                        <h5>Tarefas</h5>
+                        <h5>Tasks</h5>
                         <ul>
                             <li>
                                 <Checkbox checked={checked1} onChange={(e) => setChecked1(e.checked)} />
@@ -305,7 +305,7 @@ const Dashboard = () => {
 
                 <div className="col-12 lg:col-6">
                     <div className="card card-w-title statistics" style={{height:'100%'}}>
-                        <h5>Statistics</h5>
+                        <h5>Estatísticas de Protocolos</h5>
                         <Chart type="line" data={chartData} options={chartOptions} />
                     </div>
                 </div>
