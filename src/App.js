@@ -54,7 +54,7 @@ const App = () => {
         { path: '/dashboard', parent: 'Dashboard', label: 'Painel' },
         { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
         { path: '/consulta', parent: 'Pages', label: 'Consulta' },
-        { path: '/invoice', parent: 'Pages', label: 'recibos' },
+        // { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/agenda', parent: 'Pages', label: 'Agenda' },
@@ -71,7 +71,8 @@ const App = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
-                {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
+                // {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
+                // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
             ]
         }
     ];
@@ -272,7 +273,7 @@ const App = () => {
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        <Route path="/invoice" element={<Recibos />} />
+                        {/* <Route path="/invoice" element={<Recibos />} /> */}
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/agenda" element={<Agenda />} />

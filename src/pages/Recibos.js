@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
 
-import Recibo1 from '../components/documentos/_MOS/_testeRecibo';
-import Recibo2 from '../components/documentos/_teste2Docs/_teste2Recibo';
+import Recibo1 from '../components/documentos/_MOS/_reciboMOS';
+import Recibo2 from '../components/documentos/_KF/_reciboKF';
 
 const Recibos = (props) => {
     const [cliente, setCliente] = useState('')
@@ -14,17 +14,10 @@ const Recibos = (props) => {
     const [data, setData] = useState('')
     const [textNumber, setTextNumber] = useState('')
 
-    // function dataAtual() {
-    //     let data = new Date()
-    //     let day = data.getDate().toString().padStart(2, '0')
-    //     let month = String(data.getMonth() + 1).padStart(2, '0')
-    //     return `${day}/${month}/${data.getFullYear()}`
-    // }
-
     function returnDoc() {
         if (doc === 'Recibo' && pasta === 'MOS') {
             return <Recibo1 cliente={cliente} cash={cash} extenso={textNumber} funcionario={funcionario} dataAtual={data} numeroCtrl={numeroCtrl}/>
-        } else if (doc === 'Recibo' && pasta === 'DOS') {
+        } else if (doc === 'Recibo' && pasta === 'KF') {
             return <Recibo2 cliente={cliente} cash={cash} extenso={textNumber} funcionario={funcionario} dataAtual={data} numeroCtrl={numeroCtrl}/>
         }
     }
@@ -49,24 +42,26 @@ const Recibos = (props) => {
 
                         const extenso = require('extenso')
 
-                        // if (valor) {
-                        //     setTextNumber(extenso(valor, {mode:'currency'}))
-                        // }
+                        if (valor) {
+                            setTextNumber(extenso(valor, {mode:'currency'}))
+                        }
     },[valor])
 
     return (
-        <>
-            <Button label="Print" icon="pi pi-print" onClick={() => window.print()} style={{ display: 'block', marginBottom: '20px', marginLeft: '6px' }} />
+        <div style={{display:'flex', alignItems:'center', justifyContent:'center'}}>
+            <div style={{width:'960px'}}>
+                <Button label="Imprimir" icon="pi pi-print" onClick={() => window.print()} style={{ display: 'block', marginBottom: '20px', marginLeft: '6px', marginTop:'24px' }} />
 
-            <div>
-                <div className='card'>
-                    <div id="invoice-content">
-                        {returnDoc()}
+                <div>
+                    <div className='card'>
+                        <div id="invoice-content">
+                            {/* {returnDoc()} */}
+                            <Recibo2 cliente={cliente} cash={cash} extenso={textNumber} funcionario={funcionario} dataAtual={data} numeroCtrl={numeroCtrl}/>
+                        </div>
                     </div>
                 </div>
             </div>
-
-        </>
+        </div>
     );
 };
 

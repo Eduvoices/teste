@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import App from './App';
 import { Login } from './pages/Login';
 import Access from './pages/Access';
+import Recibos from './pages/Recibos';
 
 const AppWrapper = () => {
     let location = useLocation();
@@ -16,6 +17,7 @@ const AppWrapper = () => {
             <Route path="/" element={<Login />} />
             <Route path="*" element={<App />} />
             <Route path='/denied' element={<Access />}/>
+            <Route path="/invoice" element={<Recibos />} />
         </Routes>
     );
 };

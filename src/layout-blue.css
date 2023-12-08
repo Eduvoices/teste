@@ -2400,6 +2400,12 @@ a {
     width: 100%;
 }
 
+#invoice-content-kf {
+    background-image: url('../src/assets/background_kf.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
 #invoice-content div {
     display: flex;
     flex-direction: column;
