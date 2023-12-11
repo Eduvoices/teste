@@ -18,9 +18,9 @@ const Recibo2 = ({numeroCtrl, cliente, dataAtual, funcionario, cash, extenso}) =
                 <span>R$ {cash}</span>
                 <span>{numeroCtrl}</span>
             </div>
-            <footer>
+            <div style={{width:'100%', height:'24px', display:'flex', alignItems:'center', justifyContent:'center', marginTop:'144px'}}>
                 <p>Avenida Antônio Losso, nª 1499, Parque das Árvores - Guarapuava - Paraná. Tel (42) 3624-7409</p>
-            </footer>
+            </div>
         </div>
         )
 }

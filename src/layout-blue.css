@@ -2458,9 +2458,9 @@ a {
     margin: 8px 0;
 }
 
-#invoice-content div img {
+/* #invoice-content div img {
     width: 360px;
-}
+} */
 
 #invoice-content div #recibo_nome {
     text-transform: uppercase;
