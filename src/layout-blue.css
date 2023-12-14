@@ -40,7 +40,7 @@ h6 {
 mark {
   background: #FFF8E1;
   padding: 0.25rem 0.4rem;
-  border-radius: 3px;
+  border-radius: 4px;
   font-family: monospace;
 }
 
@@ -73,9 +73,9 @@ p:last-child {
 .loader-screen .loader {
   margin: 0 auto;
   width: 60px;
-  height: 50px;
+  height: 52px;
   text-align: center;
-  font-size: 10px;
+  font-size: 12px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -166,7 +166,7 @@ a {
   border-bottom: 1px solid #e8e8e8;
 }
 .layout-wrapper .route-bar .route-bar-breadcrumb {
-  padding: 6px 25px;
+  padding: 8px 24px;
   display: inline-block;
 }
 .layout-wrapper .route-bar .route-bar-breadcrumb ul {
@@ -204,12 +204,12 @@ a {
   position: fixed;
   height: 60px;
   top: 0;
-  left: 250px;
+  left: 240px;
   right: 0;
   z-index: 997;
-  padding: 8px 25px;
+  padding: 8px 24px;
   background-color: #212121;
-  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
 }
 .layout-wrapper .layout-topbar:after {
   content: "";
@@ -1633,8 +1633,8 @@ a {
 
 .layout-wrapper .layout-ajax-loader {
   position: absolute;
-  right: 15px;
-  bottom: 15px;
+  right: 16px;
+  bottom: 16px;
 }
 .layout-wrapper .layout-ajax-loader .layout-ajax-loader-icon {
   color: #c9b4a0;
@@ -1660,8 +1660,8 @@ a {
 .layout-dashboard .overview-box {
   padding: 16px;
   color: #ffffff;
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
 }
 .layout-dashboard .overview-box:after {
   content: "";
@@ -1675,7 +1675,7 @@ a {
 .layout-dashboard .overview-box .overview-title {
   margin-bottom: 8px;
   display: inline-block;
-  font-size: 18px;
+  font-size: 16px;
 }
 .layout-dashboard .overview-box .overview-arrow {
   color: #ffffff;
@@ -1684,10 +1684,10 @@ a {
 }
 .layout-dashboard .overview-box .overview-numbers {
   margin-bottom: 12px;
-  font-size: 18px;
+  font-size: 16px;
 }
 .layout-dashboard .overview-box .overview-subinfo {
-  font-size: 13px;
+  font-size: 12px;
   border-left: 4px solid;
   margin-left: -16px;
   padding-left: 12px;
@@ -1733,7 +1733,7 @@ a {
   color: #fff;
 }
 .layout-dashboard .tasks {
-  min-height: 300px;
+  min-height: 320px;
 }
 .layout-dashboard .tasks ul {
   padding: 0;
@@ -1777,11 +1777,11 @@ a {
   background-color: #c3b58b;
 }
 .layout-dashboard .resolution-center {
-  min-height: 300px;
+  min-height: 320px;
 }
 .layout-dashboard .resolution-center label {
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .layout-dashboard .resolution-center .p-inputtext {
   width: 100%;
@@ -1798,10 +1798,10 @@ a {
 .layout-dashboard .resolution-center .resolution-button-bar .p-button {
   width: auto;
   margin-left: 12px;
-  min-width: 100px;
+  min-width: 120px;
 }
 .layout-dashboard .team {
-  min-height: 300px;
+  min-height: 320px;
 }
 .layout-dashboard .team ul {
   list-style-type: none;
@@ -1809,7 +1809,7 @@ a {
   padding: 0;
 }
 .layout-dashboard .team ul li {
-  padding: 10px;
+  padding: 12px;
   border-bottom: 1px solid #eeeeee;
 }
 .layout-dashboard .team ul li:after {
@@ -1855,7 +1855,7 @@ a {
   display: block;
   font-weight: 600;
   color: #252529;
-  font-size: 14px;
+  font-size: 16px;
 }
 .layout-dashboard .team ul li .team-box .team-member-role {
   border-radius: 4px;
