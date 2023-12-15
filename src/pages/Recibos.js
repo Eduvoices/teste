@@ -4,6 +4,7 @@ import { Button } from 'primereact/button';
 import Recibo1 from '../components/documentos/_MOS/_reciboMOS';
 import Recibo2 from '../components/documentos/_KF/_reciboKF';
 import Procuração2 from '../components/documentos/_KF/_procuracaoKF';
+import ReciboTecjus from '../components/documentos/_TECJUS/_reciboTecjus';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -45,9 +46,13 @@ const Recibos = (props) => {
                     mes={param12}
                     ano={param13}
                     />
+        } else if (doc === 'Recibo' && pasta === 'TECJUS') {
+            return <ReciboTecjus cliente={param2} extenso={textNumber} cash={cash} funcionario={param4} dataAtual={param3} numeroCtrl={param5}/>
         }
     }
 
+    // http://localhost:3000/#/invoice?%20TECJUS%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
+    // http://localhost:3000/#/invoice?%20KF%20Procura%C3%A7%C3%A3o%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
 

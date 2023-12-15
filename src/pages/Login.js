@@ -27,22 +27,25 @@ export const Login = () => {
 
     const handleForm = async (e) => {
         e.preventDefault()
-        const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(formData)
-        })
-        const data = await response.json()
-        console.log(data.message)
+        if (formData.email && formData.senha) {
+            const response = await fetch(`https://tecjusbackend.vercel.app/login`, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            const data = await response.json()
+            console.log(data.message)
 
-        if (data.message === 'Primeiro acesso') {
-            navigate('/userCadastro')
-        } else if (data.message === 'Acesso negado') {
-            navigate('/denied')
+            if (data.message === 'Primeiro acesso') {
+                navigate('/firstAccess')
+            } else if (data.message === 'Acesso negado') {
+                navigate('/denied')
+            }
         }
+
     }
 
     return (

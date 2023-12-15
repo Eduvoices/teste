@@ -1,5 +1,5 @@
 import React from "react"
-import logo1 from '../../../assets/logo.png'
+import logo1 from '../../../assets/logo_mos.png'
 
 const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual}) => {
 

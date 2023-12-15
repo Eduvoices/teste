@@ -211,6 +211,9 @@ a {
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.16);
 }
+.layouto-wrapper .layout-topbar {
+  position: fixed;
+}
 .layout-wrapper .layout-topbar:after {
   content: "";
   display: table;
