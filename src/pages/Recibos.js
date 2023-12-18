@@ -5,6 +5,7 @@ import Recibo1 from '../components/documentos/_MOS/_reciboMOS';
 import Recibo2 from '../components/documentos/_KF/_reciboKF';
 import Procuração2 from '../components/documentos/_KF/_procuracaoKF';
 import ReciboTecjus from '../components/documentos/_TECJUS/_reciboTecjus';
+import AutorizacaoSenhaInss from '../components/documentos/_KF/autorizacao_senha_inss';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -48,6 +49,8 @@ const Recibos = (props) => {
                     />
         } else if (doc === 'Recibo' && pasta === 'TECJUS') {
             return <ReciboTecjus cliente={param2} extenso={textNumber} cash={cash} funcionario={param4} dataAtual={param3} numeroCtrl={param5}/>
+        } else if (doc === 'senha_inss' && pasta === 'KF') {
+            return <AutorizacaoSenhaInss />
         }
     }
 
@@ -94,7 +97,8 @@ const Recibos = (props) => {
                 <div>
                     <div className='card'>
                         <div id="invoice-content">
-                            {returnDoc()}
+                            {/* {returnDoc()} */}
+                            <AutorizacaoSenhaInss cliente={param1} estadoCivil={param2} profissao={param3} rg={param4} cpf={param5} endereco={param6} numero={param7}/>
                         </div>
                     </div>
                 </div>
