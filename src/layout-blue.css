@@ -2405,7 +2405,7 @@ a {
 
 #invoice-content-kf {
     background-image: url('../src/assets/background_kf.png');
-    background-size: cover;
+    background-size: 100%;
     background-repeat: no-repeat;
 }
 

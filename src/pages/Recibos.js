@@ -6,6 +6,8 @@ import Recibo2 from '../components/documentos/_KF/_reciboKF';
 import Procuração2 from '../components/documentos/_KF/_procuracaoKF';
 import ReciboTecjus from '../components/documentos/_TECJUS/_reciboTecjus';
 import AutorizacaoSenhaInss from '../components/documentos/_KF/autorizacao_senha_inss';
+import CtoAçãoPolicial from '../components/documentos/_KF/_ação_policial';
+import CtoTrabalhistaCivel from '../components/documentos/_KF/cto_trabalhista_civel';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -28,9 +30,21 @@ const Recibos = (props) => {
 
     function returnDoc() {
         if (doc === 'Recibo' && pasta === 'MOS') {
-            return <Recibo1 cliente={param2} cash={cash} extenso={textNumber} funcionario={param4} dataAtual={param3} numeroCtrl={param5}/>
+            return <Recibo1
+                    cliente={param2}
+                    cash={cash}
+                    extenso={textNumber}
+                    funcionario={param4}
+                    dataAtual={param3}
+                    numeroCtrl={param5}/>
         } else if (doc === 'Recibo' && pasta === 'KF') {
-            return <Recibo2 cliente={param2} cash={cash} extenso={textNumber} funcionario={param4} dataAtual={param3} numeroCtrl={param5}/>
+            return <Recibo2
+                    cliente={param2}
+                    cash={cash}
+                    extenso={textNumber}
+                    funcionario={param4}
+                    dataAtual={param3}
+                    numeroCtrl={param5}/>
         } else if (doc === 'Procuração' && pasta === 'KF') {
             return <Procuração2
                     cliente={param1}
@@ -48,14 +62,37 @@ const Recibos = (props) => {
                     ano={param13}
                     />
         } else if (doc === 'Recibo' && pasta === 'TECJUS') {
-            return <ReciboTecjus cliente={param2} extenso={textNumber} cash={cash} funcionario={param4} dataAtual={param3} numeroCtrl={param5}/>
+            return <ReciboTecjus
+                    cliente={param2}
+                    extenso={textNumber}
+                    cash={cash}
+                    funcionario={param4}
+                    dataAtual={param3}
+                    numeroCtrl={param5}/>
         } else if (doc === 'senha_inss' && pasta === 'KF') {
-            return <AutorizacaoSenhaInss />
+            return <AutorizacaoSenhaInss
+                    cliente={param1}
+                    estadoCivil={param2}
+                    profissao={param3}
+                    rg={param4}
+                    cpf={param5}
+                    endereco={param6}
+                    numero={param7}/>
+        } else if (doc === 'cto_açao_policial' && pasta === 'KF') {
+            return <CtoAçãoPolicial
+                    cliente={param1}
+                    rg={param2}
+                    cpf={param3}
+                    endereco={param4}
+                    numero={param4}/>
         }
     }
 
     // http://localhost:3000/#/invoice?%20TECJUS%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
     // http://localhost:3000/#/invoice?%20KF%20Procura%C3%A7%C3%A3o%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // http://localhost:3000/#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
+    // http://localhost:3000/#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
+    // http://localhost:3000/#/invoice?%20KF%20cto_honorarios%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
 
@@ -98,7 +135,20 @@ const Recibos = (props) => {
                     <div className='card'>
                         <div id="invoice-content">
                             {/* {returnDoc()} */}
-                            <AutorizacaoSenhaInss cliente={param1} estadoCivil={param2} profissao={param3} rg={param4} cpf={param5} endereco={param6} numero={param7}/>
+                            <CtoTrabalhistaCivel
+                            cliente={param1}
+                            estadoCivil={param2}
+                            rg={param3}
+                            cpf={param4}
+                            endereco={param5}
+                            numero={param6}
+                            bairro={param7}
+                            cep={param8}
+                            cidade={param9}
+                            uf={param10}
+                            dia={param11}
+                            mes={param12}
+                            ano={param13}/>
                         </div>
                     </div>
                 </div>
