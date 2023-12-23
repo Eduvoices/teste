@@ -8,6 +8,8 @@ import ReciboTecjus from '../components/documentos/_TECJUS/_reciboTecjus';
 import AutorizacaoSenhaInss from '../components/documentos/_KF/autorizacao_senha_inss';
 import CtoAçãoPolicial from '../components/documentos/_KF/_ação_policial';
 import CtoTrabalhistaCivel from '../components/documentos/_KF/cto_trabalhista_civel';
+import CtoHonorariosKF from '../components/documentos/_KF/_cto_honorariosKF';
+import DeclaracaoHipossuficiencia from '../components/documentos/_KF/_declaracao_hipossuficienciaKF';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -85,6 +87,51 @@ const Recibos = (props) => {
                     cpf={param3}
                     endereco={param4}
                     numero={param4}/>
+        } else if (doc === 'cto_civel_trabalhista' && pasta === 'KF') {
+            return <CtoTrabalhistaCivel
+                            cliente={param1}
+                            estadoCivil={param2}
+                            rg={param3}
+                            cpf={param4}
+                            endereco={param5}
+                            numero={param6}
+                            bairro={param7}
+                            cep={param8}
+                            cidade={param9}
+                            uf={param10}
+                            dia={param11}
+                            mes={param12}
+                            ano={param13}/>
+        } else if (doc === 'declaracao_hipossuficiencia' && pasta === 'KF') {
+            return <DeclaracaoHipossuficiencia
+                            cliente={param1}
+                            estadoCivil={param2}
+                            rg={param3}
+                            cpf={param4}
+                            endereco={param5}
+                            numero={param6}
+                            bairro={param7}
+                            cep={param8}
+                            cidade={param9}
+                            uf={param10}
+                            dia={param11}
+                            mes={param12}
+                            ano={param13}/>
+        } else if (doc === 'cto_honorarios' && pasta === 'KF') {
+            return <CtoHonorariosKF
+                            cliente={param1}
+                            estadoCivil={param2}
+                            rg={param3}
+                            cpf={param4}
+                            endereco={param5}
+                            numero={param6}
+                            bairro={param7}
+                            cep={param8}
+                            cidade={param9}
+                            uf={param10}
+                            dia={param11}
+                            mes={param12}
+                            ano={param13}/>
         }
     }
 
@@ -92,7 +139,10 @@ const Recibos = (props) => {
     // http://localhost:3000/#/invoice?%20KF%20Procura%C3%A7%C3%A3o%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
     // http://localhost:3000/#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
+    // http://localhost:3000/#/invoice?%20KF%20cto_civel_trabalhista%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20cto_honorarios%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // http://localhost:3000/#/invoice?%20KF%20declaracao_hipossuficiencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
 
@@ -135,20 +185,20 @@ const Recibos = (props) => {
                     <div className='card'>
                         <div id="invoice-content">
                             {/* {returnDoc()} */}
-                            <CtoTrabalhistaCivel
-                            cliente={param1}
-                            estadoCivil={param2}
-                            rg={param3}
-                            cpf={param4}
-                            endereco={param5}
-                            numero={param6}
-                            bairro={param7}
-                            cep={param8}
-                            cidade={param9}
-                            uf={param10}
-                            dia={param11}
-                            mes={param12}
-                            ano={param13}/>
+                            <DeclaracaoHipossuficiencia
+                                cliente={param1}
+                                estadoCivil={param2}
+                                rg={param3}
+                                cpf={param4}
+                                endereco={param5}
+                                numero={param6}
+                                bairro={param7}
+                                cep={param8}
+                                cidade={param9}
+                                uf={param10}
+                                dia={param11}
+                                mes={param12}
+                                ano={param13}/>
                         </div>
                     </div>
                 </div>
