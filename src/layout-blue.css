@@ -2417,6 +2417,10 @@ a {
     width: 100%;
 }
 
+#seletor {
+    border: 1px solid black;
+}
+
 #invoice-content div h1 {
     padding: 24px;
 }

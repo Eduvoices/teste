@@ -12,6 +12,9 @@ import CtoHonorariosKF from '../components/documentos/_KF/_cto_honorariosKF';
 import DeclaracaoHipossuficiencia from '../components/documentos/_KF/_declaracao_hipossuficienciaKF';
 import DeclaracaoResidenciaKF from '../components/documentos/_KF/_declaracao_residenciaKF';
 import ProcuracaoCartoriosKF from '../components/documentos/_KF/_procuracao_cartorios';
+import ProcuracaoPolicial from '../components/documentos/_KF/_procuracao_policial';
+import TermoRenunciaKF from '../components/documentos/_KF/_termo_renunciaKF';
+import TermoRepresentacaoKF from '../components/documentos/_KF/_termo_representacao_autorizacaoKF';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -150,7 +153,52 @@ const Recibos = (props) => {
             mes={param12}
             ano={param13}/>
         } else if (doc === 'declaracao_residencia' && pasta === 'KF') {
-            <DeclaracaoResidenciaKF
+            return <DeclaracaoResidenciaKF
+            cliente={param1}
+            estadoCivil={param2}
+            rg={param3}
+            cpf={param4}
+            endereco={param5}
+            numero={param6}
+            bairro={param7}
+            cep={param8}
+            cidade={param9}
+            uf={param10}
+            dia={param11}
+            mes={param12}
+            ano={param13}/>
+        } else if (doc === 'procuracao_cartorio' && pasta === 'KF') {
+            return <ProcuracaoCartoriosKF
+            cliente={param1}
+            estadoCivil={param2}
+            rg={param3}
+            cpf={param4}
+            endereco={param5}
+            numero={param6}
+            bairro={param7}
+            cep={param8}
+            cidade={param9}
+            uf={param10}
+            dia={param11}
+            mes={param12}
+            ano={param13}/>
+        } else if (doc === 'procuracao_policial' && pasta === 'KF') {
+            return <ProcuracaoPolicial
+            cliente={param1}
+            estadoCivil={param2}
+            rg={param3}
+            cpf={param4}
+            endereco={param5}
+            numero={param6}
+            bairro={param7}
+            cep={param8}
+            cidade={param9}
+            uf={param10}
+            dia={param11}
+            mes={param12}
+            ano={param13}/>
+        } else if (doc === 'termo_renuncia' && pasta === 'KF') {
+            return <TermoRenunciaKF
             cliente={param1}
             estadoCivil={param2}
             rg={param3}
@@ -176,6 +224,9 @@ const Recibos = (props) => {
     // http://localhost:3000/#/invoice?%20KF%20declaracao_hipossuficiencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20declaracao_residencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20procuracao_cartorio%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // http://localhost:3000/#/invoice?%20KF%20procuracao_policial%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // http://localhost:3000/#/invoice?%20KF%20termo_renuncia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+
 
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
@@ -219,20 +270,7 @@ const Recibos = (props) => {
                     <div className='card'>
                         <div id="invoice-content">
                             {/* {returnDoc()} */}
-                            <ProcuracaoCartoriosKF
-                                cliente={param1}
-                                estadoCivil={param2}
-                                rg={param3}
-                                cpf={param4}
-                                endereco={param5}
-                                numero={param6}
-                                bairro={param7}
-                                cep={param8}
-                                cidade={param9}
-                                uf={param10}
-                                dia={param11}
-                                mes={param12}
-                                ano={param13}/>
+                            <TermoRepresentacaoKF/>
                         </div>
                     </div>
                 </div>
