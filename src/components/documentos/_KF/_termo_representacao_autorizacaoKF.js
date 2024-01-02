@@ -33,6 +33,32 @@ const TermoRepresentacaoKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, 
             <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
             <span id='assinatura'>{cliente}</span>
 
+            <h2 style={{fontSize:'18px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>TERMO DE RESPONSABILIDADE</h2>
+
+            <p>
+                Por este Termo de Responsabilidade, comprometo-me a comunicar ao INSS qualquer evento que possa anular esta
+                Procuração, no prazo de trinta dias, a contar da data que o mesmo ocorra, principalmente o óbito do segurado/pensionista, mediante
+                apresentação da respectiva certidão. <br/>
+                Estou ciente de que o descumprimento do compromisso ora assumido, além de obrigar a devolução de importâncias recebidas indevidamente, quando
+                for o caso, sujeitar-me-á às penalidades previstas nos arts. 171 e 299, ambos do Código Penal.
+            </p>
+
+            <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
+            <span id='assinatura'>Procurador</span>
+
+            <h3 style={{fontSize:'14px', textAlign:'center', fontWeight:'bold'}}>CÓDIGO PENAL</h3>
+            <p style={{fontSize:'14px'}}>
+            <i>
+            Art. 171. Obter, para si ou para outrem, vantagem ilícita, em prejuízo alheio, induzindo ou manter alguém em erro, mediante artifício, ardil ou
+            qualquer outro meio fraudulento <br/>
+            Art. 299. Omitir, em documento público ou particular, declaração que devia constar, ou nele inserir ou fazer inserir declaração falsa ou diversa
+            da que devia ser escrita, com o fim de prejudicar direito, criar, obrigação ou alterar a verdade sobre fato juridicamente relevante.
+            </i>
+            </p>
+
+            <div style={{width:'100%', height:'24px', display:'flex', alignItems:'center', justifyContent:'center', marginTop:'144px'}}>
+                <p>Avenida Antônio Losso, nº 1499, Parque das Árvores - Guarapuava - Paraná. Tel (42) 3624-7409</p>
+            </div>
         </div>
     )
 }

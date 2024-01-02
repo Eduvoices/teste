@@ -52,7 +52,7 @@ const Recibos = (props) => {
                     funcionario={param4}
                     dataAtual={param3}
                     numeroCtrl={param5}/>
-        } else if (doc === 'Procuração' && pasta === 'KF') {
+        } else if (doc === 'procuracao' && pasta === 'KF') {
             return <Procuração2
                     cliente={param1}
                     estadoCivil={param2}
@@ -94,21 +94,6 @@ const Recibos = (props) => {
                     numero={param4}/>
         } else if (doc === 'cto_civel_trabalhista' && pasta === 'KF') {
             return <CtoTrabalhistaCivel
-                            cliente={param1}
-                            estadoCivil={param2}
-                            rg={param3}
-                            cpf={param4}
-                            endereco={param5}
-                            numero={param6}
-                            bairro={param7}
-                            cep={param8}
-                            cidade={param9}
-                            uf={param10}
-                            dia={param11}
-                            mes={param12}
-                            ano={param13}/>
-        } else if (doc === 'declaracao_hipossuficiencia' && pasta === 'KF') {
-            return <DeclaracaoHipossuficiencia
                             cliente={param1}
                             estadoCivil={param2}
                             rg={param3}
@@ -212,11 +197,26 @@ const Recibos = (props) => {
             dia={param11}
             mes={param12}
             ano={param13}/>
+        } else if (doc === 'termo_representacao' && pasta === 'KF') {
+            return <TermoRepresentacaoKF
+            cliente={param1}
+            estadoCivil={param2}
+            rg={param3}
+            cpf={param4}
+            endereco={param5}
+            numero={param6}
+            bairro={param7}
+            cep={param8}
+            cidade={param9}
+            uf={param10}
+            dia={param11}
+            mes={param12}
+            ano={param13}/>
         }
     }
 
-    // http://localhost:3000/#/invoice?%20TECJUS%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
-    // http://localhost:3000/#/invoice?%20KF%20Procura%C3%A7%C3%A3o%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // http://localhost:3000/#/invoice?%20KF%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
+    // http://localhost:3000/#/invoice?%20KF%20procuracao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
     // http://localhost:3000/#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
     // http://localhost:3000/#/invoice?%20KF%20cto_civel_trabalhista%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
@@ -226,7 +226,7 @@ const Recibos = (props) => {
     // http://localhost:3000/#/invoice?%20KF%20procuracao_cartorio%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20procuracao_policial%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
     // http://localhost:3000/#/invoice?%20KF%20termo_renuncia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-
+    // http://localhost:3000/#/invoice?%20KF%20termo_representacao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
 
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
@@ -269,8 +269,7 @@ const Recibos = (props) => {
                 <div>
                     <div className='card'>
                         <div id="invoice-content">
-                            {/* {returnDoc()} */}
-                            <TermoRepresentacaoKF/>
+                            {returnDoc()}
                         </div>
                     </div>
                 </div>

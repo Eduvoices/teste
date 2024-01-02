@@ -2427,7 +2427,7 @@ a {
 
 #invoice-content div p {
     padding: 24px;
-    margin: 64px 0;
+    margin: 8px 0;
     text-align: justify;
     line-height: 200%;
     font-size: 18px;
@@ -2442,6 +2442,7 @@ a {
     border-top: 1px solid black;
     text-transform: uppercase;
     font-size: 18px;
+    margin-bottom: 96px;
 }
 
 #invoice-content div #controle {
