@@ -38,105 +38,105 @@ const Recibos = (props) => {
     function returnDoc() {
         if (doc === 'Recibo' && pasta === 'MOS') {
             return <Recibo1
-                    cliente={param2}
-                    cash={cash}
-                    extenso={textNumber}
-                    funcionario={param4}
-                    dataAtual={param3}
-                    numeroCtrl={param5}/>
+                cliente={param2}
+                cash={cash}
+                extenso={textNumber}
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}/>
         } else if (doc === 'Recibo' && pasta === 'KF') {
             return <Recibo2
-                    cliente={param2}
-                    cash={cash}
-                    extenso={textNumber}
-                    funcionario={param4}
-                    dataAtual={param3}
-                    numeroCtrl={param5}/>
+                cliente={param2}
+                cash={cash}
+                extenso={textNumber}
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}/>
         } else if (doc === 'procuracao' && pasta === 'KF') {
             return <Procuração2
-                    cliente={param1}
-                    estadoCivil={param2}
-                    rg={param3}
-                    cpf={param4}
-                    endereço={param5}
-                    numero={param6}
-                    bairro={param7}
-                    cep={param8}
-                    cidade={param9}
-                    uf={param10}
-                    dia={param11}
-                    mes={param12}
-                    ano={param13}
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereço={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={param11}
+                mes={param12}
+                ano={param13}
                     />
         } else if (doc === 'Recibo' && pasta === 'TECJUS') {
             return <ReciboTecjus
-                    cliente={param2}
-                    extenso={textNumber}
-                    cash={cash}
-                    funcionario={param4}
-                    dataAtual={param3}
-                    numeroCtrl={param5}/>
+                cliente={param2}
+                extenso={textNumber}
+                cash={cash}
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}/>
         } else if (doc === 'senha_inss' && pasta === 'KF') {
             return <AutorizacaoSenhaInss
-                    cliente={param1}
-                    estadoCivil={param2}
-                    profissao={param3}
-                    rg={param4}
-                    cpf={param5}
-                    endereco={param6}
-                    numero={param7}/>
+                cliente={param1}
+                estadoCivil={param2}
+                profissao={param3}
+                rg={param4}
+                cpf={param5}
+                endereco={param6}
+                numero={param7}/>
         } else if (doc === 'cto_açao_policial' && pasta === 'KF') {
             return <CtoAçãoPolicial
-                    cliente={param1}
-                    rg={param2}
-                    cpf={param3}
-                    endereco={param4}
-                    numero={param4}/>
+                cliente={param1}
+                rg={param2}
+                cpf={param3}
+                endereco={param4}
+                numero={param5}/>
         } else if (doc === 'cto_civel_trabalhista' && pasta === 'KF') {
             return <CtoTrabalhistaCivel
-                            cliente={param1}
-                            estadoCivil={param2}
-                            rg={param3}
-                            cpf={param4}
-                            endereco={param5}
-                            numero={param6}
-                            bairro={param7}
-                            cep={param8}
-                            cidade={param9}
-                            uf={param10}
-                            dia={param11}
-                            mes={param12}
-                            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={param11}
+                mes={param12}
+                ano={param13}/>
         } else if (doc === 'cto_honorarios' && pasta === 'KF') {
             return <CtoHonorariosKF
-                            cliente={param1}
-                            estadoCivil={param2}
-                            rg={param3}
-                            cpf={param4}
-                            endereco={param5}
-                            numero={param6}
-                            bairro={param7}
-                            cep={param8}
-                            cidade={param9}
-                            uf={param10}
-                            dia={param11}
-                            mes={param12}
-                            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={param11}
+                mes={param12}
+                ano={param13}/>
         } else if (doc === 'declaracao_hipossuficiencia' && pasta === 'KF') {
             return <DeclaracaoHipossuficiencia
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={param11}
+                mes={param12}
+                    ano={param13}/>
         } else if (doc === 'declaracao_residencia' && pasta === 'KF') {
             return <DeclaracaoResidenciaKF
             cliente={param1}
@@ -215,18 +215,19 @@ const Recibos = (props) => {
         }
     }
 
-    // http://localhost:3000/#/invoice?%20KF%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
-    // http://localhost:3000/#/invoice?%20KF%20procuracao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
-    // http://localhost:3000/#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
-    // http://localhost:3000/#/invoice?%20KF%20cto_civel_trabalhista%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20cto_honorarios%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20declaracao_hipossuficiencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20declaracao_residencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20procuracao_cartorio%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20procuracao_policial%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20termo_renuncia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // http://localhost:3000/#/invoice?%20KF%20termo_representacao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_civel_trabalhista%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_honorarios%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20declaracao_hipossuficiencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20declaracao_residencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao_cartorio%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao_policial%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20termo_renuncia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20termo_representacao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
+    // https://tecjus-prime.vercel.app/#/invoice?%20KF%20cto_aço_policial%20%CarlosCliente
 
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
