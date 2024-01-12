@@ -1,6 +1,9 @@
 import logo from '../../../assets/kflogo.png'
 
 const Recibo2 = ({numeroCtrl, cliente, dataAtual, funcionario, cash, extenso}) => {
+
+    let nome = decodeURIComponent(cliente)
+
     return (
         <div id='invoice-content-kf'>
             <img src={logo} alt='logo' style={{width: '100%'}}/>
@@ -8,13 +11,13 @@ const Recibo2 = ({numeroCtrl, cliente, dataAtual, funcionario, cash, extenso}) =
             <div id='controle'>
                 <span>{numeroCtrl}</span>
             </div>
-            <p>Recebemos de <span id='recibo_nome'>{cliente}</span>, a importância de <span id='recibo_valor'>R$ {cash}</span> ({extenso}) referente ao pagamento de honorários advocatícios</p>
+            <p>Recebemos de <span id='recibo_nome'>{nome}</span>, a importância de <span id='recibo_valor'>R$ {cash}</span> ({extenso}) referente ao pagamento de honorários advocatícios</p>
             <span id='data'>{dataAtual}</span>
             <span id='assinatura'>{funcionario}</span>
 
             <div className='canhoto'>
                 <span>{dataAtual}</span>
-                <span id='recibo_nome'>{cliente}</span>
+                <span id='recibo_nome'>{nome}</span>
                 <span>R$ {cash}</span>
                 <span>{numeroCtrl}</span>
             </div>

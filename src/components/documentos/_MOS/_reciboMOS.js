@@ -3,6 +3,8 @@ import logo1 from '../../../assets/logo_mos.png'
 
 const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual}) => {
 
+    let nome = decodeURIComponent(cliente)
+
     return (
         <div>
         <img src={logo1} alt="logo"/>
@@ -10,7 +12,7 @@ const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual}) =
         <div id="controle">
             <span>{numeroCtrl}</span>
         </div>
-        <p>Recebemos de <span id="recibo_nome">{cliente}</span> a importância de <span id="recibo_valor">R$ {cash}</span> ({extenso}), referente ao pagamento de honorários advocatícios.</p>
+        <p style={{marginTop:'64px'}}>Recebemos de <span id="recibo_nome">{nome}</span> a importância de <span id="recibo_valor">R$ {cash}</span> ({extenso}), referente ao pagamento de honorários advocatícios.</p>
         <span id="data">{dataAtual}</span>
         <span id="assinatura">{funcionario}</span>
 

@@ -1,16 +1,20 @@
 import logo from '../../../assets/kflogo.png'
 
 const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero}) => {
+
+    let nome = decodeURIComponent(cliente)
+    let address = decodeURIComponent(endereco)
+
     return (
         <div id="invoice-content-kf">
             <img src={logo} alt="Logo KF" style={{width:'100%'}}/>
             <h1 style={{fontSize:'20px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS ADVOCATÍCIOS</h1>
 
             <p>
-                As partes, de um lado <b>{cliente}</b>, brasileiro(a), casado(a), aposentado(a),
-                portador do RG nº <b>{rg}</b>, inscrito no CPF sob o nº <b>{cpf}</b>, residente e domiciliado na Rua <b>{endereco}</b>, nº <b>{numero}</b>, doravante denominado
-                simplesmente <b>CONTRATANTE</b>
-                e, de outro, lado, <b>KARINA PRESCILIA FERREIRA DOS SANTOS</b>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº 34.063.317/0001-99, com escritório
+                As partes, de um lado <b>{nome}</b>, brasileiro(a), casado(a), aposentado(a),
+                portador do RG nº <b>{rg}</b>, inscrito no CPF sob o nº <b>{cpf}</b>, residente e domiciliado na Rua <b>{address}</b>, nº <b>{numero}</b>, doravante denominado
+                simplesmente <b>CONTRATANTE</b> e, de
+                outro, lado, <b>KARINA PRESCILIA FERREIRA DOS SANTOS</b>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº 34.063.317/0001-99, com escritório
                 profisional situado à Avenida Antônio Losso, nº 1499, Bairro Parque das Árvores, doravante denominado simplesmente <b>CONTRATADA</b>, firmam o presente <span style={{fontWeight:'bold', textDecorationLine:'underline'}}>CONTRATO DE HONORÁRIOS</span>, que será
                 regido pelas cláusulas e condições a seguir expostas:<br/>
                 <b>1ª-</b> Por este instrumento, o CONTRATANTE contrata os serviços advocatícios da CONTRATADA, para atuar na ação de Declaratória de Inconstitucionalidade
@@ -37,7 +41,7 @@ const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero}) => {
                 E, por estarem justos e contratados, assinam o prente contrato de prestação de serviços, em duas vias de igual teor e forma, sendo uma para cada parte, para que produza seus devidos efeitos legais e jurídicos.
             </p>
 
-            <span id='assinatura'>{cliente}</span>
+            <span id='assinatura'>{nome}</span>
             <span style={{marginBottom:'48px'}}>RG {rg}</span>
 
             <span id='assinatura'>KF ADVOCACIA</span>

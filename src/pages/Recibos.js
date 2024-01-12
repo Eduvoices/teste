@@ -85,7 +85,7 @@ const Recibos = (props) => {
                 cpf={param5}
                 endereco={param6}
                 numero={param7}/>
-        } else if (doc === 'cto_açao_policial' && pasta === 'KF') {
+        } else if (doc === 'cto_acao_policial' && pasta === 'KF') {
             return <CtoAçãoPolicial
                 cliente={param1}
                 rg={param2}
@@ -215,20 +215,8 @@ const Recibos = (props) => {
         }
     }
 
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20Recibo%20100%20Cliente1%2007/12/2023%20Funcionario1%20202312
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20senha_inss%20Cliente1%20casado%20123456789%2098765432100%20Condor%20247
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_açao_policial%20Cliente1%20123456789%2098765432100%20Condor%20247
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_civel_trabalhista%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20cto_honorarios%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20declaracao_hipossuficiencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20declaracao_residencia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao_cartorio%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20procuracao_policial%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20termo_renuncia%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app//#/invoice?%20KF%20termo_representacao%20Cliente1%20casado%20480035465%2047491614035%20Condor%20500%20Centro%2086060000%20Arapongas%20PR%2012%20dezembro%202023
-    // https://tecjus-prime.vercel.app/#/invoice?%20KF%20cto_aço_policial%20%CarlosCliente
-
+    //http://localhost:3000/#/invoice?#MOS#Recibo#100#Joaquim%20José%20da%20Silva%20Xavier#07/12/2023#Funcionario1#202312
+    // http://localhost:3000/#/invoice?#KF#cto_honorarios#Joaquim%20José%20da%20Silva%20Xavier#casado#480035465#47491614035#Curió%20do%20Bico%20Doce#500#Centro#86060000#Arapongas#PR#12#dezembro#2023
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
 
@@ -237,23 +225,25 @@ const Recibos = (props) => {
                         var url = window.location.href
                         var res = url.split('?')
 
-                        let teste = decodeURIComponent(res[1])
-                        let teste2 = teste.split(' ')
-                        setPasta(teste2[1])
-                        setDoc(teste2[2])
-                        setParam1(teste2[3])
-                        setParam2(teste2[4])
-                        setParam3(teste2[5])
-                        setParam4(teste2[6])
-                        setParam5(teste2[7])
-                        setParam6(teste2[8])
-                        setParam7(teste2[9])
-                        setParam8(teste2[10])
-                        setParam9(teste2[11])
-                        setParam10(teste2[12])
-                        setParam11(teste2[13])
-                        setParam12(teste2[14])
-                        setParam13(teste2[15])
+                        console.log('doc=', doc)
+
+                        // let teste = decodeURIComponent(res[1])
+                        let params = res[1].split('#')
+                        setPasta(params[1])
+                        setDoc(params[2])
+                        setParam1(params[3])
+                        setParam2(params[4])
+                        setParam3(params[5])
+                        setParam4(params[6])
+                        setParam5(params[7])
+                        setParam6(params[8])
+                        setParam7(params[9])
+                        setParam8(params[10])
+                        setParam9(params[11])
+                        setParam10(params[12])
+                        setParam11(params[13])
+                        setParam12(params[14])
+                        setParam13(params[15])
 
                         const extenso = require('extenso')
 

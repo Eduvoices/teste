@@ -1,6 +1,10 @@
 import logo from '../../../assets/kflogo.png'
 
 const TermoRepresentacaoKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, cep, bairro, cidade, uf, dia, mes, ano}) => {
+
+    let nome = decodeURIComponent(cliente)
+    let address = decodeURIComponent(endereco)
+
     return (
         <div id='invoice-content-kf'>
             <img src={logo} alt="Logo KF" style={{width:'100%'}}/>
@@ -8,8 +12,8 @@ const TermoRepresentacaoKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, 
             <h2 style={{fontSize:'18px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>TERMO DE REPRESENTAÇÃO E AUTORIZAÇÃO DE ACESSO A INFORMAÇÕES PREVIDENCIÁRIAS</h2>
 
             <p>
-            <b>{cliente}</b>, brasileiro(a), {estadoCivil}, portador(a) do RG {rg}, inscrito(a) no CPF sob n° {cpf}, residente e domiciliado na
-                {endereco},  nº {numero}, CEP {cep}, Bairro {bairro}, no município de {cidade} – {uf}, nomeia e
+            <b>{nome}</b>, brasileiro(a), {estadoCivil}, portador(a) do RG {rg}, inscrito(a) no CPF sob n° {cpf}, residente e domiciliado na Rua {address},  nº
+                {numero}, CEP {cep}, Bairro {bairro}, no município de {cidade} – {uf}, nomeia e
                 constitui como sua procuradora, através do presente instrumento de mandato, aos advogados, <b>KARINA PRESCILIA FERREIRA DOS
                 SANTOS</b>, brasileira, inscrita perante a OAB/PR sob o n. 64.685, NIT nº 12971702539,<b> EDGAR SANTOS DE MEIRA NETO</b>, brasileiro, inscrito
                 perante a OAB/PR sob o n. 86.080, <b>ISABELA CANTERI DO AMARAL</b>, brasileira, inscrita perante a OAB/PR sob o n. 97.636, CONFIRO PODERES
@@ -31,9 +35,9 @@ const TermoRepresentacaoKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, 
             </p>
 
             <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
-            <span id='assinatura'>{cliente}</span>
+            <span id='assinatura'>{nome}</span>
 
-            <h2 style={{fontSize:'18px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>TERMO DE RESPONSABILIDADE</h2>
+            <h2 style={{fontSize:'18px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline', marginTop:'96px'}}>TERMO DE RESPONSABILIDADE</h2>
 
             <p>
                 Por este Termo de Responsabilidade, comprometo-me a comunicar ao INSS qualquer evento que possa anular esta
@@ -46,7 +50,7 @@ const TermoRepresentacaoKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, 
             <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
             <span id='assinatura'>Procurador</span>
 
-            <h3 style={{fontSize:'14px', textAlign:'center', fontWeight:'bold'}}>CÓDIGO PENAL</h3>
+            <h3 style={{fontSize:'14px', textAlign:'center', fontWeight:'bold', marginTop:'96px'}}>CÓDIGO PENAL</h3>
             <p style={{fontSize:'14px'}}>
             <i>
             Art. 171. Obter, para si ou para outrem, vantagem ilícita, em prejuízo alheio, induzindo ou manter alguém em erro, mediante artifício, ardil ou

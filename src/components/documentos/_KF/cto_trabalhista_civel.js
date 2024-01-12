@@ -1,14 +1,18 @@
 import logo from '../../../assets/kflogo.png'
 
 const CtoTrabalhistaCivel = ({cliente, estadoCivil, rg, cpf, endereco, numero, bairro, cep, cidade, uf, dia, mes, ano}) => {
+
+    let nome = decodeURIComponent(cliente)
+    let address = decodeURIComponent(endereco)
+
     return (
         <div id="invoice-content-kf">
             <img src={logo} alt="Logo KF" style={{width:'100%'}}/>
             <h1 style={{fontSize:'20px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>CONTRATO DE HONORÁRIOS ADVOCATÍCIOS</h1>
 
             <p>
-                <b>CONTRATANTE: {cliente}</b>, brasileiro(a), {estadoCivil}, portadora do RG nº {rg}, inscrita
-                no CPF sob n° {cpf}, residente e domiciliada na Rua {endereco}, nº {numero}, Bairro {bairro}, CEP {cep},
+                <b>CONTRATANTE: {nome}</b>, brasileiro(a), {estadoCivil}, portadora do RG nº {rg}, inscrita
+                no CPF sob n° {cpf}, residente e domiciliada na Rua {address}, nº {numero}, Bairro {bairro}, CEP {cep},
                 no município de {cidade}- {uf}.<br/>
                 <b>CONTRATADA: Dra. Karina Prescilia Ferreira dos Santos</b>, brasileira, casada, inscrita na OAB/PR
                 sob nº 64.685, com escritório profissional situado à Avenida Antônio Losso, nº 1499,
@@ -38,7 +42,7 @@ const CtoTrabalhistaCivel = ({cliente, estadoCivil, rg, cpf, endereco, numero, b
 
             <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
 
-            <span id='assinatura'>{cliente}</span>
+            <span id='assinatura'>{nome}</span>
             <span style={{marginBottom:'48px'}}>RG {rg}</span>
 
             <span id='assinatura'>KF ADVOCACIA</span>

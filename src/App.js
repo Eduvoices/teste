@@ -27,6 +27,7 @@ import 'primeflex/primeflex.css';
 import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
+import TitulosEmAberto from './pages/TitulosEmAberto';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -53,11 +54,12 @@ const App = () => {
     const breadcrumb = [
         { path: '/dashboard', parent: 'Dashboard', label: 'Painel' },
         { path: '/userCadastro', parent: 'Utilities', label: 'Cadastro de Usuário' },
-        { path: '/consulta', parent: 'Pages', label: 'Consulta' },
+        { path: '/pessoa_fisica', parent: 'Pages', label: 'Pessoa Física' },
         // { path: '/invoice', parent: 'Pages', label: 'recibos' },
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/agenda', parent: 'Pages', label: 'Agenda' },
+        { path: '/titulos_em_aberto', parent: 'Pages', label: 'Títulos em aberto'}
     ];
 
     const menu = [
@@ -70,7 +72,8 @@ const App = () => {
             label: 'Pages',
             icon: 'pi pi-fw pi-clone',
             items: [
-                { label: 'Consulta', icon: 'pi pi-fw pi-search', to: '/consulta' },
+                { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/pessoa_fisica' },
+                { label: 'Títulos em aberto', icon: 'pi pi-fw pi-file', to: '/titulos_em_aberto'}
                 // {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
             ]
@@ -277,7 +280,8 @@ const App = () => {
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/agenda" element={<Agenda />} />
-                        <Route path="/consulta" element={<CrudDemo />}/>
+                        <Route path="/pessoa_fisica" element={<CrudDemo />}/>
+                        <Route path='/titulos_em_aberto' element={<TitulosEmAberto />} />
                     </Routes>
                 </div>
 
