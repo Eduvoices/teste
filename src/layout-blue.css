@@ -2433,8 +2433,9 @@ a {
     font-size: 18px;
 }
 #invoice-content div #data {
-    margin-bottom: 96px;
+    margin-bottom: 48px;
     font-size: 18px;
+    margin-top: 64px;
 }
 
 #invoice-content div #assinatura {

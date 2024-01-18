@@ -216,6 +216,7 @@ const Recibos = (props) => {
     }
 
     //http://localhost:3000/#/invoice?#MOS#Recibo#100#Joaquim%20José%20da%20Silva%20Xavier#07/12/2023#Funcionario1#202312
+    // 4321
     // http://localhost:3000/#/invoice?#KF#cto_honorarios#Joaquim%20José%20da%20Silva%20Xavier#casado#480035465#47491614035#Curió%20do%20Bico%20Doce#500#Centro#86060000#Arapongas#PR#12#dezembro#2023
 
     const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
@@ -225,9 +226,6 @@ const Recibos = (props) => {
                         var url = window.location.href
                         var res = url.split('?')
 
-                        console.log('doc=', doc)
-
-                        // let teste = decodeURIComponent(res[1])
                         let params = res[1].split('#')
                         setPasta(params[1])
                         setDoc(params[2])

@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
+import CryptoJS from 'crypto-js';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -45,8 +46,20 @@ export const Login = () => {
                 navigate('/denied')
             }
         }
-
     }
+
+    let message = 'Essa é uma mensagem secreta'
+    let secretPhrase = 'aLiThsanGthn119450Jemnt'
+
+    let encrypt = CryptoJS.AES.encrypt(formData.email, secretPhrase)
+    let decrypt = CryptoJS.AES.decrypt(encrypt, secretPhrase)
+
+    let plainText = decrypt.toString(CryptoJS.enc.Utf8)
+
+    console.log(encrypt.toString())
+    console.log(plainText)
+
+    //4567
 
     return (
         <div className="login-body">

@@ -37,10 +37,20 @@ const TitulosEmAberto = () => {
     const toast = useRef(null);
     const dt = useRef(null);
 
-    useEffect(() => {
-        const titleService = new TitulosService()
-        titleService.getTitulos().then((data) => setTitles(data))
-    }, [])
+    // https://tecjusbackend.vercel.app/titulosemaberto
+
+    // useEffect(() => {
+    //     const titleService = new TitulosService()
+    //     titleService.getTitulos().then((data) => setTitles(data))
+    // }, [])
+
+    const titlesBackend =  () => {
+        fetch(`http://tecjusbackend.vercel.app/titulosemaberto`)
+        .then(res => res.text())
+        .then(data => {
+            console.log(data)
+        }).catch(err => console.log(err))
+    }
 
     // function handleEnter(event) {
     //     if (event.keyCode === 13) {
@@ -314,6 +324,8 @@ const TitulosEmAberto = () => {
     //         <Button label="Sim" icon="pi pi-check" className="p-button-text" />
     //     </>
     // )
+
+    titlesBackend()
 
     return (
         <div className='grid crud-demo'>

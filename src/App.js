@@ -28,6 +28,7 @@ import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
 import TitulosEmAberto from './pages/TitulosEmAberto';
+import TiposDocumento from './pages/TiposDocumento';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -59,7 +60,8 @@ const App = () => {
         { path: '/cadastro', parent: 'Pages', label: 'Cadastro' },
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/agenda', parent: 'Pages', label: 'Agenda' },
-        { path: '/titulos_em_aberto', parent: 'Pages', label: 'Títulos em aberto'}
+        { path: '/titulos_em_aberto', parent: 'Pages', label: 'Títulos em aberto'},
+        {path: '/tipo_documento', parent:'Pages', label: 'Tipo de Documento'}
     ];
 
     const menu = [
@@ -73,7 +75,8 @@ const App = () => {
             icon: 'pi pi-fw pi-clone',
             items: [
                 { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/pessoa_fisica' },
-                { label: 'Títulos em aberto', icon: 'pi pi-fw pi-file', to: '/titulos_em_aberto'}
+                { label: 'Títulos em aberto', icon: 'pi pi-fw pi-dollar', to: '/titulos_em_aberto'},
+                { label: 'Tipo de documento', icon: 'pi pi-fw pi-folder-open', to: '/tipo_documento'}
                 // {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
                 // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
             ]
@@ -282,6 +285,7 @@ const App = () => {
                         <Route path="/agenda" element={<Agenda />} />
                         <Route path="/pessoa_fisica" element={<CrudDemo />}/>
                         <Route path='/titulos_em_aberto' element={<TitulosEmAberto />} />
+                        <Route path='/tipo_documento' element={<TiposDocumento />}/>
                     </Routes>
                 </div>
 
