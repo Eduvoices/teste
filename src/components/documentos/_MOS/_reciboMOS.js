@@ -1,12 +1,13 @@
 import React from "react"
 import logo1 from '../../../assets/logo_mos.png'
 
-const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual}) => {
+const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Texto}) => {
 
     let nome = decodeURIComponent(cliente)
     let dataAtualCompleta = decodeURIComponent(dataAtual)
     let funcionarioCompleto = decodeURIComponent(funcionario)
     let numeroCtrlCompleto = decodeURIComponent(numeroCtrl)
+    let textoCompleto = decodeURIComponent(Texto)
 
     return (
         <div>
@@ -15,7 +16,7 @@ const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual}) =
         <div id="controle">
             <span>{numeroCtrlCompleto}</span>
         </div>
-        <p style={{marginTop:'64px'}}>Recebemos de <b><span id="recibo_nome">{nome}</span></b> a importância de <b><span id="recibo_valor">R$ {cash}</span> ({extenso})</b>, referente ao pagamento de honorários advocatícios.</p>
+        <p style={{marginTop:'64px'}}>Recebemos de <b><span id="recibo_nome">{nome}</span></b> a importância de <b><span id="recibo_valor">R$ {cash}</span> ({extenso})</b>, {textoCompleto}</p>
         <span id="data">{dataAtualCompleta}</span>
         <span id="assinatura">{funcionarioCompleto}</span>
 

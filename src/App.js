@@ -8,7 +8,6 @@ import AppBreadcrumb from './AppBreadcrumb';
 import AppInlineProfile from './AppInlineProfile';
 
 import Agenda from './pages/Agenda'
-import Recibos from './pages/Recibos';
 import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
@@ -77,8 +76,6 @@ const App = () => {
                 { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/pessoa_fisica' },
                 { label: 'Títulos em aberto', icon: 'pi pi-fw pi-dollar', to: '/titulos_em_aberto'},
                 { label: 'Tipo de documento', icon: 'pi pi-fw pi-folder-open', to: '/tipo_documento'}
-                // {label: 'Recibos', icon: 'pi pi-fw pi-dollar', to: '/invoice'},
-                // { label: 'Wizard', icon: 'pi pi-fw pi-star-fill', to: '/wizard' },
             ]
         }
     ];
@@ -279,7 +276,6 @@ const App = () => {
                     <Routes>
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/userCadastro" element={<UserCadastro />} />
-                        {/* <Route path="/invoice" element={<Recibos />} /> */}
                         <Route path="/cadastro" element={<Cadastro />} />
                         <Route path="/alteraSenha" element={<AlteraSenha />} />
                         <Route path="/agenda" element={<Agenda />} />

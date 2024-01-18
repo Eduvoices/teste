@@ -1,38 +1,17 @@
 import React, {useState, useRef, useEffect} from 'react'
-// import { classNames } from 'primereact/utils'
 import { DataTable } from 'primereact/datatable'
 import { Column } from 'primereact/column'
 import { Toast } from 'primereact/toast'
 import { Button } from 'primereact/button'
 import { FileUpload } from 'primereact/fileupload'
 import { Toolbar } from 'primereact/toolbar'
-// import { Dialog } from 'primereact/dialog'
 import { InputText } from 'primereact/inputtext'
-// import { InputMask } from 'primereact/inputmask'
 import TitulosService from '../service/TitulosService'
 
 const TitulosEmAberto = () => {
-    // let emptyTitulo = {
-    //     sacado: '',
-    //     valor: '',
-    //     dataEmissao: '',
-    //     dataVencimento: '',
-    //     tipo: '',
-    //     titulo: '',
-    //     ramoDireito: '',
-    //     natureza: '',
-    //     cidade: '',
-    //     parceiro: '',
-    //     status: ''
-    // }
 
     const [titles, setTitles] = useState(null)
-    // const [titleDialog, setTitleDialog] = useState(null)
-    // const [deletTitleDialog, setDeleteTitleDialog] = useState(false)
-    // const [deletTitlesDialog, setDeleteTitlesDialog] = useState(false)
-    // const [title, setTitle] = useState(emptyTitulo)
     const [selectedTitles, setSelectedTitles] = useState(null)
-    // const [submitted, setSubmitted] = useState(false)
     const [globalFilter, setGlobalFilter] = useState(null)
     const toast = useRef(null);
     const dt = useRef(null);
@@ -51,120 +30,6 @@ const TitulosEmAberto = () => {
             console.log(data)
         }).catch(err => console.log(err))
     }
-
-    // function handleEnter(event) {
-    //     if (event.keyCode === 13) {
-    //         const form = event.target.form
-    //         const index = Array.prototype.indexOf.call(form, event.target)
-    //         form.elements[index +1].focus()
-    //         event.preventDefault()
-    //     }
-    // }
-
-    // const openNew = () => {
-    //     setTitle(emptyTitulo)
-    //     setSubmitted(false)
-    //     setTitleDialog(true)
-    // }
-
-    // const hideDialog = () => {
-    //     setSubmitted(false)
-    //     setTitleDialog(false)
-    // }
-
-    // const hideDeleteTitleDialog = () => {
-    //     setDeleteTitleDialog(false)
-    // }
-
-    // const hideDeleteTitlesDialog = () => {
-    //     setDeleteTitlesDialog(false)
-    // }
-
-    // const saveProduct = () => {
-    //     setSubmitted(true);
-
-    //     if (title.name.trim()) {
-    //         let _products = [...titles];
-    //         let _product = { ...title };
-    //         if (title.id) {
-    //             const index = findIndexById(title.id);
-
-    //             _products[index] = _product;
-    //             toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
-    //         } else {
-    //             _product.id = createId();
-    //             _products.push(_product);
-    //             toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
-    //         }
-
-    //         setTitles(_products);
-    //         setTitleDialog(false);
-    //         setTitle(emptyTitulo);
-    //     }
-    // }
-
-    // const editTitle = (title) => {
-    //     setTitle({...title})
-    //     setDeleteTitleDialog(true)
-    // }
-
-    // const confirmDeleteProduct = (product) => {
-    //     setTitle(product);
-    //     setDeleteTitlesDialog(true);
-    // }
-
-    // const deleteProduct = () => {
-    //     let _products = titles.filter((val) => val.id !== title.id);
-    //     setTitles(_products);
-    //     setDeleteTitleDialog(false);
-    //     setTitle(emptyTitulo);
-    //     toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro removido', life: 3000 });
-    // }
-
-    // const findIndexById = (id) => {
-    //     let index = -1;
-    //     for (let i = 0; i < titles.length; i++) {
-    //         if (titles[i].id === id) {
-    //             index = i;
-    //             break;
-    //         }
-    //     }
-
-    //     return index
-    // }
-
-    // const createId = () => {
-    //     let id = '';
-    //     let chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    //     for (let i = 0; i < 5; i++) {
-    //         id += chars.charAt(Math.floor(Math.random() * chars.length));
-    //     }
-    //     return id;
-    // }
-
-    // const exportCSV = () => {
-    //     dt.current.exportCSV();
-    // }
-
-    // const confirmDeleteSelected = () => {
-    //     setDeleteTitlesDialog(true);
-    // }
-
-    // const deleteSelectedProducts = () => {
-    //     let _products = titles.filter((val) => !selectedTitles.includes(val));
-    //     setTitles(_products);
-    //     setDeleteTitlesDialog(false);
-    //     setSelectedTitles(null);
-    //     toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro deletado', life: 3000 });
-    // }
-
-    // const onInputChange = (e, name) => {
-    //     const val = (e.target && e.target.value) || '';
-    //     let _product = { ...title };
-    //         _product[`${name}`] = val;
-
-    //     setTitle(_product);
-    // }
 
     const leftToolbarTemplate = () => {
         return (
@@ -303,27 +168,6 @@ const TitulosEmAberto = () => {
             </span>
         </div>
     )
-
-    // const productDialogFooter = (
-    //     <>
-    //         <Button label="Cancelar" icon="pi pi-times" className="p-button-text" />
-    //         <Button label="Salvar" icon="pi pi-check" className="p-button-text" />
-    //     </>
-    // )
-
-    // const deleteProductDialogFooter = (
-    //     <>
-    //         <Button label="Não" icon="pi pi-times" className="p-button-text" />
-    //         <Button label="Sim" icon="pi pi-check" className="p-button-text" />
-    //     </>
-    // )
-
-    // const deleteProductsDialogFooter = (
-    //     <>
-    //         <Button label="Não" icon="pi pi-times" className="p-button-text" />
-    //         <Button label="Sim" icon="pi pi-check" className="p-button-text" />
-    //     </>
-    // )
 
     titlesBackend()
 

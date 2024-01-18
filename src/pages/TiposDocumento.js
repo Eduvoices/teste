@@ -60,7 +60,13 @@ const TiposDocumento = () => {
         )
     }
 
-    return <h1>Tipos de documento</h1>
+    return (
+        <div className="grid crud-demo">
+            <div className="col-12">
+
+            </div>
+        </div>
+    )
 }
 
 export default TiposDocumento
