@@ -25,7 +25,7 @@ const TitulosEmAberto = () => {
 
     const titlesBackend =  () => {
         fetch(`http://tecjusbackend.vercel.app/titulosemaberto`)
-        .then(res => res.text())
+        .then(res => res.json())
         .then(data => {
             console.log(data)
         }).catch(err => console.log(err))
@@ -36,7 +36,7 @@ const TitulosEmAberto = () => {
             <React.Fragment>
                 <div className='my-2'>
                     <Button label='Novo' icon='pi pi-plus' className='p-button-success mr-2'/>
-                    <Button label='Deletar' icon='pi pi-thrash' className='p-button-danger'/>
+                    <Button label='Deletar' icon='pi pi-trash' className='p-button-danger'/>
                 </div>
             </React.Fragment>
         )

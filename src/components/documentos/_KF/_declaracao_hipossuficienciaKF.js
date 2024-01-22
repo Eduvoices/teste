@@ -4,6 +4,7 @@ const DeclaracaoHipossuficiencia = ({cliente, estadoCivil, rg, cpf, endereco, nu
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
+    let bairroCompleto = decodeURIComponent(bairro)
 
     return (
         <div id="invoice-content-kf">
@@ -12,7 +13,7 @@ const DeclaracaoHipossuficiencia = ({cliente, estadoCivil, rg, cpf, endereco, nu
 
             <p>
             <b>{nome}</b>, brasileiro(a), {estadoCivil}, portador(a) do RG {rg}, inscrito(a) no CPF sob n° {cpf}, residente e domiciliado na Rua {address},  nº
-            {numero}, CEP {cep}, Bairro {bairro}, no município de {cidade} – {uf}, DECLARA, nos termos dos artigos 98 e 99, do
+            {numero}, CEP {cep}, Bairro {bairroCompleto}, no município de {cidade} – {uf}, DECLARA, nos termos dos artigos 98 e 99, do
             Código de Processo Civil não possuir recursos para pagar as custas, as despesas processuais e os honorários advocatícios do presente feito.<br/>
             Desta forma, solicito que me seja concedido o benefício da Justiça Gratuita, nos termos do artigo 98 e seguintes do Código de Processo Civil.<br/>
             Sinceramente,

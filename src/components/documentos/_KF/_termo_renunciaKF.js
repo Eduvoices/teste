@@ -4,6 +4,7 @@ const TermoRenunciaKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, bairr
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
+    let bairroCompleto = decodeURIComponent(bairro)
 
     return (
         <div id='invoice-content-kf'>
@@ -12,7 +13,7 @@ const TermoRenunciaKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, bairr
 
             <p>
                 <b>{nome}</b>, brasileiro(a), {estadoCivil}, portador(a) do RG nº {rg}, inscrito(a) no CPF sob o nº {cpf}, residente
-                e domiciliado(a) na Rua {address}, nº {numero}, bairro {bairro}, CEP {cep}, no município de {cidade} - {uf}, <b>RENUNCIA</b> aos
+                e domiciliado(a) na Rua {address}, nº {numero}, bairro {bairroCompleto}, CEP {cep}, no município de {cidade} - {uf}, <b>RENUNCIA</b> aos
                 valores que porventura venham a exceder 60 (sessenta) salários mínimos, de acordo com o disposto no artigo 3º da
                 Lei 10.259/2001, requerendo sejam deferidos direitos equivalentes ao limite financeiro estabelecido no mesmo dispositivo
                 legal, aferido no momento da propositura da ação, no processo de Benfício Previdenciário em face do INSS, junto ao Juizado

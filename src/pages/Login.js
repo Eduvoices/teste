@@ -44,9 +44,13 @@ export const Login = () => {
                 navigate('/firstAccess')
             } else if (data.message === 'Acesso negado') {
                 navigate('/denied')
+            } else if (data.message === 'Acesso liberado') {
+                navigate('/dashboard')
             }
         }
     }
+
+    //priscilablasechi@yahoo.com.br 12345
 
     let message = 'Essa é uma mensagem secreta'
     let secretPhrase = 'aLiThsanGthn119450Jemnt'
@@ -56,10 +60,8 @@ export const Login = () => {
 
     let plainText = decrypt.toString(CryptoJS.enc.Utf8)
 
-    console.log(encrypt.toString())
-    console.log(plainText)
-
-    //4567
+    // console.log(encrypt.toString())
+    // console.log(plainText)
 
     return (
         <div className="login-body">

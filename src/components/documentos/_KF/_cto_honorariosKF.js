@@ -4,6 +4,7 @@ const CtoHonorariosKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, bairr
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
+    let bairroCompleto = decodeURIComponent(bairro)
 
     return (
         <div id="invoice-content-kf">
@@ -12,7 +13,7 @@ const CtoHonorariosKF = ({cliente, estadoCivil, rg, cpf, endereco, numero, bairr
 
             <p>
                 <b>CONTRATANTE: {nome}</b>, brasileiro(a), {estadoCivil}, portador(a) do RG nº {rg}, inscrita
-                no CPF sob o nº {cpf}, residente e domiciliada na Rua {address}, nº {numero}, Bairro {bairro}, CEP {cep},
+                no CPF sob o nº {cpf}, residente e domiciliada na Rua {address}, nº {numero}, Bairro {bairroCompleto}, CEP {cep},
                 no município de {cidade} - {uf}. <br/>
                 <b>CONTRATADA: Dra. Karina Prescilia Ferreira dos Santos</b>, brasileira, casada, inscrita na OAB/PR
                 sob o nº 64.685, com escritório profissional situado à Avenida Antônio Losso, nº 1499,

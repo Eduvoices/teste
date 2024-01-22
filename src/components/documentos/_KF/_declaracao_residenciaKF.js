@@ -4,6 +4,7 @@ const DeclaracaoResidenciaKF = ({cliente, estadoCivil, rg, cpf, endereco, numero
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
+    let bairroCompleto = decodeURIComponent(bairro)
 
     return (
         <div id="invoice-content-kf">
@@ -12,7 +13,7 @@ const DeclaracaoResidenciaKF = ({cliente, estadoCivil, rg, cpf, endereco, numero
 
             <p>
                 <b>{nome}</b>, brasileiro(a), {estadoCivil}, portador do RG nº {rg}, inscrito no CPF sob o nº {cpf}, residente
-                e domiciliado na rua {address}, nº {numero}, CEP {cep}, Bairro {bairro}, no município de {cidade} - {uf}, declaro
+                e domiciliado na rua {address}, nº {numero}, CEP {cep}, Bairro {bairroCompleto}, no município de {cidade} - {uf}, declaro
                 na forma prevista pelo art. 1º da Lei 7.115/1983, sob as penas previstas no art. 299 do Código Penal ("Omitir, em documento
                 público ou particular, declaração que deve ou devia constar, ou nele inserir ou fazer inserir declaração falsa ou diversa da que
                 devia ser escrita, com fim de prejudicar direito, criar obrigação ou alterar a verdade sobre fato juridicamente relevante.

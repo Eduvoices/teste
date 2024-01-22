@@ -4,6 +4,7 @@ const ProcuracaoCartoriosKF = ({cliente, estadoCivil, rg, cpf, endereco, numero,
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
+    let bairroCompleto = decodeURIComponent(bairro)
 
     return (
         <div id="invoice-content-kf">
@@ -12,7 +13,7 @@ const ProcuracaoCartoriosKF = ({cliente, estadoCivil, rg, cpf, endereco, numero,
 
             <p>
             <b>{nome}</b>, brasileiro(a), {estadoCivil}, portador do RG nº {rg}, inscrito no CPF sob o nº {cpf}, residente
-                e domiciliado na rua {address}, nº {numero}, CEP {cep}, Bairro {bairro}, no município de {cidade} - {uf}, nomeia e
+                e domiciliado na rua {address}, nº {numero}, CEP {cep}, Bairro {bairroCompleto}, no município de {cidade} - {uf}, nomeia e
                 constitui como sua procuradora, através do presente instrumento de mandato, aos advogados, <b>KARINA PRESCILIA FERREIRA DOS
                 SANTOS</b>, brasileira, inscrita perante a OAB/PR sob o n. 64.685, NIT nº 12971702539,<b> EDGAR SANTOS DE MEIRA NETO</b>, brasileiro, inscrito
                 perante a OAB/PR sob o n. 86.080, <b>ISABELA CANTERI DO AMARAL</b>, brasileira, inscrita perante a OAB/PR sob o n. 97.636, residentes e domiciliados
