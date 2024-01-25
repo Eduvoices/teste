@@ -96,7 +96,7 @@ const TiposDocumento = () => {
                     rowsPerPageOptions={[5, 10, 25]}
                     className="datatable-responsive"
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} títulos"
+                    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} documentos"
                     globalFilter={globalFilter}
                     emptyMessage="Nenhum resultado encontrado."
                     header={header}

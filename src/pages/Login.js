@@ -55,13 +55,16 @@ export const Login = () => {
     let message = 'Essa é uma mensagem secreta'
     let secretPhrase = 'aLiThsanGthn119450Jemnt'
 
-    let encrypt = CryptoJS.AES.encrypt(formData.email, secretPhrase)
-    let decrypt = CryptoJS.AES.decrypt(encrypt, secretPhrase)
+    let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretPhrase)
+    let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretPhrase)
 
-    let plainText = decrypt.toString(CryptoJS.enc.Utf8)
+    // let encryptPassword = CryptoJS.AES.encrypt(formData.password, secretKeyPhrase)
+    // let decryptPassword =
 
-    // console.log(encrypt.toString())
-    // console.log(plainText)
+    let plainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+
+    // console.log(Esse é o email encriptado:, encryptEmail.toString())
+    // console.log(Esse é o email decriptado:, plainText)
 
     return (
         <div className="login-body">
@@ -88,7 +91,6 @@ export const Login = () => {
                 <Button
                     label="Entrar"
                     type='submit'
-                    // onClick={()=> navigate('/dashboard')}
                 />
                 </form>
             </div>

@@ -11,7 +11,7 @@ const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Te
 
     return (
         <div>
-        <img src={logo1} alt="logo"/>
+        <img src={logo1} style={{width:'35%'}} alt="logo"/>
         <h1 style={{fontSize:'24px'}}>RECIBO</h1>
         <div id="controle">
             <span>{numeroCtrlCompleto}</span>

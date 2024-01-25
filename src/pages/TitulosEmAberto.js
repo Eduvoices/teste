@@ -7,6 +7,7 @@ import { FileUpload } from 'primereact/fileupload'
 import { Toolbar } from 'primereact/toolbar'
 import { InputText } from 'primereact/inputtext'
 import TitulosService from '../service/TitulosService'
+import axios from 'axios'
 
 const TitulosEmAberto = () => {
 
@@ -18,18 +19,24 @@ const TitulosEmAberto = () => {
 
     // https://tecjusbackend.vercel.app/titulosemaberto
 
-    // useEffect(() => {
-    //     const titleService = new TitulosService()
-    //     titleService.getTitulos().then((data) => setTitles(data))
-    // }, [])
+    useEffect(() => {
+        // const titleService = new TitulosService()
+        // titleService.getTitulos().then((data) => setTitles(data))
 
-    const titlesBackend =  () => {
-        fetch(`http://tecjusbackend.vercel.app/titulosemaberto`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        }).catch(err => console.log(err))
-    }
+        // fetch(`http://tecjusbackend.vercel.app/titulosemaberto`)
+        // .then(res => res.status).then(data => console.log(data))
+        // .catch(err => console.log(err))
+
+        const client = axios.create({
+            baseURL: "http://tecjusbackend.vercel.app"
+        })
+
+        async function getData() {
+            const response = await client.get("/titulosemaberto")
+            console.log(response)
+        }
+        getData()
+    }, [])
 
     const leftToolbarTemplate = () => {
         return (
@@ -169,7 +176,8 @@ const TitulosEmAberto = () => {
         </div>
     )
 
-    titlesBackend()
+    // titlesBackend()
+
 
     return (
         <div className='grid crud-demo'>
