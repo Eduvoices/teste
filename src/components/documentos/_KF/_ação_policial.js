@@ -1,6 +1,6 @@
 import logo from '../../../assets/kflogo.png'
 
-const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero}) => {
+const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero, dia, mes, ano}) => {
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
@@ -11,14 +11,14 @@ const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero}) => {
             <h1 style={{fontSize:'20px', textAlign:'center', fontWeight:'bold', textDecorationLine:'underline'}}>CONTRATO DE PRESTAÇÃO DE SERVIÇOS ADVOCATÍCIOS</h1>
 
             <p>
-                As partes, de um lado <b>{nome}</b>, brasileiro(a), casado(a), aposentado(a),
+                As partes, de um lado <b>{nome}</b>, brasileiro(a), aposentado(a),
                 portador do RG nº <b>{rg}</b>, inscrito no CPF sob o nº <b>{cpf}</b>, residente e domiciliado na Rua <b>{address}</b>, nº <b>{numero}</b>, doravante denominado
                 simplesmente <b>CONTRATANTE</b> e, de
                 outro, lado, <b>KARINA PRESCILIA FERREIRA DOS SANTOS</b>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº 34.063.317/0001-99, com escritório
                 profisional situado à Avenida Antônio Losso, nº 1499, Bairro Parque das Árvores, doravante denominado simplesmente <b>CONTRATADA</b>, firmam o presente <span style={{fontWeight:'bold', textDecorationLine:'underline'}}>CONTRATO DE HONORÁRIOS</span>, que será
                 regido pelas cláusulas e condições a seguir expostas:<br/>
                 <b>1ª-</b> Por este instrumento, o CONTRATANTE contrata os serviços advocatícios da CONTRATADA, para atuar na ação de Declaratória de Inconstitucionalidade
-                cumulada com Rpetição de Indébito, a ser ajuizada em face do INSTITUTO PARANÁ PREVIDÊNCIA e ESTADO DO PARANÁ, que tramitará na Comarca de Guarapuava-Paraná, conforme
+                cumulada com Repetição de Indébito, a ser ajuizada em face do INSTITUTO PARANÁ PREVIDÊNCIA e ESTADO DO PARANÁ, que tramitará na Comarca de Guarapuava-Paraná, conforme
                 termos do mandado outorgado em apartado.<br/>
                 <b>2ª-</b> A medida judicial referida na cláusula primeira deverá ser ajuizada no prazo de 30 (trinta) dias, contados da entrega efetiva de todos os docmentos solicitados pela CONTRATADA.<br/>
                 <b>3ª-</b> Em contraprestações pelos serviços contratados na cláusula primeira, se obriga o CONTRATANTE a pagar a CONTRATADA, os honorários de consulta em parcela única
@@ -40,6 +40,8 @@ const CtoAçãoPolicial = ({cliente, rg, cpf, endereco, numero}) => {
                 <b>12ª-</b> Fica eleito o foro da comaca de Guarapuava, para dirimir quaisquer medidas judiciais ou extrajudiciais oriundas do presente contrato, renunciando as partes a qulquer outro, por mais privilegiado que seja.<br/>
                 E, por estarem justos e contratados, assinam o prente contrato de prestação de serviços, em duas vias de igual teor e forma, sendo uma para cada parte, para que produza seus devidos efeitos legais e jurídicos.
             </p>
+
+            <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
 
             <span id='assinatura'>{nome}</span>
             <span style={{marginBottom:'48px'}}>RG {rg}</span>

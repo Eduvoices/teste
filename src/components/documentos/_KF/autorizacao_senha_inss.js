@@ -1,6 +1,6 @@
 import logo from '../../../assets/kflogo.png'
 
-const AutorizacaoSenhaInss = ({cliente, estadoCivil, profissao, rg, cpf, endereco, numero}) => {
+const AutorizacaoSenhaInss = ({cliente, estadoCivil, profissao, rg, cpf, endereco, numero, dia, mes, ano}) => {
 
     let nome = decodeURIComponent(cliente)
     let address = decodeURIComponent(endereco)
@@ -16,6 +16,8 @@ const AutorizacaoSenhaInss = ({cliente, estadoCivil, profissao, rg, cpf, enderec
             Cumpro o compromisso de comunicar, com maior brevidade possível o escritório sobre qualquer alteração da referida senha, devendo ser comunicada pelo e-mail secretaria@kfprev.adv.br ou pelo Whatsapp 42-99814-5963.
             O descumprimento dos termos acordados poderá interferir na qualidade do trabalho, eximindo o profissional de quaisquer danos pela ausência de conhecimento sobre a nova senha elaborada pelo contratante.
             </p>
+
+            <span id='data'>Guarapuava, {dia} de {mes} de {ano}.</span>
 
             <span id='assinatura'>{nome}</span>
             <span>RG {rg}</span>

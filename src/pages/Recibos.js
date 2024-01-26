@@ -27,19 +27,17 @@ const Recibos = (props) => {
     const [param8, setParam8] = useState('')
     const [param9, setParam9] = useState('')
     const [param10, setParam10] = useState('')
-    const [param11, setParam11] = useState('')
-    const [param12, setParam12] = useState('')
-    const [param13, setParam13] = useState('')
 
     const [doc, setDoc] = useState('')
     const [pasta, setPasta] = useState('')
     const [textNumber, setTextNumber] = useState('')
 
-        // let data = new Date()
-        // let day = data.getDate().toString().padStart(2, '0')
-        // let month = String(data.getMonth() + 1).padStart(2, '0')
-        // let monthName = String(data.toLocaleString('pt-br', {
-        //     month:'long'}))
+        let data = new Date()
+        let day = data.getDate().toString().padStart(2, '0')
+        let monthName = String(data.toLocaleString('pt-br', {
+            month:'long'}))
+        let year = data.getFullYear()
+
 
     function returnDoc() {
         if (doc === 'Recibo' && pasta === 'MOS') {
@@ -73,9 +71,9 @@ const Recibos = (props) => {
                 cep={param8}
                 cidade={param9}
                 uf={param10}
-                dia={param11}
-                mes={param12}
-                ano={param13}
+                dia={day}
+                mes={monthName}
+                ano={year}
                     />
         } else if (doc === 'Recibo' && pasta === 'TECJUS') {
             return <ReciboTecjus
@@ -94,14 +92,20 @@ const Recibos = (props) => {
                 rg={param4}
                 cpf={param5}
                 endereco={param6}
-                numero={param7}/>
+                numero={param7}
+                mes={monthName}
+                dia={day}
+                ano={year}/>
         } else if (doc === 'cto_acao_policial' && pasta === 'KF') {
             return <CtoAçãoPolicial
                 cliente={param1}
                 rg={param2}
                 cpf={param3}
                 endereco={param4}
-                numero={param5}/>
+                numero={param5}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'cto_civel_trabalhista' && pasta === 'KF') {
             return <CtoTrabalhistaCivel
                 cliente={param1}
@@ -114,9 +118,9 @@ const Recibos = (props) => {
                 cep={param8}
                 cidade={param9}
                 uf={param10}
-                dia={param11}
-                mes={param12}
-                ano={param13}/>
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'cto_honorarios' && pasta === 'KF') {
             return <CtoHonorariosKF
                 cliente={param1}
@@ -129,9 +133,9 @@ const Recibos = (props) => {
                 cep={param8}
                 cidade={param9}
                 uf={param10}
-                dia={param11}
-                mes={param12}
-                ano={param13}/>
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'declaracao_hipossuficiencia' && pasta === 'KF') {
             return <DeclaracaoHipossuficiencia
                 cliente={param1}
@@ -144,96 +148,86 @@ const Recibos = (props) => {
                 cep={param8}
                 cidade={param9}
                 uf={param10}
-                dia={param11}
-                mes={param12}
-                    ano={param13}/>
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'declaracao_residencia' && pasta === 'KF') {
             return <DeclaracaoResidenciaKF
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'procuracao_cartorio' && pasta === 'KF') {
             return <ProcuracaoCartoriosKF
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'procuracao_policial' && pasta === 'KF') {
             return <ProcuracaoPolicial
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'termo_renuncia' && pasta === 'KF') {
             return <TermoRenunciaKF
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         } else if (doc === 'termo_representacao' && pasta === 'KF') {
             return <TermoRepresentacaoKF
-            cliente={param1}
-            estadoCivil={param2}
-            rg={param3}
-            cpf={param4}
-            endereco={param5}
-            numero={param6}
-            bairro={param7}
-            cep={param8}
-            cidade={param9}
-            uf={param10}
-            dia={param11}
-            mes={param12}
-            ano={param13}/>
+                cliente={param1}
+                estadoCivil={param2}
+                rg={param3}
+                cpf={param4}
+                endereco={param5}
+                numero={param6}
+                bairro={param7}
+                cep={param8}
+                cidade={param9}
+                uf={param10}
+                dia={day}
+                mes={monthName}
+                ano={year}/>
         }
     }
-
-    // function dataAtual() {
-    //     let data = new Date()
-    //     let day = data.getDate().toString().padStart(2, '0')
-    //     let month = String(data.getMonth() + 1).padStart(2, '0')
-    //     let monthName = data.toLocaleString('pt-br', {
-    //         month:'long'
-    //     })
-    //     return `${day}/${month}/${data.getFullYear()}`
-    // }
 
     //http://localhost:3000/#/invoice?#MOS#Recibo#100#Joaquim%20José%20da%20Silva%20Xavier#07/12/2023#Funcionario1#202312
     // http://localhost:3000/#/invoice?#KF#cto_honorarios#Joaquim%20José%20da%20Silva%20Xavier#casado#480035465#47491614035#Curió%20do%20Bico%20Doce#500#Centro#86060000#Arapongas#PR#12#dezembro#2023
@@ -256,9 +250,6 @@ const Recibos = (props) => {
                         setParam8(params[10])
                         setParam9(params[11])
                         setParam10(params[12])
-                        setParam11(params[13])
-                        setParam12(params[14])
-                        setParam13(params[15])
 
                         const extenso = require('extenso')
 
