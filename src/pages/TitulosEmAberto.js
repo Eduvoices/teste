@@ -33,7 +33,7 @@ const TitulosEmAberto = () => {
 
         async function getData() {
             const response = await client.get("/titulosemaberto")
-            console.log(response)
+            console.log(response.data.rows[1].Localidade_Nome)
         }
         getData()
     }, [])

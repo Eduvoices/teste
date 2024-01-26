@@ -35,25 +35,32 @@ const Recibos = (props) => {
     const [pasta, setPasta] = useState('')
     const [textNumber, setTextNumber] = useState('')
 
+        // let data = new Date()
+        // let day = data.getDate().toString().padStart(2, '0')
+        // let month = String(data.getMonth() + 1).padStart(2, '0')
+        // let monthName = String(data.toLocaleString('pt-br', {
+        //     month:'long'}))
+
     function returnDoc() {
         if (doc === 'Recibo' && pasta === 'MOS') {
             return <Recibo1
                 cliente={param2}
                 cash={param1}
                 extenso={textNumber}
-                funcionario={param3}
-                dataAtual={dataAtual()}
-                numeroCtrl={param4}
-                Texto={param5}/>
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}
+                Texto={param6}
+                />
         } else if (doc === 'Recibo' && pasta === 'KF') {
             return <Recibo2
                 cliente={param2}
                 cash={param1}
                 extenso={textNumber}
-                funcionario={param3}
-                dataAtual={dataAtual()}
-                numeroCtrl={param4}
-                Texto={param5}/>
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}
+                Texto={param6}/>
         } else if (doc === 'procuracao' && pasta === 'KF') {
             return <Procuração2
                 cliente={param1}
@@ -75,10 +82,10 @@ const Recibos = (props) => {
                 cliente={param2}
                 cash={param1}
                 extenso={textNumber}
-                funcionario={param3}
-                dataAtual={dataAtual()}
-                numeroCtrl={param4}
-                Texto={param5}/>
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}
+                Texto={param6}/>
         } else if (doc === 'senha_inss' && pasta === 'KF') {
             return <AutorizacaoSenhaInss
                 cliente={param1}
@@ -218,20 +225,18 @@ const Recibos = (props) => {
         }
     }
 
-    function dataAtual() {
-        let data = new Date()
-        let day = data.getDate().toString().padStart(2, '0')
-        let month = String(data.getMonth() + 1).padStart(2, '0')
-        let monthName = data.toLocaleString('pt-br', {
-            month:'long'
-        })
-        return `${day}/${month}/${data.getFullYear()}`
-    }
+    // function dataAtual() {
+    //     let data = new Date()
+    //     let day = data.getDate().toString().padStart(2, '0')
+    //     let month = String(data.getMonth() + 1).padStart(2, '0')
+    //     let monthName = data.toLocaleString('pt-br', {
+    //         month:'long'
+    //     })
+    //     return `${day}/${month}/${data.getFullYear()}`
+    // }
 
     //http://localhost:3000/#/invoice?#MOS#Recibo#100#Joaquim%20José%20da%20Silva%20Xavier#07/12/2023#Funcionario1#202312
     // http://localhost:3000/#/invoice?#KF#cto_honorarios#Joaquim%20José%20da%20Silva%20Xavier#casado#480035465#47491614035#Curió%20do%20Bico%20Doce#500#Centro#86060000#Arapongas#PR#12#dezembro#2023
-
-    const cash = parseFloat(param1).toLocaleString('pt-br', {minimumFractionDigits: 2})
 
     useEffect(()=>{
 

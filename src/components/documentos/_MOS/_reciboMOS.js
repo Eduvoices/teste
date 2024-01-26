@@ -1,7 +1,7 @@
 import React from "react"
 import logo1 from '../../../assets/logo_mos.png'
 
-const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Texto}) => {
+const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Texto, mes}) => {
 
     let nome = decodeURIComponent(cliente)
     let funcionarioCompleto = decodeURIComponent(funcionario)
