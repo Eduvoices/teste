@@ -61,7 +61,7 @@ export const Login = () => {
     // let encryptPassword = CryptoJS.AES.encrypt(formData.password, secretKeyPhrase)
     // let decryptPassword =
 
-    let plainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+    let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
 
     // console.log(Esse é o email encriptado:, encryptEmail.toString())
     // console.log(Esse é o email decriptado:, plainText)

@@ -4,7 +4,6 @@ import logo1 from '../../../assets/logo_mos.png'
 const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Texto}) => {
 
     let nome = decodeURIComponent(cliente)
-    let dataAtualCompleta = decodeURIComponent(dataAtual)
     let funcionarioCompleto = decodeURIComponent(funcionario)
     let numeroCtrlCompleto = decodeURIComponent(numeroCtrl)
     let textoCompleto = decodeURIComponent(Texto)
@@ -17,11 +16,11 @@ const Recibo1 = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Te
             <span>{numeroCtrlCompleto}</span>
         </div>
         <p style={{marginTop:'64px'}}>Recebemos de <b><span id="recibo_nome">{nome}</span></b> a importância de <b><span id="recibo_valor">R$ {cash}</span> ({extenso})</b>, {textoCompleto}</p>
-        <span id="data">{dataAtualCompleta}</span>
+        <span id="data">{dataAtual}</span>
         <span id="assinatura">{funcionarioCompleto}</span>
 
         <div className="canhoto">
-            <span>{dataAtualCompleta}</span>
+            <span>{dataAtual}</span>
             <span id="recibo_nome">{nome}</span>
             <span>R$ {cash}</span>
             <span>{numeroCtrlCompleto}</span>

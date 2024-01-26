@@ -39,21 +39,21 @@ const Recibos = (props) => {
         if (doc === 'Recibo' && pasta === 'MOS') {
             return <Recibo1
                 cliente={param2}
-                cash={cash}
+                cash={param1}
                 extenso={textNumber}
-                funcionario={param4}
-                dataAtual={param3}
-                numeroCtrl={param5}
-                Texto={param6}/>
+                funcionario={param3}
+                dataAtual={dataAtual()}
+                numeroCtrl={param4}
+                Texto={param5}/>
         } else if (doc === 'Recibo' && pasta === 'KF') {
             return <Recibo2
                 cliente={param2}
-                cash={cash}
+                cash={param1}
                 extenso={textNumber}
-                funcionario={param4}
-                dataAtual={param3}
-                numeroCtrl={param5}
-                Texto={param6}/>
+                funcionario={param3}
+                dataAtual={dataAtual()}
+                numeroCtrl={param4}
+                Texto={param5}/>
         } else if (doc === 'procuracao' && pasta === 'KF') {
             return <Procuração2
                 cliente={param1}
@@ -73,12 +73,12 @@ const Recibos = (props) => {
         } else if (doc === 'Recibo' && pasta === 'TECJUS') {
             return <ReciboTecjus
                 cliente={param2}
+                cash={param1}
                 extenso={textNumber}
-                cash={cash}
-                funcionario={param4}
-                dataAtual={param3}
-                numeroCtrl={param5}
-                Texto={param6}/>
+                funcionario={param3}
+                dataAtual={dataAtual()}
+                numeroCtrl={param4}
+                Texto={param5}/>
         } else if (doc === 'senha_inss' && pasta === 'KF') {
             return <AutorizacaoSenhaInss
                 cliente={param1}
@@ -216,6 +216,16 @@ const Recibos = (props) => {
             mes={param12}
             ano={param13}/>
         }
+    }
+
+    function dataAtual() {
+        let data = new Date()
+        let day = data.getDate().toString().padStart(2, '0')
+        let month = String(data.getMonth() + 1).padStart(2, '0')
+        let monthName = data.toLocaleString('pt-br', {
+            month:'long'
+        })
+        return `${day}/${month}/${data.getFullYear()}`
     }
 
     //http://localhost:3000/#/invoice?#MOS#Recibo#100#Joaquim%20José%20da%20Silva%20Xavier#07/12/2023#Funcionario1#202312
