@@ -7,7 +7,6 @@ import { FileUpload } from 'primereact/fileupload'
 import { Toolbar } from 'primereact/toolbar'
 import { InputText } from 'primereact/inputtext'
 import TitulosService from '../service/TitulosService'
-import axios from 'axios'
 
 const TitulosEmAberto = () => {
 
@@ -17,25 +16,9 @@ const TitulosEmAberto = () => {
     const toast = useRef(null);
     const dt = useRef(null);
 
-    // https://tecjusbackend.vercel.app/titulosemaberto
-
     useEffect(() => {
-        // const titleService = new TitulosService()
-        // titleService.getTitulos().then((data) => setTitles(data))
-
-        // fetch(`http://tecjusbackend.vercel.app/titulosemaberto`)
-        // .then(res => res.status).then(data => console.log(data))
-        // .catch(err => console.log(err))
-
-        const client = axios.create({
-            baseURL: "http://tecjusbackend.vercel.app"
-        })
-
-        async function getData() {
-            const response = await client.get("/titulosemaberto")
-            console.log(response.data.rows[1].Localidade_Nome)
-        }
-        getData()
+        const titleService = new TitulosService()
+        titleService.getTitulos().then((data) => setTitles(data))
     }, [])
 
     const leftToolbarTemplate = () => {
@@ -62,7 +45,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'>Sacado</span>
-                {rowData.sacado}
+                {rowData.Sacado}
             </>
         )
     }
@@ -71,7 +54,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'>Valor</span>
-                {rowData.valor}
+                {rowData.TituloReceber_ValorEmitido}
             </>
         )
     }
@@ -80,7 +63,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'>Data de Emissão</span>
-                {rowData.dataEmissao}
+                {rowData.TituloReceber_Dataemissao}
             </>
         )
     }
@@ -89,7 +72,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'>Tipo</span>
-                {rowData.tipo}
+                {rowData.TituloReceber_Tipo}
             </>
         )
     }
@@ -98,7 +81,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'>Data de Vencimento</span>
-                {rowData.dataVencimento}
+                {rowData.TituloReceber_DataVencimento}
             </>
         )
     }
@@ -125,7 +108,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'></span>
-                {rowData.natureza}
+                {rowData.Natureza_Descricao}
             </>
         )
     }
@@ -134,7 +117,7 @@ const TitulosEmAberto = () => {
         return (
             <>
                 <span className='p-column-title'></span>
-                {rowData.cidade}
+                {rowData.Localidade_Nome}
             </>
         )
     }
@@ -143,7 +126,7 @@ const TitulosEmAberto = () => {
         return (
         <>
             <span className='p-column-title'></span>
-            {rowData.parceiro}
+            {rowData.Parceiro}
         </>
         )
     }
@@ -153,6 +136,33 @@ const TitulosEmAberto = () => {
             <>
                 <span className='p-column-title'></span>
                 {rowData.status}
+            </>
+        )
+    }
+
+    const anoBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className='p-column-title'></span>
+                {rowData.TituloReceber_Ano}
+            </>
+        )
+    }
+
+    const numeroBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className='p-column-title'></span>
+                {rowData.TituloReceber_Numero}
+            </>
+        )
+    }
+
+    const parcelaBodyTemplate = (rowData) => {
+        return (
+            <>
+                <span className='p-column-title'></span>
+                {rowData.TituloReceber_Parcela}
             </>
         )
     }
@@ -176,9 +186,6 @@ const TitulosEmAberto = () => {
         </div>
     )
 
-    // titlesBackend()
-
-
     return (
         <div className='grid crud-demo'>
             <div className='col-12'>
@@ -192,7 +199,7 @@ const TitulosEmAberto = () => {
                         value={titles}
                         selection={selectedTitles}
                         onSelectionChange={(e) => setSelectedTitles(e.value)}
-                        dataKey="id"
+                        dataKey="TituloReceber_Parcela"
                         paginator
                         rows={10}
                         rowsPerPageOptions={[5, 10, 25]}
@@ -211,10 +218,13 @@ const TitulosEmAberto = () => {
                         <Column field='dataEmissao' header='Data de Emissão' body={dataEmissaoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
                         <Column field='dataVencimento' header='Data de Vencimento' body={dataVencimentoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
                         <Column field='tipo' header='Tipo' body={tipoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='cidade' header='Cidade' body={cidadeBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='ano' header='Ano' body={anoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='numero' header='Número' body={numeroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='parcela' header='Parcela' body={parcelaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                         <Column field='titulo' header='Título' body={tituloBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
                         <Column field='ramoDireito' header='Ramo do Direito' body={ramoDireitoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                         <Column field='natureza' header='Natureza' body={naturezaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='cidade' header='Cidade' body={cidadeBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                         <Column field='parceiro' header='Parceiro' body={parceiroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                         <Column field='status' header='Status' body={statusBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                     </DataTable>
