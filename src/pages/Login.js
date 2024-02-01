@@ -52,16 +52,16 @@ export const Login = () => {
 
     //priscilablasechi@yahoo.com.br 12345
 
-    let message = 'Essa é uma mensagem secreta'
-    let secretPhrase = 'aLiThsanGthn119450Jemnt'
+    // let secretEmailPhrase = 'icc;my{lZAKIR:3z|w3JIxe5}5>rG#??'
+    // let secretPasswordPhrase = 'ue{hJNPSEOG{3+!i.D^SPXbmm9RRnXHf'
 
-    let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretPhrase)
-    let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretPhrase)
+    // let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretEmailPhrase)
+    // let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretEmailPhrase)
 
-    // let encryptPassword = CryptoJS.AES.encrypt(formData.password, secretKeyPhrase)
+    // let encryptPassword = CryptoJS.AES.encrypt(formData.password, secretPasswordPhrase)
     // let decryptPassword =
 
-    let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+    // let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
 
     // console.log(Esse é o email encriptado:, encryptEmail.toString())
     // console.log(Esse é o email decriptado:, plainText)
