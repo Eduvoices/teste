@@ -52,19 +52,24 @@ export const Login = () => {
 
     //priscilablasechi@yahoo.com.br 12345
 
-    // let secretEmailPhrase = 'icc;my{lZAKIR:3z|w3JIxe5}5>rG#??'
-    // let secretPasswordPhrase = 'ue{hJNPSEOG{3+!i.D^SPXbmm9RRnXHf'
+    let secretEmailPhrase = 'icc;my{lZAKIR:3z|w3JIxe5}5>rG#??'
+    let secretPasswordPhrase = 'ue{hJNPSEOG{3+!i.D^SPXbmm9RRnXHf'
 
-    // let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretEmailPhrase)
-    // let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretEmailPhrase)
+    let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretEmailPhrase)
+    let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretEmailPhrase)
 
-    // let encryptPassword = CryptoJS.AES.encrypt(formData.password, secretPasswordPhrase)
-    // let decryptPassword =
+    let encryptPassword = CryptoJS.AES.encrypt(formData.senha, secretPasswordPhrase)
+    let decryptPassword = CryptoJS.AES.decrypt(encryptPassword, secretPasswordPhrase)
 
-    // let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+    let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+    let senha = decryptPassword.toString(CryptoJS.enc.Utf8)
 
-    // console.log(Esse é o email encriptado:, encryptEmail.toString())
-    // console.log(Esse é o email decriptado:, plainText)
+    console.log('Esse é o email encriptado:', encryptEmail.toString())
+    console.log('Esse é o email decriptado:', emailPlainText)
+
+    console.log('Essa é a senha ecriptada:', encryptPassword.toString())
+    console.log('Essa é a senha decriptada:', senha)
+
 
     return (
         <div className="login-body">

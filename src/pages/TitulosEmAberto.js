@@ -60,10 +60,15 @@ const TitulosEmAberto = () => {
     }
 
     const dataEmissaoBodyTemplate = (rowData) => {
+        let rawDate = rowData.TituloReceber_Dataemissao
+        let splitDate = rawDate.split('T')
+        let individualDate = splitDate[0].split('-')
+        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+
         return (
             <>
                 <span className='p-column-title'>Data de Emissão</span>
-                {rowData.TituloReceber_Dataemissao}
+                {date}
             </>
         )
     }
@@ -78,10 +83,15 @@ const TitulosEmAberto = () => {
     }
 
     const dataVencimentoBodyTemplate = (rowData) => {
+        let rawDate = rowData.TituloReceber_DataVencimento
+        let splitDate = rawDate.split('T')
+        let individualDate = splitDate[0].split('-')
+        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+
         return (
             <>
                 <span className='p-column-title'>Data de Vencimento</span>
-                {rowData.TituloReceber_DataVencimento}
+                {date}
             </>
         )
     }
@@ -185,6 +195,12 @@ const TitulosEmAberto = () => {
             </span>
         </div>
     )
+
+    // let teste = titles[1].TituloReceber_DataVencimento
+    // let teste2 = teste.split('T')
+    // let teste3 = teste2[0].split('-')
+
+    // console.log(`${teste3[2]}/${teste3[1]}/${teste3[0]}`)
 
     return (
         <div className='grid crud-demo'>
