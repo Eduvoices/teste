@@ -12,6 +12,8 @@ import UserCadastro from './pages/UserCadastro';
 import Cadastro from './pages/Cadastro';
 import AlteraSenha from './pages/AlteraSenha';
 import CrudDemo from './pages/Consulta';
+import TitulosEmAberto from './pages/TitulosEmAberto';
+import TiposDocumento from './pages/TiposDocumento';
 
 import Dashboard from './components/Dashboard';
 
@@ -26,8 +28,6 @@ import 'primeflex/primeflex.css';
 import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
-import TitulosEmAberto from './pages/TitulosEmAberto';
-import TiposDocumento from './pages/TiposDocumento';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);

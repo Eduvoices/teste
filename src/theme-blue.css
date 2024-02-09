@@ -3070,9 +3070,9 @@
   border-color: #4b453d;
 }
 .fc.fc-unthemed .fc-toolbar .fc-button:enabled:active {
-  background: #0b7ad1;
+  background: #4b453d;
   color: #ffffff;
-  border-color: #0b7ad1;
+  border-color: #4b453d;
 }
 .fc.fc-unthemed .fc-toolbar .fc-button:enabled:active:focus {
   outline: 0 none;
@@ -3232,9 +3232,9 @@
   border-color: #4b453d;
 }
 .fc.fc-theme-standard .fc-toolbar .fc-button:enabled:active {
-  background: #0b7ad1;
+  background: #4b453d;
   color: #ffffff;
-  border-color: #0b7ad1;
+  border-color: #4b453d;
 }
 .fc.fc-theme-standard .fc-toolbar .fc-button:enabled:active:focus {
   outline: 0 none;
@@ -5992,5 +5992,5 @@
 
 /* Add your customizations of the theme here */
 .fc.fc-theme-standard .fc-highlight {
-  background: #a6d5fa;
+  background: #4b453d;
 }

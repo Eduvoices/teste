@@ -15,28 +15,24 @@ import SelectCity from '../components/SelectCities'
 
 const Consulta = () => {
     let emptyProduct = {
-        id: '',
-        code: '',
-        name: '',
-        cpf: '',
-        rg: '',
-        endereço: '',
-        número: '',
-        complemento: '',
-        bairro: '',
-        cep: '',
-        uf: '',
-        cidade: '',
-        nascimento: '',
-        tel1: '',
-        tel2: '',
-        tel3: '',
-        email: '',
-        responsável: '',
-        social: '',
-        como: '',
-        obs: '',
-        dataCadastro: dataAtual()
+        Pessoa_Codigo: '',
+        Pessoa_NomeRazaoSocial: '',
+        Pessoa_CPF_CNPJ: '',
+        Pessoa_RG_IE: '',
+        Pessoa_Rua: '',
+        Pessoa_Nro: '',
+        Pessoa_Complemento: '',
+        Pessoa_Bairro: '',
+        Pessoa_CEP: '',
+        UF_Sigla: '',
+        Localidade_Nome: '',
+        Pessoa_DataNascimento: '',
+        Pessoa_FoneResidencial: '',
+        Pessoa_FoneComercial: '',
+        Pessoa_FoneCelular: '',
+        Pessoa_EMail: '',
+        Pessoa_Obs: '',
+        Pessoa_DataCad: dataAtual()
     };
 
     const [products, setProducts] = useState(null);
@@ -51,7 +47,6 @@ const Consulta = () => {
     const [block, setBlock] = useState('')
     const [cpf, setCPF] = useState('')
     const [formValue, setFormValue] = useState({})
-    const [cepState, setCepState] = useState('')
     const [uf, setUf] = useState('')
     const [city, setCity] = useState('')
     const toast = useRef(null);
@@ -61,6 +56,15 @@ const Consulta = () => {
         const productService = new ProductService();
         productService.getProducts().then((data) => setProducts(data));
     }, []);
+
+    function dataEdit(product) {
+        let rawDate = product.Pessoa_DataCad
+        let dateSplit = rawDate.split('T')
+        let individualDate = dateSplit[0].split('-')
+        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+
+        return date
+    }
 
 
     function validarPrimeiroDigito(cpf) {
@@ -125,7 +129,6 @@ const Consulta = () => {
     let cep = ''
 
     const checkCEP = (e) => {
-        setCepState(e.target.value)
         if (!e.target.value) return
         cep = e.target.value.replace(/\D/g, '')
         fetch(`https://viacep.com.br/ws/${cep}/json/`).then(res => res.json()).then(data => {
@@ -171,16 +174,16 @@ const Consulta = () => {
     const saveProduct = () => {
         setSubmitted(true);
 
-        if (product.name.trim()) {
+        if (product.Pessoa_NomeRazaoSocial.trim()) {
             let _products = [...products];
             let _product = { ...product };
-            if (product.id) {
-                const index = findIndexById(product.id);
+            if (product.Pessoa_Codigo) {
+                const index = findIndexById(product.Pessoa_Codigo);
 
                 _products[index] = _product;
                 toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
             } else {
-                _product.id = createId();
+                _product.Pessoa_Codigo = createId();
                 _products.push(_product);
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
             }
@@ -202,7 +205,7 @@ const Consulta = () => {
     };
 
     const deleteProduct = () => {
-        let _products = products.filter((val) => val.id !== product.id);
+        let _products = products.filter((val) => val.Pessoa_Codigo !== product.Pessoa_Codigo);
         setProducts(_products);
         setDeleteProductDialog(false);
         setProduct(emptyProduct);
@@ -212,7 +215,7 @@ const Consulta = () => {
     const findIndexById = (id) => {
         let index = -1;
         for (let i = 0; i < products.length; i++) {
-            if (products[i].id === id) {
+            if (products[i].Pessoa_Codigo === id) {
                 index = i;
                 break;
             }
@@ -292,7 +295,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Code</span>
-                {rowData.code}
+                {rowData.Pessoa_Codigo}
             </>
         );
     };
@@ -301,7 +304,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Name</span>
-                {rowData.name}
+                {rowData.Pessoa_NomeRazaoSocial}
             </>
         );
     };
@@ -310,7 +313,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Image</span>
-                <span width="100" >{rowData.cpf}</span>
+                <span width="100" >{rowData.Pessoa_CPF_CNPJ}</span>
             </>
         );
     };
@@ -319,7 +322,7 @@ const Consulta = () => {
         return (
             <>
                 <span className='p-column-title'>RG</span>
-                <span width='100'>{rowData.rg}</span>
+                <span width='100'>{rowData.Pessoa_RG_IE}</span>
             </>
         )
     }
@@ -328,7 +331,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Price</span>
-                {rowData.endereço || street}
+                {rowData.Pessoa_Rua || street}
             </>
         );
     };
@@ -336,8 +339,8 @@ const Consulta = () => {
     const categoryBodyTemplate = (rowData) => {
         return (
             <>
-                <span className="p-column-title">Category</span>
-                {rowData.número}
+                <span className="p-column-title">Número</span>
+                {rowData.Pessoa_Nro}
             </>
         );
     };
@@ -345,8 +348,8 @@ const Consulta = () => {
     const ratingBodyTemplate = (rowData) => {
         return (
             <>
-                <span className="p-column-title">Reviews</span>
-                <span>{rowData.bairro || block}</span>
+                <span className="p-column-title">Bairro</span>
+                <span>{rowData.Pessoa_Bairro || block}</span>
             </>
         );
     };
@@ -354,8 +357,8 @@ const Consulta = () => {
     const statusBodyTemplate = (rowData) => {
         return (
             <>
-                <span className="p-column-title">Status</span>
-                <span>{rowData.complemento}</span>
+                <span className="p-column-title">Complemento</span>
+                <span>{rowData.Pessoa_Complemento}</span>
             </>
         );
     };
@@ -364,7 +367,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">CEP</span>
-                <span>{rowData.cep}</span>
+                <span>{rowData.Pessoa_CEP}</span>
             </>
         )
     }
@@ -373,7 +376,7 @@ const Consulta = () => {
         return (
             <>
                 <span className='p-column-title'>UF</span>
-                <span>{rowData.uf}</span>
+                <span>{rowData.UF_Sigla}</span>
             </>
         )
     }
@@ -382,7 +385,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Cidade</span>
-                <span>{rowData.cidade}</span>
+                <span>{rowData.Localidade_Nome}</span>
             </>
         )
     }
@@ -391,7 +394,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Nascimento</span><span></span>
-                <span>{rowData.nascimento}</span>
+                <span>{rowData.Pessoa_DataNascimento}</span>
             </>
         )
     }
@@ -400,7 +403,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Tel 1</span>
-                <span>{rowData.tel1}</span>
+                <span>{rowData.Pessoa_FoneResidencial}</span>
             </>
         )
     }
@@ -409,7 +412,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Tel 2</span>
-                <span>{rowData.tel2}</span>
+                <span>{rowData.Pessoa_FoneComercial}</span>
             </>
         )
     }
@@ -418,7 +421,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Tel 3</span>
-                <span>{rowData.tel3}</span>
+                <span>{rowData.Pessoa_FoneCelular}</span>
             </>
         )
     }
@@ -427,7 +430,7 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Email</span>
-                <span>{rowData.email}</span>
+                <span>{rowData.Pessoa_EMail}</span>
             </>
         )
     }
@@ -463,16 +466,21 @@ const Consulta = () => {
         return (
             <>
                 <span className="p-column-title">Tel 1</span>
-                <span>{rowData.obs}</span>
+                <span>{rowData.Pessoa_Obs}</span>
             </>
         )
     }
 
     const dataCadastroBodyTemplate = (rowData) => {
+        let rawDate = rowData.Pessoa_DataCad
+        let splitDate = rawDate.split('T')
+        let individualDate = splitDate[0].split('-')
+        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+
         return (
             <>
                 <span className="p-column-title">Tel 1</span>
-                <span>{rowData.dataCadastro}</span>
+                <span>{date}</span>
             </>
         )
     }
@@ -543,7 +551,7 @@ const Consulta = () => {
                         value={products}
                         selection={selectedProducts}
                         onSelectionChange={(e) => setSelectedProducts(e.value)}
-                        dataKey="id"
+                        dataKey="Pessoa_Codigo"
                         paginator
                         rows={10}
                         rowsPerPageOptions={[5, 10, 25]}
@@ -557,7 +565,7 @@ const Consulta = () => {
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                         <Column body={actionBodyTemplate}></Column>
-                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} sortable headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
                         <Column field='cpf' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
@@ -586,15 +594,15 @@ const Consulta = () => {
 
                             <div className="field">
                                 <label htmlFor="name">Nome</label>
-                                <InputText id="name" value={product.name} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'name')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
-                                {submitted && !product.name && <small className="p-invalid">Nome é obrigatório.</small>}
+                                <InputText id="name" value={product.Pessoa_NomeRazaoSocial} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_NomeRazaoSocial')} required autoFocus className={classNames({ 'p-invalid': submitted && !product.name })} />
+                                {submitted && !product.Pessoa_NomeRazaoSocial && <small className="p-invalid">Nome é obrigatório.</small>}
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cpf">CPF</label>
-                                    <InputText maxLength={11} id="cpf" value={product.cpf} onBlur={(e)=> setCPF(e.target.value)} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cpf')} required className={classNames({ 'p-invalid': (submitted && !product.cpf) || (!cpfValido && cpf !== '' )})}/>
-                                    {submitted && !product.cpf && <small className="p-invalid">CPF é obrigatório</small>}
+                                    <InputText maxLength={11} id="cpf" value={product.Pessoa_CPF_CNPJ} onBlur={(e)=> setCPF(e.target.value)} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_CPF_CNPJ')} required className={classNames({ 'p-invalid': (submitted && !product.cpf) || (!cpfValido && cpf !== '' )})}/>
+                                    {submitted && !product.Pessoa_CPF_CNPJ && <small className="p-invalid">CPF é obrigatório</small>}
                                     {cpfValido === true ||  cpf.length === 11 || cpf === '' ? (
                                         <span id='valid'></span>
                                     ) : (
@@ -604,87 +612,87 @@ const Consulta = () => {
 
                                 <div className="field col">
                                     <label htmlFor="rg">RG</label>
-                                    <InputMask mask='99.999.999-9' id="rg" value={product.rg} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'rg')} required className={classNames({ 'p-invalid': submitted && !product.rg })} />
-                                    {submitted && !product.rg && <small className="p-invalid">RG é obrigatório</small>}
+                                    <InputMask mask='99.999.999-9' id="rg" value={product.Pessoa_RG_IE} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_RG_IE')} required className={classNames({ 'p-invalid': submitted && !product.Pessoa_RG_IE })} />
+                                    {submitted && !product.Pessoa_RG_IE && <small className="p-invalid">RG é obrigatório</small>}
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cep">CEP</label>
-                                    <InputText id="cep" value={product.cep} onBlur={checkCEP} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'cep')} required className={classNames({ 'p-invalid': submitted && !product.cep })} />
-                                    {submitted && !product.cep && <small className="p-invalid">CEP é obrigatório</small>}
+                                    <InputText id="cep" value={product.Pessoa_CEP} onBlur={checkCEP} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_CEP')} required className={classNames({ 'p-invalid': submitted && !product.cep })} />
+                                    {submitted && !product.Pessoa_CEP && <small className="p-invalid">CEP é obrigatório</small>}
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="endereço">Endereço</label>
-                                    <InputText id="endereço" value={product.endereço || street} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'endereço')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
-                                    {submitted && !product.endereço && <small className="p-invalid">Endereço é obrigatório</small>}
+                                    <InputText id="endereço" value={product.Pessoa_Rua || street} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_Rua')} required className={classNames({ 'p-invalid': submitted && !product.endereço })} />
+                                    {submitted && !product.Pessoa_Rua && <small className="p-invalid">Endereço é obrigatório</small>}
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="número">Número</label>
-                                    <InputText id="número" value={product.número} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'número')} required className={classNames({ 'p-invalid': submitted && !product.número })} />
-                                    {submitted && !product.número && <small className="p-invalid">Número é obrigatório</small>}
+                                    <InputText id="número" value={product.Pessoa_Nro} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_Nro')} required className={classNames({ 'p-invalid': submitted && !product.número })} />
+                                    {submitted && !product.Pessoa_Nro && <small className="p-invalid">Número é obrigatório</small>}
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="bairro">Bairro</label>
-                                    <InputText id="bairro" value={product.bairro || block} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
-                                    {submitted && !product.bairro && <small className="p-invalid">Bairro é obrigatório</small>}
+                                    <InputText id="bairro" value={product.Pessoa_Bairro || block} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_Bairro')} required className={classNames({ 'p-invalid': submitted && !product.bairro })} />
+                                    {submitted && !product.Pessoa_Bairro && <small className="p-invalid">Bairro é obrigatório</small>}
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="complemento">Complemento</label>
-                                    <InputText id="complemento" value={product.complemento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'complemento')} />
+                                    <InputText id="complemento" value={product.Pessoa_Complemento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_Complemento')} />
                                 </div>
 
 
                                 <div className="field col">
                                     <label htmlFor="uf">UF</label>
-                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={product.uf || uf} onBlur={(e) => onInputChange(e, 'uf')} required />
+                                    <SelectUf id="uf" value={uf} onChange={handleInputChange} uf={product.UF_Sigla || uf} onBlur={(e) => onInputChange(e, 'uf')} required />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="cidade">Cidade</label>
-                                    <SelectCity id="cidade" value={product.cidade} state={formValue.states || product.uf} city={city || product.cidade} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'cidade')} required />
+                                    <SelectCity id="cidade" value={product.Localidade_Nome} state={formValue.states || product.UF_Sigla} city={city || product.Localidade_Nome} onChange={handleCityChange}  onBlur={(e) => onInputChange(e, 'Localidade_Nome')} required />
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="nascimento">Nascimento</label>
-                                    <InputMask mask='99/99/9999' id="nascimento" value={product.nascimento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'nascimento')} required className={classNames({ 'p-invalid': submitted && !product.nascimento })} />
-                                    {submitted && !product.nascimento && <small className="p-invalid"></small>}
+                                    <InputMask mask='99/99/9999' id="nascimento" value={product.Pessoa_DataNascimento} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_DataNascimento')} required className={classNames({ 'p-invalid': submitted && !product.nascimento })} />
+                                    {submitted && !product.Pessoa_DataNascimento && <small className="p-invalid"></small>}
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="tel1">Tel1</label>
-                                    <InputMask mask='(99) 99999-9999' id="tel1" value={product.tel1} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel1')} required className={classNames({ 'p-invalid': submitted && !product.tel1 })} />
-                                    {submitted && !product.tel1 && <small className="p-invalid">Tel1 é obrigatório</small>}
+                                    <InputMask mask='(99) 99999-9999' id="tel1" value={product.Pessoa_FoneResidencial} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_FoneResidencial')} required className={classNames({ 'p-invalid': submitted && !product.tel1 })} />
+                                    {submitted && !product.Pessoa_FoneResidencial && <small className="p-invalid">Tel1 é obrigatório</small>}
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="tel2">Tel2</label>
-                                    <InputMask mask='(99) 99999-9999' id="tel2" value={product.tel2} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel2')}   />
+                                    <InputMask mask='(99) 99999-9999' id="tel2" value={product.Pessoa_FoneComercial} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_FoneComercial')}   />
                                 </div>
                             </div>
 
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="tel3">Tel3</label>
-                                    <InputMask mask='(99) 99999-9999' id="tel3" value={product.tel3} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'tel3')} />
+                                    <InputMask mask='(99) 99999-9999' id="tel3" value={product.Pessoa_FoneCelular} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_FoneCelular')} />
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="email">Email</label>
-                                    <InputText id="email" value={product.email} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'email')} />
+                                    <InputText id="email" value={product.Pessoa_EMail} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_EMail')} />
                                 </div>
                             </div>
 
@@ -703,12 +711,12 @@ const Consulta = () => {
                             <div className='formgrid grid'>
                                 <div className="field col">
                                     <label htmlFor="obs">Obs</label>
-                                    <InputText id="obs" value={product.obs} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'obs')} />
+                                    <InputText id="obs" value={product.Pessoa_Obs} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'Pessoa_Obs')} />
                                 </div>
 
                                 <div className="field col">
                                     <label htmlFor="dataCadastro">Data de cadastro</label>
-                                    <InputText id="dataCadastro" value={dataAtual()} disabled />
+                                    <InputText id="dataCadastro" value={product.Pessoa_DataCad === dataAtual() ? dataAtual() : dataEdit(product)} />
                                 </div>
                             </div>
 
@@ -721,7 +729,7 @@ const Consulta = () => {
                             <i className="pi pi-exclamation-triangle mr-3" style={{ fontSize: '2rem' }} />
                             {product && (
                                 <span>
-                                    Tem certeza de que quer deletar o cadastro de <b>{product.name}</b>?
+                                    Tem certeza de que quer deletar o cadastro de <b>{product.Pessoa_NomeRazaoSocial}</b>?
                                 </span>
                             )}
                         </div>

@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
-import { formatDate } from '@fullcalendar/core'
+import React, { useState, useEffect } from 'react';
+// import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import localeBr from '@fullcalendar/core/locales/pt-br'
-
+import EventService from '../service/EventService';
 
 const Agenda = () => {
     const [events, setEvents] = useState([])
 
-    function renderSideBarEvents(event) {
-        return (
-            <li key={event.id}>
-                <b>{formatDate(event.start, {year: 'numeric', month: '2-digit', day: 'numeric', locale:'pt-br'})}</b>
-                <i style={{marginLeft: '8px'}}>{event.title}</i>
-            </li>
-        )
-    }
+    useEffect(() => {
+        const eventService = new EventService();
+        eventService.getEvents().then((data) => setEvents(data));
+    }, []);
 
-    function renderEventContent(eventInfo) {
-        return (
-            <>
-                <b>{eventInfo.timeText}</b>
-                <i>{eventInfo.event.title}</i>
-            </>
-        )
-    }
+    // function renderSideBarEvents(event) {
+    //     return (
+    //         <li key={event.id}>
+    //             <b>{formatDate(event.start, {year: 'numeric', month: '2-digit', day: 'numeric', locale:'pt-br'})}</b>
+    //             <i style={{marginLeft: '8px'}}>{event.title}</i>
+    //         </li>
+    //     )
+    // }
+
+    // function renderEventContent(eventInfo) {
+    //     return (
+    //         <>
+    //             <b>{eventInfo.timeText}</b>
+    //             <i>{eventInfo.event.title}</i>
+    //         </>
+    //     )
+    // }
 
     function createEventId() {
         let eventGuid = 0
@@ -57,31 +62,45 @@ const Agenda = () => {
         }
     }
 
-    function handleEvents(events) {
-        setEvents(events)
-    }
+    // function handleEvents(events) {
+    //     setEvents(events)
+    // }
 
-    function renderSidebar() {
-        return (
-            <div className='demo-app-sidebar'>
-                <div className='demo-app-sidebar-section'>
-                    <h2>Instruções</h2>
+    // function renderSidebar() {
+    //     return (
+    //         <div className='demo-app-sidebar'>
+    //             <div className='demo-app-sidebar-section'>
+    //                 <h2>Instruções</h2>
 
-                    <ul>
-                        <li>Selecione a data e você será levado a criar um novo evento</li>
-                        <li>Arraste, solte e mude a extensão dos eventos</li>
-                        <li>Clique em um evento deletá-lo</li>
-                    </ul>
-                </div>
-                <div className='demo-app-sidebar-section'>
-                    <h2>Todos os eventos</h2>
-                    <ul>
-                        {events.map(renderSideBarEvents)}
-                    </ul>
-                </div>
-            </div>
-        )
-    }
+    //                 <ul>
+    //                     <li>Selecione a data e você será levado a criar um novo evento</li>
+    //                     <li>Arraste, solte e mude a extensão dos eventos</li>
+    //                     <li>Clique em um evento deletá-lo</li>
+    //                 </ul>
+    //             </div>
+    //             <div className='demo-app-sidebar-section'>
+    //                 <h2>Todos os eventos</h2>
+    //                 <ul>
+    //                     {events.map(renderSideBarEvents)}
+    //                 </ul>
+    //             </div>
+    //         </div>
+    //     )
+    // }
+
+    // eventClick={handleEventClick}
+    // eventContent={renderEventContent}
+    // eventsSet={handleEvents}
+    // initialView="dayGridMonth"
+    // plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+    // headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
+    // editable
+    // selectable
+    // selectMirror
+    // dayMaxEvents
+    // locale={localeBr}
+    // select={handleDateSelect}
+    // events={events}
 
     return (
         <div className='grid'>
@@ -91,9 +110,7 @@ const Agenda = () => {
                 <div className="col-12 md:col-12 lg:col-12">
                     <div className="card card-w-title" style={{height:'100%'}}>
                     <FullCalendar
-                        eventClick={handleEventClick}
-                        eventContent={renderEventContent}
-                        eventsSet={handleEvents}
+                        events={events}
                         initialView="dayGridMonth"
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                         headerToolbar={{ left: 'prev,next today', center: 'title', right: 'dayGridMonth,timeGridWeek,timeGridDay' }}
@@ -103,6 +120,7 @@ const Agenda = () => {
                         dayMaxEvents
                         locale={localeBr}
                         select={handleDateSelect}
+                        eventClick={handleEventClick}
                     />
                     </div>
                 </div>
