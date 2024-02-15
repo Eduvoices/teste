@@ -1,12 +1,14 @@
 import axios from 'axios';
 
+// https://tecjusbackend.vercel.app/pessoafisica
+
 export default class ProductService {
     getProductsSmall() {
         return axios.get('assets/demo/data/products-small.json').then((res) => res.data.data);
     }
 
     getProducts() {
-        return axios.get('https://tecjusbackend.vercel.app/pessoafisica').then((res) => res.data.rows);
+        return axios.get('assets/demo/data/products.json').then((res) => res.data.data);
     }
 
     getProductsMixed() {

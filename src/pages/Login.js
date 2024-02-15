@@ -3,7 +3,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from '../assets/logo.png'
-import CryptoJS from 'crypto-js';
+// import CryptoJS from 'crypto-js';
 
 export const Login = () => {
     const navigate = useNavigate();
@@ -52,23 +52,23 @@ export const Login = () => {
 
     //priscilablasechi@yahoo.com.br 12345
 
-    let secretEmailPhrase = 'icc;my{lZAKIR:3z|w3JIxe5}5>rG#??'
-    let secretPasswordPhrase = 'ue{hJNPSEOG{3+!i.D^SPXbmm9RRnXHf'
+    // let secretEmailPhrase = 'icc;my{lZAKIR:3z|w3JIxe5}5>rG#??'
+    // let secretPasswordPhrase = 'ue{hJNPSEOG{3+!i.D^SPXbmm9RRnXHf'
 
-    let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretEmailPhrase)
-    let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretEmailPhrase)
+    // let encryptEmail = CryptoJS.AES.encrypt(formData.email, secretEmailPhrase)
+    // let decryptEmail = CryptoJS.AES.decrypt(encryptEmail, secretEmailPhrase)
 
-    let encryptPassword = CryptoJS.AES.encrypt(formData.senha, secretPasswordPhrase)
-    let decryptPassword = CryptoJS.AES.decrypt(encryptPassword, secretPasswordPhrase)
+    // let encryptPassword = CryptoJS.AES.encrypt(formData.senha, secretPasswordPhrase)
+    // let decryptPassword = CryptoJS.AES.decrypt(encryptPassword, secretPasswordPhrase)
 
-    let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
-    let senha = decryptPassword.toString(CryptoJS.enc.Utf8)
+    // let emailPlainText = decryptEmail.toString(CryptoJS.enc.Utf8)
+    // let senha = decryptPassword.toString(CryptoJS.enc.Utf8)
 
-    console.log('Esse é o email encriptado:', encryptEmail.toString())
-    console.log('Esse é o email decriptado:', emailPlainText)
+    // console.log('Esse é o email encriptado:', encryptEmail.toString())
+    // console.log('Esse é o email decriptado:', emailPlainText)
 
-    console.log('Essa é a senha ecriptada:', encryptPassword.toString())
-    console.log('Essa é a senha decriptada:', senha)
+    // console.log('Essa é a senha ecriptada:', encryptPassword.toString())
+    // console.log('Essa é a senha decriptada:', senha)
 
 
     return (

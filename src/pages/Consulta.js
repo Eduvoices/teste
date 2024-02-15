@@ -472,15 +472,15 @@ const Consulta = () => {
     }
 
     const dataCadastroBodyTemplate = (rowData) => {
-        let rawDate = rowData.Pessoa_DataCad
-        let splitDate = rawDate.split('T')
-        let individualDate = splitDate[0].split('-')
-        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+        // let rawDate = rowData.Pessoa_DataCad
+        // let splitDate = rawDate.split('T')
+        // let individualDate = splitDate[0].split('-')
+        // let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
 
         return (
             <>
                 <span className="p-column-title">Tel 1</span>
-                <span>{date}</span>
+                <span>{rowData.Pessoa_DataCad}</span>
             </>
         )
     }
@@ -506,7 +506,7 @@ const Consulta = () => {
             <h5 className="m-0">Pessoa Física</h5>
             <span className="block mt-2 md:mt-0 p-input-icon-left">
                 <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
+                <InputText type="search" onChange={(e) => setGlobalFilter(e.target.value)} placeholder="Buscar..." />
             </span>
         </div>
     );
@@ -565,27 +565,27 @@ const Consulta = () => {
                     >
                         <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                         <Column body={actionBodyTemplate}></Column>
-                        <Column field="dataCadastro" header="Data cadastro" body={dataCadastroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_DataCad" header="Data cadastro" body={dataCadastroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="code" header="Código" sortable body={codeBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="name" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field='cpf' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field='rg' header="RG" body={rgBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="endereço" header="Endereço" body={priceBodyTemplate} headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
-                        <Column field="número" header="Número" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="bairro" header="Bairro" body={ratingBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field="complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
-                        <Column field='uf' header="UF" body={ufBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}} ></Column>
-                        <Column field="cep" header="CEP" body={cepBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="cidade" header="Cidade" body={cidadeBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="nascimento" header="Nascimento" body={nascimentoBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel1" header="Tel 1" body={tel1BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel2" header="Tel 2" body={tel2BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="tel3" header="Tel 3" body={tel3BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="email" header="Email" body={emailBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_NomeRazaoSocial" header="Nome" sortable body={nameBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='Pessoa_CPF_CNPJ' header="CPF" body={imageBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='Pessoa_RG_IE' header="RG" body={rgBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="Pessoa_Rua" header="Endereço" body={priceBodyTemplate} headerStyle={{ width: '14%', minWidth: '8rem' }}></Column>
+                        <Column field="Pessoa_Nro" header="Número" sortable body={categoryBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="Pessoa_Bairro" header="Bairro" body={ratingBodyTemplate} headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field="Pessoa_Complemento" header="Complemento" body={statusBodyTemplate} sortable headerStyle={{ width: '14%', minWidth: '10rem' }}></Column>
+                        <Column field='UF_Sigla' header="UF" body={ufBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}} ></Column>
+                        <Column field="Pessoa_CEP" header="CEP" body={cepBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="Localidade_Nome" header="Cidade" body={cidadeBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_DataNascimento" header="Nascimento" body={nascimentoBodyTemplate} headerStyle={{width: '14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_FoneResidencial" header="Tel 1" body={tel1BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_FoneComercial" header="Tel 2" body={tel2BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_FoneCelular" header="Tel 3" body={tel3BodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_EMail" header="Email" body={emailBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="responsável" header="Responsável" body={responsávelBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="social" header="Social" body={socialBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                         <Column field="como" header="Como" body={comoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
-                        <Column field="obs" header="Obs" body={obsBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
+                        <Column field="Pessoa_Obs" header="Obs" body={obsBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}></Column>
                     </DataTable>
 
                     <Dialog visible={productDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
@@ -697,9 +697,9 @@ const Consulta = () => {
                             </div>
 
                             <div className='formgrid grid'>
-                                <div className="field col">
-                                    <label htmlFor="responsável">Responsável</label>
-                                    <InputText id="responsável" value={product.responsável} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'responsável')} />
+                            <div className="field col">
+                                    <label htmlFor="dataCadastro">Data de cadastro</label>
+                                    <InputText id="dataCadastro" value={product.Pessoa_DataCad === dataAtual() ? dataAtual() : dataEdit(product)} />
                                 </div>
 
                                 <div className="field col">
@@ -715,8 +715,8 @@ const Consulta = () => {
                                 </div>
 
                                 <div className="field col">
-                                    <label htmlFor="dataCadastro">Data de cadastro</label>
-                                    <InputText id="dataCadastro" value={product.Pessoa_DataCad === dataAtual() ? dataAtual() : dataEdit(product)} />
+                                    <label htmlFor="responsável">Responsável</label>
+                                    <InputText id="responsável" value={product.responsável} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'responsável')} />
                                 </div>
                             </div>
 
