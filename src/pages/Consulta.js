@@ -49,12 +49,16 @@ const Consulta = () => {
     const [formValue, setFormValue] = useState({})
     const [uf, setUf] = useState('')
     const [city, setCity] = useState('')
+    const [isLoading, setIsLoading] = useState(true)
     const toast = useRef(null);
     const dt = useRef(null);
 
     useEffect(() => {
         const productService = new ProductService();
-        productService.getProducts().then((data) => setProducts(data));
+        productService.getProducts().then((data) =>  {
+            setProducts(data)
+            setIsLoading(false)
+        });
     }, []);
 
     function dataEdit(product) {
@@ -472,15 +476,15 @@ const Consulta = () => {
     }
 
     const dataCadastroBodyTemplate = (rowData) => {
-        // let rawDate = rowData.Pessoa_DataCad
-        // let splitDate = rawDate.split('T')
-        // let individualDate = splitDate[0].split('-')
-        // let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
+        let rawDate = rowData.Pessoa_DataCad
+        let splitDate = rawDate.split('T')
+        let individualDate = splitDate[0].split('-')
+        let date = `${individualDate[2]}/${individualDate[1]}/${individualDate[0]}`
 
         return (
             <>
                 <span className="p-column-title">Tel 1</span>
-                <span>{rowData.Pessoa_DataCad}</span>
+                <span>{date}</span>
             </>
         )
     }
@@ -559,7 +563,7 @@ const Consulta = () => {
                         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} cadastros"
                         globalFilter={globalFilter}
-                        emptyMessage="Nenhum resultado encontrado."
+                        emptyMessage= {isLoading ? 'Carregando...' : "Nenhum resultado encontrado."}
                         header={header}
                         responsiveLayout="scroll"
                     >
