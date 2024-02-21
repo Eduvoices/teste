@@ -13,12 +13,16 @@ const TitulosEmAberto = () => {
     const [titles, setTitles] = useState(null)
     const [selectedTitles, setSelectedTitles] = useState(null)
     const [globalFilter, setGlobalFilter] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
     const toast = useRef(null);
     const dt = useRef(null);
 
     useEffect(() => {
         const titleService = new TitulosService()
-        titleService.getTitulos().then((data) => setTitles(data))
+        titleService.getTitulos().then((data) => {
+            setTitles(data)
+            setIsLoading(false)
+        })
     }, [])
 
     const leftToolbarTemplate = () => {
@@ -223,7 +227,7 @@ const TitulosEmAberto = () => {
                         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                         currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} títulos"
                         globalFilter={globalFilter}
-                        emptyMessage="Nenhum resultado encontrado."
+                        emptyMessage={isLoading ? 'Carregando...' : 'Nenhum resultado encontrado.'}
                         header={header}
                         responsiveLayout="scroll"
                     >

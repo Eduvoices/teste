@@ -2,8 +2,9 @@ import axios from 'axios';
 
 export default class EventService {
     getEvents() {
-        return axios.get('assets/demo/data/events.json').then((res) => res.data.data);
+        return axios.get('https://tecjusbackend.vercel.app/listaagenda').then((res) => res.data.rows);
     }
 }
 
 //https://tecjusbackend.vercel.app/listaagenda
+// assets/demo/data/events.json
