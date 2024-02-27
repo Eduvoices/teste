@@ -100,20 +100,11 @@ const TitulosEmAberto = () => {
         )
     }
 
-    const tituloBodyTemplate = (rowData) => {
-        return (
-            <>
-                <span className='p-column-title'></span>
-                {rowData.titulo}
-            </>
-        )
-    }
-
     const ramoDireitoBodyTemplate = (rowData) => {
         return (
             <>
                 <span className='p-column-title'></span>
-                {rowData.ramoDireito}
+                {rowData.RamoDireito_Descricao}
             </>
         )
     }
@@ -142,15 +133,6 @@ const TitulosEmAberto = () => {
             <span className='p-column-title'></span>
             {rowData.Parceiro}
         </>
-        )
-    }
-
-    const statusBodyTemplate = (rowData) => {
-        return (
-            <>
-                <span className='p-column-title'></span>
-                {rowData.status}
-            </>
         )
     }
 
@@ -233,20 +215,18 @@ const TitulosEmAberto = () => {
                     >
                         <Column selectionMode='multiple' headerStyle={{width:'2rem'}}/>
                         <Column body={actionBodyTemplate}/>
-                        <Column field='sacado' header='Sacado' body={sacadoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='valor' header='Valor' body={valorBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='dataEmissao' header='Data de Emissão' body={dataEmissaoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='dataVencimento' header='Data de Vencimento' body={dataVencimentoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='tipo' header='Tipo' body={tipoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='cidade' header='Cidade' body={cidadeBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='ano' header='Ano' body={anoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='numero' header='Número' body={numeroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='parcela' header='Parcela' body={parcelaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='titulo' header='Título' body={tituloBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
-                        <Column field='ramoDireito' header='Ramo do Direito' body={ramoDireitoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='natureza' header='Natureza' body={naturezaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='parceiro' header='Parceiro' body={parceiroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
-                        <Column field='status' header='Status' body={statusBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='Sacado' header='Sacado' body={sacadoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='TituloReceber_ValorEmitido' header='Valor' body={valorBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='TituloReceber_Dataemissao' header='Data de Emissão' body={dataEmissaoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='TituloReceber_DataVencimento' header='Data de Vencimento' body={dataVencimentoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='TituloReceber_Tipo' header='Tipo' body={tipoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}}/>
+                        <Column field='Localidade_Nome' header='Cidade' body={cidadeBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='TituloReceber_Ano' header='Ano' body={anoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='TituloReceber_Numero' header='Número' body={numeroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='TituloReceber_Parcela' header='Parcela' body={parcelaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='RamoDireito_Descricao' header='Ramo do Direito' body={ramoDireitoBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='Natureza_Descricao' header='Natureza' body={naturezaBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
+                        <Column field='Parceiro' header='Parceiro' body={parceiroBodyTemplate} headerStyle={{width:'14%', minWidth:'10rem'}} />
                     </DataTable>
                 </div>
             </div>

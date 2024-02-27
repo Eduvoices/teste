@@ -90,6 +90,33 @@ const Dashboard = () => {
         eventService.getEvents().then((data) => setEvents(data));
     }, []);
 
+    let array2 = []
+
+
+    function parse(data, i) {
+
+        let dateStart = data[i].start.split('.')
+        let start = dateStart[0]
+
+        let dateEnd = data[i].xend.split('.')
+        let end = dateEnd[0]
+
+        return {
+                start: start,
+                end: end,
+                title: data[i].title
+        }
+    }
+
+    function f(){
+        for (let i = 0; i < events.length; i++) {
+            const elemental = parse(events, i)
+            array2 = [...array2, elemental]
+        }
+    }
+
+    f()
+
     function renderEventContent(eventInfo) {
         return (
             <>
@@ -185,7 +212,7 @@ const Dashboard = () => {
                     <div className="card card-w-title" style={{height:'100%'}}>
                         <FullCalendar
                         eventClick={handleEventClick}
-                        events={events}
+                        events={array2}
                         eventContent={renderEventContent}
                         initialView='timeGridDay'
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

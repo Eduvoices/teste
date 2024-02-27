@@ -5,6 +5,3 @@ export default class EventService {
         return axios.get('https://tecjusbackend.vercel.app/listaagenda').then((res) => res.data.rows);
     }
 }
-
-//https://tecjusbackend.vercel.app/listaagenda
-// assets/demo/data/events.json

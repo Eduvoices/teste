@@ -12,8 +12,8 @@ import DocTypeService from "../service/DocTypeService"
 
 const TiposDocumento = () => {
     let emptyDoc = {
-        descricao: '',
-        obs: ''
+        TipoDoc_Descricao: '',
+        TipoDoc_Obs: ''
     }
 
     const [docs, setDocs] = useState(null)
@@ -63,16 +63,16 @@ const TiposDocumento = () => {
     const saveDoc = () => {
         setSubmitted(true);
 
-        if (doc.descricao.trim()) {
+        if (doc.TipoDoc_Descricao.trim()) {
             let _docs = [...docs];
             let _doc = { ...doc };
-            if (doc.id) {
-                const index = findIndexById(doc.id);
+            if (doc.TipoDoc_Codigo) {
+                const index = findIndexById(doc.TipoDoc_Codigo);
 
                 _docs[index] = _doc;
                 toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
             } else {
-                _doc.id = createId();
+                _doc.TipoDoc_Codigo = createId();
                 _docs.push(_doc);
                 toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
             }
@@ -94,7 +94,7 @@ const TiposDocumento = () => {
     }
 
     const deleteDoc = () => {
-        let _docs = docs.filter((val) => val.id !== doc.id)
+        let _docs = docs.filter((val) => val.TipoDoc_Codigo !== doc.TipoDoc_Codigo)
         setDocs(_docs)
         setDeleteDocDialog(false)
         setDoc(emptyDoc)
@@ -104,7 +104,7 @@ const TiposDocumento = () => {
     const findIndexById = (id) => {
         let index = -1
         for (let i = 0; i < docs.length; i++) {
-            if (docs[i].id === id) {
+            if (docs[i].TipoDoc_Codigo === id) {
                 index = i
                 break
             }
@@ -170,7 +170,7 @@ const TiposDocumento = () => {
         return (
             <>
                 <span className="p-column-title">Descrição</span>
-                {rowData.descricao}
+                {rowData.TipoDoc_Descricao}
             </>
         )
     }
@@ -179,7 +179,7 @@ const TiposDocumento = () => {
         return (
             <>
                 <span className="p-column-title">Observação</span>
-                {rowData.obs}
+                {rowData.TipoDoc_Obs}
             </>
         )
     }
@@ -249,8 +249,8 @@ const TiposDocumento = () => {
                 >
                     <Column selectionMode='multiple' headerStyle={{width:'2rem'}}/>
                     <Column body={actionBodyTemplate}/>
-                    <Column field='descricao' header='Descrição' body={descricaoBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
-                    <Column field='obs' header='Observação' body={obsBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
+                    <Column field='TipoDoc_Descricao' header='Descrição' body={descricaoBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
+                    <Column field='TipoDoc_Descricao' header='Observação' body={obsBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
                 </DataTable>
 
                 <Dialog visible={docDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
@@ -259,14 +259,14 @@ const TiposDocumento = () => {
 
                         <div className="field">
                                 <label htmlFor="descricao">Descrição</label>
-                                <InputText id="descricao" value={doc.descricao} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'descricao')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.name })} />
-                                {submitted && !doc.descricao && <small className="p-invalid">Descrição é obrigatório.</small>}
+                                <InputText id="descricao" value={doc.TipoDoc_Descricao} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'TipoDoc_Descricao')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Descricao })} />
+                                {submitted && !doc.TipoDoc_Descricao && <small className="p-invalid">Descrição é obrigatório.</small>}
                             </div>
 
                             <div className="field">
                                 <label htmlFor="obs">Obs</label>
-                                <InputText id="obs" value={doc.obs} onChange={(e) => onInputChange(e, 'obs')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.obs })} />
-                                {submitted && !doc.obs && <small className="p-invalid">Descrição é obrigatório.</small>}
+                                <InputText id="obs" value={doc.TipoDoc_Obs} onChange={(e) => onInputChange(e, 'TipoDoc_Obs')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Obs })} />
+                                {submitted && !doc.TipoDoc_Obs && <small className="p-invalid">Descrição é obrigatório.</small>}
                             </div>
 
                         </form>
