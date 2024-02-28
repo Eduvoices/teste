@@ -28,6 +28,7 @@ import 'primeflex/primeflex.css';
 import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
+import CadastroUsuario from './pages/CadastroUsuario';
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -60,7 +61,8 @@ const App = () => {
         { path: '/alteraSenha', parent: 'Pages', label: 'Alterar Senha' },
         { path: '/agenda', parent: 'Pages', label: 'Agenda' },
         { path: '/titulos_em_aberto', parent: 'Pages', label: 'Títulos em aberto'},
-        {path: '/tipo_documento', parent:'Pages', label: 'Tipo de Documento'}
+        {path: '/tipo_documento', parent:'Pages', label: 'Tipo de Documento'},
+        {path: '/cadastroUsuario', parent: 'Pages', label: 'Cadastro Usuário'}
     ];
 
     const menu = [
@@ -75,7 +77,8 @@ const App = () => {
             items: [
                 { label: 'Pessoa Física', icon: 'pi pi-fw pi-user', to: '/pessoa_fisica' },
                 { label: 'Títulos em aberto', icon: 'pi pi-fw pi-dollar', to: '/titulos_em_aberto'},
-                { label: 'Tipo de documento', icon: 'pi pi-fw pi-folder-open', to: '/tipo_documento'}
+                { label: 'Tipo de documento', icon: 'pi pi-fw pi-folder-open', to: '/tipo_documento'},
+                { label: 'Cadastro Usuário', icon: 'pi pi-fw pi-user-plus', to: '/cadastroUsuario'}
             ]
         }
     ];
@@ -282,6 +285,7 @@ const App = () => {
                         <Route path="/pessoa_fisica" element={<CrudDemo />}/>
                         <Route path='/titulos_em_aberto' element={<TitulosEmAberto />} />
                         <Route path='/tipo_documento' element={<TiposDocumento />}/>
+                        <Route path='/cadastroUsuario' element={<CadastroUsuario />}/>
                     </Routes>
                 </div>
 
