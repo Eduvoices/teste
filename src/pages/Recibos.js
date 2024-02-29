@@ -15,6 +15,7 @@ import ProcuracaoCartoriosKF from '../components/documentos/_KF/_procuracao_cart
 import ProcuracaoPolicial from '../components/documentos/_KF/_procuracao_policial';
 import TermoRenunciaKF from '../components/documentos/_KF/_termo_renunciaKF';
 import TermoRepresentacaoKF from '../components/documentos/_KF/_termo_representacao_autorizacaoKF';
+import ReciboOSP from '../components/documentos/_OSP/_reciboOSP';
 
 const Recibos = (props) => {
     const [param1, setParam1] = useState('')
@@ -226,6 +227,16 @@ const Recibos = (props) => {
                 dia={day}
                 mes={monthName}
                 ano={year}/>
+        } else if (doc === 'Recibo' && pasta === 'OSP') {
+            return < ReciboOSP
+                cliente={param2}
+                cash={param1}
+                extenso={textNumber}
+                funcionario={param4}
+                dataAtual={param3}
+                numeroCtrl={param5}
+                Texto={param6}
+                />
         }
     }
 

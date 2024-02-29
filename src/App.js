@@ -18,7 +18,7 @@ import TiposDocumento from './pages/TiposDocumento';
 import Dashboard from './components/Dashboard';
 
 import { Tooltip } from 'primereact/tooltip';
-import logo from '../src/assets/logo-white.png'
+import logo from '../src/assets/logo-black.png'
 
 import { classNames } from 'primereact/utils';
 
@@ -29,6 +29,7 @@ import './App.scss';
 import './layout-blue.css'
 import './theme-blue.css'
 import CadastroUsuario from './pages/CadastroUsuario';
+
 
 const App = () => {
     const [menuActive, setMenuActive] = useState(false);
@@ -286,6 +287,7 @@ const App = () => {
                         <Route path='/titulos_em_aberto' element={<TitulosEmAberto />} />
                         <Route path='/tipo_documento' element={<TiposDocumento />}/>
                         <Route path='/cadastroUsuario' element={<CadastroUsuario />}/>
+
                     </Routes>
                 </div>
 

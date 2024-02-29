@@ -10,7 +10,7 @@ import TitulosService from '../service/TitulosService'
 
 const TitulosEmAberto = () => {
 
-    const [titles, setTitles] = useState(null)
+    const [titles, setTitles] = useState([])
     const [selectedTitles, setSelectedTitles] = useState(null)
     const [globalFilter, setGlobalFilter] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
@@ -182,11 +182,43 @@ const TitulosEmAberto = () => {
         </div>
     )
 
-    // let teste = titles[1].TituloReceber_DataVencimento
-    // let teste2 = teste.split('T')
-    // let teste3 = teste2[0].split('-')
+    let array2 = []
 
-    // console.log(`${teste3[2]}/${teste3[1]}/${teste3[0]}`)
+    function parse(data, i) {
+        let ano = data[i].TituloReceber_Ano
+        let parcela = data[i].TituloReceber_Parcela
+        let numero = data[i].TituloReceber_Numero
+        let id = `${ano}-${parcela}-${numero}`
+
+        return {
+            Sacado: data[i].Sacado,
+            CPF: data[i].CPF,
+            TituloReceber_ValorEmitido: data[i].TituloReceber_ValorEmitido,
+            TituloReceber_Dataemissao: data[i].TituloReceber_Dataemissao,
+            TituloReceber_DataVencimento: data[i].TituloReceber_DataVencimento,
+            RamoDireito_Descricao: data[i].RamoDireito_Descricao,
+            Natureza_Descricao: data[i].Natureza_Descricao,
+            TituloReceber_Ano: data[i].TituloReceber_Ano,
+            TituloReceber_Numero: data[i].TituloReceber_Numero,
+            TituloReceber_Parcela: data[i].TituloReceber_Parcela,
+            Localidade_Nome: data[i].Localidade_Nome,
+            Parceiro: data[i].Parceiro,
+            TituloReceber_Tipo: data[i].TituloReceber_Tipo,
+            id: id
+        }
+    }
+
+    function f() {
+        for (let i = 0; i < titles.length; i++) {
+            const elemental = parse(titles, i)
+            array2 = [...array2, elemental]
+        }
+    }
+
+    f()
+
+    console.log(array2)
+    console.log(titles)
 
     return (
         <div className='grid crud-demo'>
@@ -198,10 +230,10 @@ const TitulosEmAberto = () => {
                     <DataTable
                         style={{whiteSpace:'nowrap'}}
                         ref={dt}
-                        value={titles}
+                        value={array2}
                         selection={selectedTitles}
                         onSelectionChange={(e) => setSelectedTitles(e.value)}
-                        dataKey="TituloReceber_Parcela"
+                        dataKey="id"
                         paginator
                         rows={10}
                         rowsPerPageOptions={[5, 10, 25]}

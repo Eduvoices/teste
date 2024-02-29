@@ -13,7 +13,8 @@ import DocTypeService from "../service/DocTypeService"
 const TiposDocumento = () => {
     let emptyDoc = {
         TipoDoc_Descricao: '',
-        TipoDoc_Obs: ''
+        TipoDoc_Obs: '',
+        TipoDoc_Codigo: ''
     }
 
     const [docs, setDocs] = useState(null)
@@ -26,10 +27,14 @@ const TiposDocumento = () => {
     const [globalFilter, setGlobalFilter] = useState(null)
     const toast = useRef(null)
     const dt = useRef(null)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const docService = new DocTypeService()
-        docService.getDocs().then((data) => setDocs(data))
+        docService.getDocs().then((data) => {
+            setDocs(data)
+            setIsLoading(false)
+        })
     }, [])
 
     function handleEnter(event) {
@@ -235,7 +240,7 @@ const TiposDocumento = () => {
                     value={docs}
                     selection={selectedDocs}
                     onSelectionChange={(e) => setSelectedDocs(e.value)}
-                    dataKey="id"
+                    dataKey="TipoDoc_Codigo"
                     paginator
                     rows={10}
                     rowsPerPageOptions={[5, 10, 25]}
@@ -243,14 +248,14 @@ const TiposDocumento = () => {
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} documentos"
                     globalFilter={globalFilter}
-                    emptyMessage="Nenhum resultado encontrado."
+                    emptyMessage={isLoading ? "Carregando..." : "Nenhum resultado encontrado."}
                     header={header}
                     responsiveLayout="scroll"
                 >
                     <Column selectionMode='multiple' headerStyle={{width:'2rem'}}/>
                     <Column body={actionBodyTemplate}/>
                     <Column field='TipoDoc_Descricao' header='Descrição' body={descricaoBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
-                    <Column field='TipoDoc_Descricao' header='Observação' body={obsBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
+                    <Column field='TipoDoc_Obs' header='Observação' body={obsBodyTemplate} headerStyle={{width:'40%', minWidth:'10rem'}}/>
                 </DataTable>
 
                 <Dialog visible={docDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
