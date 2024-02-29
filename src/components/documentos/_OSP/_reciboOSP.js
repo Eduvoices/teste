@@ -1,4 +1,5 @@
 import React from "react"
+import logo from '../../../assets/logo_mos.png'
 
 const ReciboOSP = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, Texto}) => {
 
@@ -9,7 +10,7 @@ const ReciboOSP = ({numeroCtrl, cliente, cash, extenso, funcionario, dataAtual, 
 
     return (
         <div>
-        {/* <img src='' style={{width:'35%'}} alt="logo"/> */}
+        <img src={logo} style={{width:'35%'}} alt="logo"/>
         <h1 style={{fontSize:'24px'}}>RECIBO</h1>
         <div id="controle">
             <span>{numeroCtrlCompleto}</span>
