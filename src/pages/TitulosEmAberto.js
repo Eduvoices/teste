@@ -217,9 +217,6 @@ const TitulosEmAberto = () => {
 
     f()
 
-    console.log(array2)
-    console.log(titles)
-
     return (
         <div className='grid crud-demo'>
             <div className='col-12'>
