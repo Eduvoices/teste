@@ -28,6 +28,11 @@ const TiposDocumento = () => {
     const toast = useRef(null)
     const dt = useRef(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [formData, setFormData] = useState({
+        descricao: doc.TipoDoc_Descricao,
+        obs: doc.TipoDoc_Obs,
+        usuario: 'Priscila Paiva Blasechi de Oliveira'
+    })
 
     useEffect(() => {
         const docService = new DocTypeService()
@@ -143,10 +148,11 @@ const TiposDocumento = () => {
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro deletado', life: 3000 });
     }
 
-    const onInputChange = (e, name) => {
+    const onInputChange = (e, name, param) => {
         const val = (e.target && e.target.value) || ''
         let _doc = {...doc}
         _doc[`${name}`] = val
+        setFormData({...formData, [param]: e.target.value})
 
         setDoc(_doc)
     }
@@ -208,10 +214,46 @@ const TiposDocumento = () => {
         </div>
     )
 
+    const handleForm = async (e) => {
+                setSubmitted(true);
+
+                if (doc.TipoDoc_Descricao.trim()) {
+                    let _docs = [...docs];
+                    let _doc = { ...doc };
+                    if (doc.TipoDoc_Codigo) {
+                        const index = findIndexById(doc.TipoDoc_Codigo);
+
+                        _docs[index] = _doc;
+                        toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
+                    } else {
+                        _doc.TipoDoc_Codigo = createId();
+                        _docs.push(_doc);
+
+
+                        const response = await fetch(`https://tecjusbackend.vercel.app/addtipodocumento`, {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    })
+                    const data = await response.json()
+                    console.log(data.message)
+
+                        toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
+                    }
+
+                    setDocs(_docs);
+                    setDocDialog(false);
+                    setDoc(emptyDoc);
+                }
+            }
+
     const productDialogFooter = (
         <>
             <Button label="Cancelar" icon="pi pi-times" className="p-button-text" onClick={hideDialog} />
-            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={saveDoc} />
+            <Button label="Salvar" icon="pi pi-check" className="p-button-text" onClick={handleForm} type="submit"/>
         </>
     );
     const deleteProductDialogFooter = (
@@ -226,6 +268,9 @@ const TiposDocumento = () => {
             <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedDocs} />
         </>
     );
+
+
+
 
     return (
         <div className='grid crud-demo'>
@@ -259,18 +304,17 @@ const TiposDocumento = () => {
                 </DataTable>
 
                 <Dialog visible={docDialog} style={{ width: '600px' }} header="Dados cadastrais" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
-                        {doc.image && <img src={`assets/demo/images/product/${doc.image}`} alt={doc.image} width="150" className="mt-0 mx-auto mb-5 block shadow-2" />}
-                        <form>
+                        <form onSubmit={handleForm}>
 
                         <div className="field">
                                 <label htmlFor="descricao">Descrição</label>
-                                <InputText id="descricao" value={doc.TipoDoc_Descricao} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'TipoDoc_Descricao')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Descricao })} />
+                                <InputText id="descricao" value={doc.TipoDoc_Descricao} onKeyUp={handleEnter} onChange={(e) => onInputChange(e, 'TipoDoc_Descricao', 'descricao')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Descricao })} />
                                 {submitted && !doc.TipoDoc_Descricao && <small className="p-invalid">Descrição é obrigatório.</small>}
                             </div>
 
                             <div className="field">
                                 <label htmlFor="obs">Obs</label>
-                                <InputText id="obs" value={doc.TipoDoc_Obs} onChange={(e) => onInputChange(e, 'TipoDoc_Obs')} required autoFocus className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Obs })} />
+                                <InputText id="obs" value={doc.TipoDoc_Obs} onChange={(e) => onInputChange(e, 'TipoDoc_Obs', 'obs')} required className={classNames({ 'p-invalid': submitted && !doc.TipoDoc_Obs })} />
                                 {submitted && !doc.TipoDoc_Obs && <small className="p-invalid">Descrição é obrigatório.</small>}
                             </div>
 
