@@ -239,7 +239,7 @@ const TiposDocumento = () => {
                         body: JSON.stringify(formData)
                     })
                     const data = await response.json()
-                    console.log(data.message)
+                    // console.log(data.message)
 
                         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
                     }
