@@ -261,7 +261,7 @@ const App = () => {
 
             <div className={menuContainerClassName} onClick={onMenuClick}>
                 <div className="layout-menu-logo">
-                    <button className="p-link" onClick={() => navigate('/')}>
+                    <button className="p-link" onClick={() => navigate('/login')}>
                         <img id="layout-menu-logo" src={logo} library="babylon-layout" alt="babylon-logo" />
                     </button>
                 </div>

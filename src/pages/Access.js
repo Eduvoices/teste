@@ -15,7 +15,7 @@ export const Access = () => {
                     <span className="exception-name">ACESSO</span> NEGADO
                 </h1>
                 <p>Parece que você não possui as permissões necessárias</p>
-                <button onClick={()=>navigate('/')} id='button_a'>Retornar à tela de login</button>
+                <button onClick={()=>navigate('/login')} id='button_a'>Retornar à tela de login</button>
             </div>
         </div>
     )

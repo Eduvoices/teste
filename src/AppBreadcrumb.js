@@ -12,12 +12,12 @@ const AppBreadcrumb = (props) => {
             <div className="route-bar-breadcrumb">
                 <ul>
                     <li>
-                        <button type="button" className="p-link" onClick={() => navigate('/')}>
+                        <button type="button" className="p-link" onClick={() => navigate('/login')}>
                             <i className="pi pi-home" />
                         </button>
                     </li>
                     <li>/</li>
-                    {location.pathname === '/' ? (
+                    {location.pathname === '/login' ? (
                         <li>Dashboard</li>
                     ) : (
                         <li>

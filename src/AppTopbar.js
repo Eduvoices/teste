@@ -15,7 +15,7 @@ const AppTopbar = (props) => {
 
     return (
         <div className="layout-topbar">
-            <button className="layout-topbar-logo p-link" onClick={() => navigate('/')}>
+            <button className="layout-topbar-logo p-link" onClick={() => navigate('/login')}>
                 <img id="layout-topbar-logo" src="assets/layout/images/teste.png" alt="babylon-layout" />
             </button>
 
@@ -43,7 +43,7 @@ const AppTopbar = (props) => {
                                 </button>
                             </li>
                             <li role="menuitem">
-                                <button className="p-link" onClick={(e)=> navigate('/')}>
+                                <button className="p-link" onClick={(e)=> navigate('/login')}>
                                     <i className="pi pi-sign-out"></i>
                                     <span>Sair do sistema</span>
                                 </button>

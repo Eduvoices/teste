@@ -13,7 +13,7 @@ const FirstAccess = () => {
                     Algo deu <span>Errado</span>
                 </h1>
                 <p>Este é seu primeiro acesso, entre em contato com o administrador do sistema</p>
-                <button onClick={()=>navigate('/')} id='button_a'>Retornar à tela de login</button>
+                <button onClick={()=>navigate('/login')} id='button_a'>Retornar à tela de login</button>
             </div>
         </div>
     )
