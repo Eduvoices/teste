@@ -5,7 +5,6 @@ import { InputText } from 'primereact/inputtext'
 import { InputTextarea } from 'primereact/inputtextarea';
 import { Button } from 'primereact/button';
 import { useState } from 'react';
-import menu from '../assets/icon-ellipsis-v.svg'
 
 const LandingPage = () => {
     const [open, setOpen] = useState(false)
@@ -50,27 +49,6 @@ const LandingPage = () => {
                                     </li>
                                 </ul>
                             )}
-                            {/* <img src={menu} alt="Menu"/>
-                            <ul>
-                                <li>
-                                    <i className="pi pi-ellipsis-v" onClick={openMenu}></i>
-                                </li>
-                                <li>
-                                    <HashLink to='/#header'>Home</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink to='/#features'>Produtos</HashLink>
-                                </li>
-                                <li>
-                                    <HashLink to="/#promo">Serviços</HashLink>
-                                </li>
-                                <li>
-                                    <Link to='/login'>Login</Link>
-                                </li>
-                                <li>
-                                    <HashLink to="/#multimedia">Contato</HashLink>
-                                </li>
-                            </ul> */}
                         </span>
 
                         <ul id="landing-menu">
@@ -103,7 +81,7 @@ const LandingPage = () => {
 
             <div id="features">
                 <h1>TecjusWeb</h1>
-                <p>Gestão de escritórios de advocacia</p>
+                <p>Software para Gestão de Escritórios de Advocacia</p>
                 <div className="grid">
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
@@ -117,17 +95,17 @@ const LandingPage = () => {
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
-                            <p>Suporte de qualidade</p>
+                            <p>Suporte Qualificado</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
-                            <p>Integração de equipe</p>
+                            <p>Integração da Equipe</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
-                            <p>Indicadores de desempenho</p>
+                            <p>Indicadores para Gestão</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
