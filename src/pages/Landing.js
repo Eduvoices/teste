@@ -71,7 +71,7 @@ const LandingPage = () => {
                 </div>
 
                 <div className="header-content">
-                    <h1>Tecjus</h1>
+                    <h1>TECJUS</h1>
                     <p>Tecnologia para Escritórios de Advocacia</p>
                     <button type="button" class="p-button landing-button" >
                         <span className="p-button-text">Saiba Mais</span>
@@ -80,37 +80,43 @@ const LandingPage = () => {
             </div>
 
             <div id="features">
-                <h1>TecjusWeb</h1>
+                <h1>TECJUSWeb</h1>
                 <p>Software para Gestão de Escritórios de Advocacia</p>
                 <div className="grid">
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
+                            <i className='pi pi-palette' />
                             <p>Design moderno</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
+                            <i className='pi pi-info-circle'/>
                             <p>Fácil de usar</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
+                            <i className='pi pi-wrench'/>
                             <p>Suporte Qualificado</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
+                            <i className='pi pi-users'/>
                             <p>Integração da Equipe</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
+                            <i className='pi pi-chart-line'/>
                             <p>Indicadores para Gestão</p>
                         </div>
                     </div>
                     <div className="col-12 md:col-12 lg:col-4">
                         <div className="feature-box">
-                            <p>Gerenciamento completo (Processos, Clientes, Financeiro, Gestão).</p>
+                            <i className='pi pi-dollar'/>
+                            <p>Notas Fiscais e Boletos</p>
                         </div>
                     </div>
                 </div>
@@ -120,8 +126,14 @@ const LandingPage = () => {
                 <h1>Serviços</h1>
 
                 <div className='div-flex'>
-                    <p className='feature-box'>Controladoria Jurídica</p>
-                    <p className='feature-box'>Consultoria</p>
+                    <p className='feature-box'>
+                    <i className='pi pi-briefcase' style={{marginRight:'8px'}}/>
+                        Controladoria Jurídica
+                    </p>
+                    <p className='feature-box'>
+                        <i className='pi pi-search' style={{marginRight:'8px'}}/>
+                        Consultoria
+                    </p>
                 </div>
 
                 {/* <img src={logo} alt="babylon-layout" /> */}
@@ -148,7 +160,7 @@ const LandingPage = () => {
                                 </div>
                             </div>
                             <div className='button-div'>
-                                <Button type='button' label='Enviar'/>
+                                <Button type='submit' label='Enviar'/>
                             </div>
                         </form>
                     </div>
