@@ -6,6 +6,7 @@ import Access from './pages/Access';
 import Recibos from './pages/Recibos';
 import FirstAccess from './pages/Erro';
 import LandingPage from './pages/Landing';
+import ThankYouPage from './pages/ThankYou';
 
 const AppWrapper = () => {
     let location = useLocation();
@@ -22,6 +23,7 @@ const AppWrapper = () => {
             <Route path="/invoice" element={<Recibos />} />
             <Route path='/firstAccess' element={<FirstAccess />}/>
             <Route path='/' element={<LandingPage />} />
+            <Route path='/thankYou' element={<ThankYouPage />}/>
         </Routes>
     );
 };

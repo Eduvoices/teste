@@ -65,7 +65,7 @@ const LandingPage = () => {
                                 <Link to='/login'>Login</Link>
                             </li>
                             <li>
-                                <HashLink to="/#multimedia">Contato</HashLink>
+                                <HashLink to="/#pricing">Contato</HashLink>
                             </li>
                         </ul>
                 </div>
@@ -73,7 +73,7 @@ const LandingPage = () => {
                 <div className="header-content">
                     <h1>TECJUS</h1>
                     <p>Tecnologia para Escritórios de Advocacia</p>
-                    <button type="button" class="p-button landing-button" >
+                    <button type="button" className="p-button landing-button" >
                         <span className="p-button-text">Saiba Mais</span>
                     </button>
                 </div>
@@ -136,15 +136,13 @@ const LandingPage = () => {
                     </p>
                 </div>
 
-                {/* <img src={logo} alt="babylon-layout" /> */}
             </div>
 
             <div id="pricing">
                 <h1>Contato</h1>
-
                 <div className="col-12">
                     <div className="card">
-                        <form>
+                        <form action='https://formsubmit.co/contato@tecjus.com.br' method="POST">
                             <div className="p-fluid formgrid grid">
                                 <div className="field col-12 md:col-6">
                                     <label htmlFor="firstname2">Nome completo</label>
@@ -152,7 +150,7 @@ const LandingPage = () => {
                                 </div>
                                 <div className="field col-12 md:col-6">
                                     <label htmlFor="lastname2">Email</label>
-                                    <InputText id="lastname2" type="text"/>
+                                    <InputText id="lastname2" type="email"/>
                                 </div>
                                 <div className="field col-12">
                                     <label htmlFor="address">Mensagem</label>

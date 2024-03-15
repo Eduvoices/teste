@@ -7,9 +7,9 @@ import EventService from '../service/EventService';
 import localeBr from '@fullcalendar/core/locales/pt-br'
 import { Menu } from 'primereact/menu';
 import { Button } from 'primereact/button';
-import { Checkbox } from 'primereact/checkbox';
 import {Chart} from 'primereact/chart'
 import logo from '../assets/logo-white.png'
+import TaskService from '../service/TaskService';
 
 const chartData = {
     labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
@@ -78,16 +78,19 @@ const chartOptions = {
 
 const Dashboard = () => {
     const [events, setEvents] = useState([]);
-    const [checked1, setChecked1] = useState(false);
-    const [checked2, setChecked2] = useState(false);
-    const [checked3, setChecked3] = useState(false);
-    const [checked4, setChecked4] = useState(false);
-    const [checked5, setChecked5] = useState(false);
+    const [tasks, setTasks] = useState([])
+
 
     useEffect(() => {
         const eventService = new EventService();
 
+        const taskService = new TaskService()
+
+        taskService.getTasks().then((data) => setTasks(data))
+
+
         eventService.getEvents().then((data) => setEvents(data));
+
     }, []);
 
     let array2 = []
@@ -185,8 +188,8 @@ const Dashboard = () => {
                         <i className="overview-icon pi pi-file"></i>
                         <span className="overview-title">Protocolos Administrativos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
-                        <div className="overview-numbers">7029</div>
-                        <div className="overview-subinfo">2% mais do que ontem</div>
+                        <div className="overview-numbers"></div>
+                        <div className="overview-subinfo"></div>
                     </div>
                 </div>
                 <div className="col-12 lg:col-6 xl:col-3">
@@ -299,33 +302,14 @@ const Dashboard = () => {
 
                 <div className="col-12 md:col-12 lg:col-6">
                     <div className="card card-w-title tasks" style={{height:'100%'}}>
-                        <h5>Tasks</h5>
+                        <h5>Tarefas</h5>
                         <ul>
-                            <li>
-                                <Checkbox checked={checked1} onChange={(e) => setChecked1(e.checked)} />
-                                <span>Relatórios de vendas</span>
-                                <span className="task-badge coffee"></span>
-                            </li>
-                            <li>
-                                <Checkbox checked={checked2} onChange={(e) => setChecked2(e.checked)} />
-                                <span>Pagar faturas</span>
-                                <span className="task-badge orange"></span>
-                            </li>
-                            <li>
-                                <Checkbox checked={checked3} onChange={(e) => setChecked3(e.checked)} />
-                                <span>Aniversário da Rosana</span>
-                                <span className="task-badge orange"></span>
-                            </li>
-                            <li>
-                                <Checkbox checked={checked4} onChange={(e) => setChecked4(e.checked)} />
-                                <span>Reunião com cliente</span>
-                                <span className="task-badge green"></span>
-                            </li>
-                            <li>
-                                <Checkbox checked={checked5} onChange={(e) => setChecked5(e.checked)} />
-                                <span>Novos temas</span>
-                                <span className="task-badge green"></span>
-                            </li>
+                            {tasks.map((task)=> {
+                                return <li key={task.Pessoa_CodigoCliente}>
+                                            <input type="checkbox" id={task.Cliente} name={task.Cliente} value={task.Cliente} />
+                                            <label htmlFor={task.Cliente}>{task.EtapaProcesso_Descricao} - {task.Cliente}</label>
+                                        </li>
+                            })}
                         </ul>
                     </div>
                 </div>
