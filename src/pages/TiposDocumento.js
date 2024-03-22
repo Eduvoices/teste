@@ -40,21 +40,6 @@ const TiposDocumento = () => {
             setDocs(data)
             setIsLoading(false)
         })
-
-        const functionDelete = async () => {
-
-            const response = await fetch(`https://tecjusbackend.vercel.app/tiposdocumentos`, {
-                method: 'DELETE',
-                mode: 'cors',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            const data = await response.json()
-            console.log(data.message)
-        }
-        functionDelete()
-
     }, [])
 
     function handleEnter(event) {
@@ -70,6 +55,19 @@ const TiposDocumento = () => {
         setDoc(emptyDoc)
         setSubmitted(false)
         setDocDialog(true)
+    }
+
+    const functionDelete = async (codigo) => {
+
+        const response = await fetch(`https://tecjusbackend.vercel.app/tiposdocumentos`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'text/html'
+            },
+            body: codigo
+        })
+        console.log(response)
+        console.log('Esse é o código que a função recebe: ', codigo)
     }
 
     const hideDialog = () => {
@@ -118,13 +116,14 @@ const TiposDocumento = () => {
         setDeleteDocDialog(true)
     }
 
-    const deleteDoc = async () => {
+    const deleteDoc = () => {
         let _docs = docs.filter((val) => val.TipoDoc_Codigo !== doc.TipoDoc_Codigo)
         setDocs(_docs)
         setDeleteDocDialog(false)
         setDoc(emptyDoc)
 
         console.log(doc.TipoDoc_Codigo)
+        functionDelete(doc.TipoDoc_Codigo)
 
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro removido', life: 3000 });
     }

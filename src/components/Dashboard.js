@@ -209,7 +209,7 @@ const Dashboard = () => {
                 </div>
 
                 <div className="col-12 md:col-12 lg:col-6">
-                    <div className="card card-w-title" style={{height:'240px', overflowX:'scroll'}}>
+                    <div className="card card-w-title" style={{height:'30vh', overflowX:'scroll'}}>
                         <FullCalendar
                         eventClick={handleEventClick}
                         events={array2}
@@ -224,25 +224,25 @@ const Dashboard = () => {
                         locale={localeBr}
                         select={handleDateSelect}
                         nowIndicator
-                        height='256px'
+                        height='100%'
                         />
                     </div>
                 </div>
 
                 <div className="col-12 md:col-12 lg:col-6">
-                    <div className="user-card card" style={{height:'240px', overflowX:'scroll'}}>
+                    <div className="user-card card" style={{height:'30vh', overflowX:'scroll'}}>
                         <div className="user-card-content">
-                            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'8px'}}>
+                            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:'-12px'}}>
                                 <img src={logo} alt="babylon-layout"/>
                                 <div>
-                                    <h5 style={{color:'#000'}}>Prazos em aberto</h5>
+                                    <h5 style={{color:'#000', fontSize:'14px'}}>Prazos em aberto</h5>
                                 </div>
                                 <Menu ref={menuRef} popup model={items} appendTo={document.body} />
                                 <Button id="user-button" type="button" icon="pi pi-bars" className="secondary-btn" onClick={menuToggle} />
 
                             </div>
 
-                            <div className="user-detail">
+                            <div className="user-detail" style={{margin:'8px'}}>
                                 <ul>
                                     <li className="clearfix">
                                         <i className="pi pi-list"></i>
@@ -300,7 +300,7 @@ const Dashboard = () => {
 
 
                 <div className="col-12 md:col-12 lg:col-6" >
-                    <div className="card card-w-title tasks" style={{height:'240px', overflowX:'scroll'}}>
+                    <div className="card card-w-title tasks" style={{height:'40vh', overflowX:'scroll', fontSize:'12px', margin:'8px'}}>
                         <h5>Tarefas</h5>
                         <ul>
                             {tasks.map((task)=> {
@@ -314,9 +314,9 @@ const Dashboard = () => {
                 </div>
 
                 <div className="col-12 lg:col-6">
-                    <div className="card card-w-title statistics" style={{height:'240px', overflowX:'scroll'}}>
+                    <div className="card card-w-title statistics" style={{height:'40vh', margin:'8px'}}>
                         <h5>Estatísticas de Protocolos</h5>
-                        <Chart type="line" data={chartData} options={chartOptions} />
+                        <Chart type="line" data={chartData} options={chartOptions} style={{height:'240px', width:'100%'}}/>
                     </div>
                 </div>
 

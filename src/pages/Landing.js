@@ -174,7 +174,7 @@ const LandingPage = () => {
             </div>
         </div>
         <button style={{position:'fixed', right:'32px', bottom:'32px', zIndex:'9999', height:'64px', width:'64px', borderRadius:'50%', backgroundColor:'#2ecc71', border:'none'}}>
-                    <a href='https://wa.me/5543999877667' target='_blank' rel='noreferrer'>
+                    <a href='https://wa.me/554332525074' target='_blank' rel='noreferrer'>
                         <i className='pi pi-whatsapp' style={{color:'#fff', fontSize:'2rem'}}></i>
                     </a>
                 </button>
