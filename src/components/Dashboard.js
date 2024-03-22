@@ -174,16 +174,15 @@ const Dashboard = () => {
     return (
         <div className="layout-dashboard">
             <div className="grid">
-            <div className="col-12 lg:col-6 xl:col-3">
+            <div className="col-6 lg:col-6 xl:col-3">
                     <div className="overview-box sales">
                         <i className="overview-icon pi pi-dollar"></i>
                         <span className="overview-title">Caixa</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
-                        <div className="overview-numbers">$ 92,440</div>
-                        <div className="overview-subinfo">21% mais do que ontem</div>
+                        <div className="overview-numbers"></div>
                     </div>
                 </div>
-                <div className="col-12 lg:col-6 xl:col-3">
+                <div className="col-6 lg:col-6 xl:col-3">
                     <div className="overview-box views">
                         <i className="overview-icon pi pi-file"></i>
                         <span className="overview-title">Protocolos Administrativos</span>
@@ -192,32 +191,30 @@ const Dashboard = () => {
                         <div className="overview-subinfo"></div>
                     </div>
                 </div>
-                <div className="col-12 lg:col-6 xl:col-3">
+                <div className="col-6 lg:col-6 xl:col-3">
                     <div className="overview-box users">
                         <i className="overview-icon pi pi-users"></i>
                         <span className="overview-title">Atendimentos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
-                        <div className="overview-numbers">9522</div>
-                        <div className="overview-subinfo">7% mais do que ontem</div>
+                        <div className="overview-numbers"></div>
                     </div>
                 </div>
-                <div className="col-12 lg:col-6 xl:col-3">
+                <div className="col-6 lg:col-6 xl:col-3">
                     <div className="overview-box checkin">
                         <i className="overview-icon pi pi-folder"></i>
                         <span className="overview-title">Novos Processos</span>
                         <i className="overview-arrow pi pi-chevron-circle-up"></i>
-                        <div className="overview-numbers">4211</div>
-                        <div className="overview-subinfo">18% mais do que ontem</div>
+                        <div className="overview-numbers"></div>
                     </div>
                 </div>
 
                 <div className="col-12 md:col-12 lg:col-6">
-                    <div className="card card-w-title" style={{height:'100%'}}>
+                    <div className="card card-w-title" style={{height:'240px', overflowX:'scroll'}}>
                         <FullCalendar
                         eventClick={handleEventClick}
                         events={array2}
                         eventContent={renderEventContent}
-                        initialView='timeGridDay'
+                        initialView='dayGridDay'
                         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
                         headerToolbar={{ left: 'prev,next today', center: 'title', right:''}}
                         editable
@@ -226,12 +223,14 @@ const Dashboard = () => {
                         dayMaxEvents
                         locale={localeBr}
                         select={handleDateSelect}
+                        nowIndicator
+                        height='256px'
                         />
                     </div>
                 </div>
 
                 <div className="col-12 md:col-12 lg:col-6">
-                    <div className="user-card card" style={{height:'100%'}}>
+                    <div className="user-card card" style={{height:'240px', overflowX:'scroll'}}>
                         <div className="user-card-content">
                             <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', margin:'8px'}}>
                                 <img src={logo} alt="babylon-layout"/>
@@ -300,8 +299,8 @@ const Dashboard = () => {
                 </div>
 
 
-                <div className="col-12 md:col-12 lg:col-6">
-                    <div className="card card-w-title tasks" style={{height:'100%'}}>
+                <div className="col-12 md:col-12 lg:col-6" >
+                    <div className="card card-w-title tasks" style={{height:'240px', overflowX:'scroll'}}>
                         <h5>Tarefas</h5>
                         <ul>
                             {tasks.map((task)=> {
@@ -315,14 +314,19 @@ const Dashboard = () => {
                 </div>
 
                 <div className="col-12 lg:col-6">
-                    <div className="card card-w-title statistics" style={{height:'100%'}}>
+                    <div className="card card-w-title statistics" style={{height:'240px', overflowX:'scroll'}}>
                         <h5>Estatísticas de Protocolos</h5>
                         <Chart type="line" data={chartData} options={chartOptions} />
                     </div>
                 </div>
 
             </div>
-        </div>
+                <button style={{position:'fixed', right:'32px', bottom:'32px', zIndex:'9999', height:'64px', width:'64px', borderRadius:'50%', backgroundColor:'#2ecc71', border:'none'}}>
+                    <a href='https://wa.me/5543999877667' target='_blank' rel='noreferrer'>
+                        <i className='pi pi-whatsapp' style={{color:'#fff', fontSize:'2rem'}}></i>
+                    </a>
+                </button>
+            </div>
     );
 };
 

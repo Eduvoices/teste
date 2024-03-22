@@ -1735,9 +1735,6 @@ a {
   border-color: #fff;
   color: #fff;
 }
-.layout-dashboard .tasks {
-  min-height: 320px;
-}
 .layout-dashboard .tasks ul {
   padding: 0;
   margin: 0;

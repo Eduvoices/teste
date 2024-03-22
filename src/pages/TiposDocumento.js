@@ -40,6 +40,21 @@ const TiposDocumento = () => {
             setDocs(data)
             setIsLoading(false)
         })
+
+        const functionDelete = async () => {
+
+            const response = await fetch(`https://tecjusbackend.vercel.app/tiposdocumentos`, {
+                method: 'DELETE',
+                mode: 'cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            const data = await response.json()
+            console.log(data.message)
+        }
+        functionDelete()
+
     }, [])
 
     function handleEnter(event) {
@@ -70,28 +85,28 @@ const TiposDocumento = () => {
         setDeleteDocsDialog(false)
     }
 
-    const saveDoc = () => {
-        setSubmitted(true);
+    // const saveDoc = () => {
+    //     setSubmitted(true);
 
-        if (doc.TipoDoc_Descricao.trim()) {
-            let _docs = [...docs];
-            let _doc = { ...doc };
-            if (doc.TipoDoc_Codigo) {
-                const index = findIndexById(doc.TipoDoc_Codigo);
+    //     if (doc.TipoDoc_Descricao.trim()) {
+    //         let _docs = [...docs];
+    //         let _doc = { ...doc };
+    //         if (doc.TipoDoc_Codigo) {
+    //             const index = findIndexById(doc.TipoDoc_Codigo);
 
-                _docs[index] = _doc;
-                toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
-            } else {
-                _doc.TipoDoc_Codigo = createId();
-                _docs.push(_doc);
-                toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
-            }
+    //             _docs[index] = _doc;
+    //             toast.current.show({ severity: 'success', summary: 'Sucesso !', detail: 'Cadastro atualizado', life: 3000 });
+    //         } else {
+    //             _doc.TipoDoc_Codigo = createId();
+    //             _docs.push(_doc);
+    //             toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro criado', life: 3000 });
+    //         }
 
-            setDocs(_docs);
-            setDocDialog(false);
-            setDoc(emptyDoc);
-        }
-    };
+    //         setDocs(_docs);
+    //         setDocDialog(false);
+    //         setDoc(emptyDoc);
+    //     }
+    // };
 
     const editDoc = (doc) => {
         setDoc({...doc})
@@ -103,11 +118,14 @@ const TiposDocumento = () => {
         setDeleteDocDialog(true)
     }
 
-    const deleteDoc = () => {
+    const deleteDoc = async () => {
         let _docs = docs.filter((val) => val.TipoDoc_Codigo !== doc.TipoDoc_Codigo)
         setDocs(_docs)
         setDeleteDocDialog(false)
         setDoc(emptyDoc)
+
+        console.log(doc.TipoDoc_Codigo)
+
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro removido', life: 3000 });
     }
 
@@ -142,9 +160,13 @@ const TiposDocumento = () => {
 
     const deleteSelectedDocs = () => {
         let _docs = docs.filter((val) => !selectedDocs.includes(val));
+
+        console.log(selectedDocs.length)
+
         setDocs(_docs);
         setDeleteDocsDialog(false);
         setSelectedDocs(null);
+
         toast.current.show({ severity: 'success', summary: 'Sucesso', detail: 'Cadastro deletado', life: 3000 });
     }
 
@@ -268,8 +290,6 @@ const TiposDocumento = () => {
             <Button label="Sim" icon="pi pi-check" className="p-button-text" onClick={deleteSelectedDocs} />
         </>
     );
-
-
 
 
     return (

@@ -80,7 +80,7 @@ const LandingPage = () => {
             </div>
 
             <div id="features">
-                <h1>TECJUSWeb</h1>
+                <h1>TECWeb</h1>
                 <p>Software para Gestão de Escritórios de Advocacia</p>
                 <div className="grid">
                     <div className="col-12 md:col-12 lg:col-4">
